@@ -1,11 +1,12 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import Hero from '../components/Hero';
 
 const Home = () => {
     return (
         <div>
-            
+            {/* <Hero/> */}
         </div>
     )
 }
