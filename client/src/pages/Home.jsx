@@ -2,11 +2,15 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Hero from '../components/Hero';
+import WhyAplyzer from '../components/WhyAplyzer';
+import LookInside from '../components/LookInside';
 
 const Home = () => {
     return (
         <div>
             <Hero/>
+            <WhyAplyzer/>
+            <LookInside/>
         </div>
     )
 }
