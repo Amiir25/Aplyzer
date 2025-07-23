@@ -76,76 +76,84 @@ const Navbar = () => {
                 </div> {/* more tools */}
             </div> {/* links */}
 
-            {/* Sign */}
+            {/* Sign Up */}
             <button className="hidden md:block border border-[#F51D28] px-4 py-2 rounded
             hover:text-white hover:bg-[#F51D28] ">
                 <Link>Sign up</Link>
             </button>
 
             {/* Small screen menu */}
-            <div>
-                <FontAwesomeIcon icon={ faBars } className="md:hidden text-2xl hover:text-gray-600 cursor-pointer"
+            <div className="md:hidden">
+                <FontAwesomeIcon icon={ faBars } className="text-2xl hover:text-gray-600 cursor-pointer"
                 onClick={() => setSmallScreen(true)} />
             </div>
 
             {/* Small screen links */}
-            <div className={`bg-gray-700 absolute top-0 -left-10 w-screen h-screen transform -translate-x-200
-            ${ smallScreen && 'translate-x-0' } transition-all duration-300`}>
+            <div className={`absolute md:hidden top-0 -left-10 w-screen h-screen bg-black/95 text-gray-200
+                transform -translate-x-200 overflow-y-scroll
+             ${ smallScreen && 'translate-x-0' } transition-all duration-300`}>
                 
+                {/* Logo */}
+                <img src="/logo-header.png" alt="Logo Image"
+                className="mx-auto mt-6" />
+                
+
                 {/* Close icon */}
-                <FontAwesomeIcon icon={ faCircleXmark } className="float-right text-3xl p-6"
+                <FontAwesomeIcon icon={ faCircleXmark }
+                className="fixed top-0 right-0 text-3xl p-4 hover:text-gray-400 cursor-pointer"
                 onClick={ () => setSmallScreen(false) } />
 
-                <Link to='/' className="hover:text-gray-600">About</Link>
-                <Link to='/' className="hover:text-gray-600">Tips</Link>
-                <Link to='/' className="hover:text-gray-600">Contact</Link>
+                <div className="flex flex-col items-center gap-4 mt-20 h-screen">
+                    <Link to='/' className="text-2xl hover:text-gray-400">About</Link>
+                    <Link to='/' className="text-2xl hover:text-gray-400">Tips</Link>
+                    <Link to='/' className="text-2xl hover:text-gray-400">Contact</Link>
 
-                {/* More tools */}
-                <div className="group">
-                    <button className=" flex items-center gap-2 hover:text-[#F51D28]">
-                        More
-                        <FontAwesomeIcon icon={ faAngleDown } />
-                    </button>
+                    {/* More tools */}
+                    <div className="group mt-4">
+                        <button className="flex items-center gap-2 text-2xl mb-4 font-bold underline">
+                            More Tools
+                        </button>
 
-                    <div>
-                        <Link to='/' className="flex items-center gap-4 mb-6 hover:text-gray-600">
-                            <FontAwesomeIcon icon={ faChartBar } className="w-8 p-2 bg-rose-400/50 text-rose-700
-                            rounded text-2xl" />
-                            <div>
-                                <h2 className="text-sm font-bold">Job Application Tracker</h2>
-                                <p className="text-xs">Lorem ipsum dolor sit amet consectetur.</p>
-                            </div>
-                        </Link>
+                        <div>
+                            <Link to='/' className="flex items-center gap-4 mb-6 hover:text-gray-400">
+                                <FontAwesomeIcon icon={ faChartBar } className="w-8 p-2 bg-rose-400/50 text-rose-700
+                                rounded text-2xl" />
+                                <div>
+                                    <h2 className="text-lg font-bold">Job Application Tracker</h2>
+                                    <p className="text-sm">Lorem ipsum dolor sit amet consectetur.</p>
+                                </div>
+                            </Link>
 
-                        <Link to='/' className="flex items-center gap-4 mb-6 hover:text-gray-600">
-                            <FontAwesomeIcon icon={ faCheckDouble } className="w-8 p-2 bg-yellow-400/50 text-yellow-700
-                            rounded text-2xl" />
-                            <div>
-                                <h2 className="text-sm font-bold">AI Resume Cheker</h2>
-                                <p className="text-xs">Lorem ipsum dolor sit amet consectetur.</p>
-                            </div>
-                        </Link>
+                            <Link to='/' className="flex items-center gap-4 mb-6 hover:text-gray-400">
+                                <FontAwesomeIcon icon={ faCheckDouble } className="w-8 p-2 bg-yellow-400/50 text-yellow-700
+                                rounded text-2xl" />
+                                <div>
+                                    <h2 className="text-lg font-bold">AI Resume Cheker</h2>
+                                    <p className="text-sm">Lorem ipsum dolor sit amet consectetur.</p>
+                                </div>
+                            </Link>
 
-                        <Link to='/' className="flex items-center gap-4 mb-6 hover:text-gray-600">
-                            <FontAwesomeIcon icon={ faEquals } className="w-8 p-2 bg-lime-400/50 text-lime-700
-                            rounded text-2xl" />
-                            <div>
-                                <h2 className="text-sm font-bold">Job Description Matching</h2>
-                                <p className="text-xs">Lorem ipsum dolor sit amet consectetur.</p>
-                            </div>
-                        </Link>
+                            <Link to='/' className="flex items-center gap-4 mb-6 hover:text-gray-400">
+                                <FontAwesomeIcon icon={ faEquals } className="w-8 p-2 bg-lime-400/50 text-lime-700
+                                rounded text-2xl" />
+                                <div>
+                                    <h2 className="text-lg font-bold">Job Description Matching</h2>
+                                    <p className="text-sm">Lorem ipsum dolor sit amet consectetur.</p>
+                                </div>
+                            </Link>
 
-                        <Link to='/' className="flex items-center gap-4 mb-6 hover:text-gray-600">
-                            <FontAwesomeIcon icon={ faPen } className="w-8 p-2 bg-sky-400/50 text-sky-700
-                            rounded text-2xl" />
-                            <div>
-                                <h2 className="text-sm font-bold">Cover Letter Generator</h2>
-                                <p className="text-xs">Lorem ipsum dolor sit amet consectetur.</p>
-                            </div>
-                        </Link>
-                    </div>
+                            <Link to='/' className="flex items-center gap-4 mb-6 hover:text-gray-400">
+                                <FontAwesomeIcon icon={ faPen } className="w-8 p-2 bg-sky-400/50 text-sky-700
+                                rounded text-2xl" />
+                                <div>
+                                    <h2 className="text-lg font-bold">Cover Letter Generator</h2>
+                                    <p className="text-sm">Lorem ipsum dolor sit amet consectetur.</p>
+                                </div>
+                            </Link>
+                        </div>
+                    </div> {/* More tools */}
                 </div>
-            </div>
+            </div> {/* Small screen links */}
 
         </nav>
         </>
