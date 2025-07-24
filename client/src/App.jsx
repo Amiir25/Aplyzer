@@ -2,13 +2,17 @@ import React from 'react'
 import Home from './pages/Home'
 import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
+import SignUp from './pages/SignUp'
+import SignIn from './pages/SignIn'
 
 const App = () => {
   return (
-    <div className='px-6 md:px-16 lg:px-24 xl:px-32'>
+    <div className=''>
       <Navbar/>
       <Routes>
-        <Route path='/' element={ <Home /> } />
+        <Route path='/' element={ <Home/> } />
+        <Route path='/signup' element={ <SignUp/> } />
+        <Route path='/signin' element={ <SignIn/> } />
       </Routes>
     </div>
   )
