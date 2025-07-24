@@ -12,7 +12,8 @@ const Navbar = () => {
 
     return (
         <>
-        <nav className="relative py-4 flex items-center justify-between text-gray-800 md:text-lg font-medium">
+        <nav className="relative px-6 md:px-16 lg:px-24 xl:px-32 py-4 flex items-center justify-between
+        text-gray-800 md:text-lg font-medium">
 
             {/* Logo */}
             <Link to={'/'} className="w-1/4 md:w-1/5">
