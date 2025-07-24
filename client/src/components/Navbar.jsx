@@ -78,10 +78,12 @@ const Navbar = () => {
             </div> {/* links */}
 
             {/* Sign Up */}
-            <button className="hidden md:block border border-[#F51D28] px-4 py-2 rounded
+            <Link
+            to='/signup'
+            className="hidden md:block border border-[#F51D28] px-4 py-2 rounded
             hover:text-white hover:bg-[#F51D28] ">
-                <Link>Sign up</Link>
-            </button>
+                Sign up
+            </Link>
 
             {/* Small screen menu */}
             <div className="md:hidden">
