@@ -2,15 +2,23 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Hero from '../components/Hero';
-import WhyAplyzer from '../components/WhyAplyzer';
 import LookInside from '../components/LookInside';
+import SmarterTools from '../components/SmarterTools';
+import Testimonials from '../components/Testimonials';
+import CTA from '../components/CTA';
+import FAQs from '../components/FAQs';
+import Footer from '../components/Footer';
 
 const Home = () => {
     return (
         <div>
             <Hero/>
-            <WhyAplyzer/>
+            <SmarterTools/>
             <LookInside/>
+            <Testimonials/>
+            <CTA/>
+            <FAQs/>
+            <Footer/>
         </div>
     )
 }
