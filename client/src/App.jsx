@@ -9,6 +9,8 @@ import Footer from './components/Footer'
 const App = () => {
   return (
     <div className=''>
+      
+      {/* Navbar */}
       <Navbar/>
       <Routes>
         <Route path='/' element={ <Home/> } />
