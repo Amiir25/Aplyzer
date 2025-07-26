@@ -1,22 +1,35 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 
 const SignIn = () => {
+    const navigate = useNavigate();
 
-    const [signinData, setSigninData] = useState({
-        email: '',
-        password: '',
+    const schema = yup.object().shape({
+        email: yup
+            .string()
+            .email('Enter a valid email address')
+            .required('Email is required'),
+        password: yup
+            .string()
+            .required('Password is required')
     });
 
-    const handleSigninData = (e) => {
-        setSigninData((prev) => ({
-            ...prev,
-            [e.target.name]: e.target.value
-        }));
-    }
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        resolver: yupResolver(schema),
+    });
 
-    const handleSubmit = () => {
-        alert(JSON.stringify(signinData));
+    const onSubmit = async (data) => {
+        try {
+            await axios.post('http://localhost:3000/auth/sign-in', data);
+            navigate('/');
+        } catch (error) {
+            console.error("Error during sign-up:", error);
+            if (error.response) console.error("Response:", error.response.data)
+        }
     }
     
     return (
@@ -29,20 +42,28 @@ const SignIn = () => {
                     <span className='block text-sm font-light'>Let’s get you hired.</span>
                 </h2>
                 
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit(onSubmit)}>
 
                     <div className='mb-4'>
                         <label htmlFor="email" className='block text-gray-700' >Email</label>
-                        <input id="email" type="email" placeholder='Enter your Email' name='email'
-                        onChange={handleSigninData}
-                        className='w-full px-3 py-2 border border-gray-400' />
+                        <input id="email" type="email" placeholder='Enter your Email' 
+                        className='w-full px-3 py-2 border border-gray-400'
+                        { ...register('email') } />
+                        {
+                            errors.email &&
+                            <p className='text-sm text-red-500'>{ errors.email.message }</p>
+                        }
                     </div>
                     
                     <div className='mb-4'>
                         <label htmlFor="password" className='block text-gray-700' >Password</label>
-                        <input id="password" type="password" placeholder='Create a password' name='password'
-                        onChange={handleSigninData}
-                        className='w-full px-3 py-2 border border-gray-400' />
+                        <input id="password" type="password" placeholder='Create a password'
+                        className='w-full px-3 py-2 border border-gray-400'
+                        { ...register('password') } />
+                        {
+                            errors.password &&
+                            <p className="text-sm text-red-500">{ errors.password.message }</p>
+                        }
                     </div>
 
                     <button type='submit' className='w-full bg-[#F51D28] text-white py-2 rounded cursor-pointer'>
