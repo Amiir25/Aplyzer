@@ -34,11 +34,8 @@ const SignUp = () => {
     });
 
     const onSubmit = async (data) => {
-        console.log("🔥 onSubmit triggered with:", data);
         try {
             await axios.post('http://localhost:3000/auth/sign-up', data);
-            console.log("Response from server:", data);
-            alert("success");
             navigate('/');
         } catch (error) {
             console.error("Error during sign-up:", error);
