@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import SignUp from './pages/SignUp'
 import SignIn from './pages/SignIn'
+import Footer from './components/Footer'
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Route path='/signup' element={ <SignUp/> } />
         <Route path='/signin' element={ <SignIn/> } />
       </Routes>
+      <Footer/>
     </div>
   )
 }
