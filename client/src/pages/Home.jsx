@@ -7,7 +7,6 @@ import SmarterTools from '../components/SmarterTools';
 import Testimonials from '../components/Testimonials';
 import CTA from '../components/CTA';
 import FAQs from '../components/FAQs';
-import Footer from '../components/Footer';
 
 const Home = () => {
     return (
@@ -18,7 +17,6 @@ const Home = () => {
             <Testimonials/>
             <CTA/>
             <FAQs/>
-            <Footer/>
         </div>
     )
 }
