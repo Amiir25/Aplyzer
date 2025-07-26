@@ -1,34 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 const SignUp = () => {
-    const [signupData, setSignupData] = useState({
-        name: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
-    });
-
-    const handleSignupData = (e) => {
-        setSignupData((prev) => ({
-            ...prev,
-            [e.target.name]: e.target.value
-        }));
-    }
-
-    const submitSignupData = async (e) => {
-        e.preventDefault();
-        try {
-            await axios.post('http://localhost:3000/auth/sign-up', signupData);
-            alert(JSON.stringify(signupData));
-        } catch (e) {
-            console.log(e);
-        }
-    }
+    const navigate = useNavigate();
 
     // Form validation
     const schema = yup.object().shape({
@@ -49,20 +27,23 @@ const SignUp = () => {
             .string()
             .required("You have to confirm your password")
             .oneOf([yup.ref("password"), null], "Passwords must match"),
-        // age: yup
-        //     .number()
-        //     .positive()
-        //     .integer()
-        //     .min(18)
-        //     .required(),
     });
 
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(schema),
     });
 
-    const onSubmit = (data) => {
-        console.log(data);
+    const onSubmit = async (data) => {
+        console.log("🔥 onSubmit triggered with:", data);
+        try {
+            await axios.post('http://localhost:3000/auth/sign-up', data);
+            console.log("Response from server:", data);
+            alert("success");
+            navigate('/');
+        } catch (error) {
+            console.error("Error during sign-up:", error);
+            if (error.response) console.error("Response:", error.response.data)
+        }
     }
     
     return (
@@ -79,8 +60,7 @@ const SignUp = () => {
                     
                     <div className='mb-4'>
                         <label htmlFor="name" className='block text-gray-700' >Name</label>
-                        <input id="name" type="text" placeholder='Enter your name' name='name'
-                        onChange={handleSignupData}
+                        <input id="name" type="text" placeholder='Enter your name'
                         className='w-full px-3 py-2 border border-gray-400'
                         { ...register('name') } />
                         { 
@@ -91,8 +71,7 @@ const SignUp = () => {
 
                     <div className='mb-4'>
                         <label htmlFor="email" className='block text-gray-700' >Email</label>
-                        <input id="email" type="email" placeholder='Enter your Email' name='email'
-                        onChange={handleSignupData}
+                        <input id="email" type="email" placeholder='Enter your Email'
                         className='w-full px-3 py-2 border border-gray-400'
                         { ...register('email') } />
                         { 
@@ -103,8 +82,7 @@ const SignUp = () => {
                     
                     <div className='mb-4'>
                         <label htmlFor="password" className='block text-gray-700' >Password</label>
-                        <input id="password" type="password" placeholder='Create a password' name='password'
-                        onChange={handleSignupData}
+                        <input id="password" type="password" placeholder='Create a password'
                         className='w-full px-3 py-2 border border-gray-400'
                         { ...register('password') } />
                         { 
@@ -115,8 +93,7 @@ const SignUp = () => {
 
                     <div className='mb-4'>
                         <label htmlFor="confirmPassword" className='block text-gray-700' >Confirm Password</label>
-                        <input id="confirmPassword" type="password" placeholder='Confirm your password' name='confirmPassword'
-                        onChange={handleSignupData}
+                        <input id="confirmPassword" type="password" placeholder='Confirm your password'
                         className='w-full px-3 py-2 border border-gray-400'
                         { ...register('confirmPassword') } />
                         { 
@@ -129,7 +106,6 @@ const SignUp = () => {
                     <input
                     type='submit'
                     value='Create Account'
-                    // onClick={submitSignupData}
                     className='w-full bg-[#F51D28] text-white py-2 rounded cursor-pointer' />
                 </form>
 
