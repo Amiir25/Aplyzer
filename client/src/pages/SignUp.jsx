@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useForm } from "react-hook-form";
@@ -7,13 +7,14 @@ import * as yup from "yup";
 
 const SignUp = () => {
     const navigate = useNavigate();
+    const [formError, setFormError] = useState('')
 
     // Form validation
     const schema = yup.object().shape({
-        name: yup
+        username: yup
             .string()
-            .required('Name is required')
-            .matches(/^[A-Za-z ]+$/, "Name must not include numbers or special characters"),
+            .required('username is required')
+            .matches(/^[A-Za-z ]+$/, "Username must not include numbers or special characters"),
         email: yup
             .string()
             .required('Email is required')
@@ -38,8 +39,13 @@ const SignUp = () => {
             await axios.post('http://localhost:3000/auth/sign-up', data);
             navigate('/');
         } catch (error) {
-            console.error("Error during sign-up:", error);
-            if (error.response) console.error("Response:", error.response.data)
+            if (error.response?.data?.message) {
+                setFormError(error.response.data.message);
+            } else {
+                setFormError('Somthing went wrong. Please try again.');
+            }
+
+            console.error('Error during sign up', error);
         }
     }
     
@@ -56,14 +62,15 @@ const SignUp = () => {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     
                     <div className='mb-4'>
-                        <label htmlFor="name" className='block text-gray-700' >Name</label>
-                        <input id="name" type="text" placeholder='Enter your name'
+                        <label htmlFor="username" className='block text-gray-700' >Name</label>
+                        <input id="username" type="text" placeholder='Enter a username'
                         className='w-full px-3 py-2 border border-gray-400'
-                        { ...register('name') } />
+                        { ...register('username') } />
                         { 
-                            errors.name &&
-                            <p className='text-sm text-red-600'>{ errors.name.message }</p> 
+                            errors.username &&
+                            <p className='text-sm text-red-600'>{ errors.username.message }</p> 
                         }
+                        { formError && <p className='text-sm text-red-600'>{ formError }</p> }
                     </div>
 
                     <div className='mb-4'>
