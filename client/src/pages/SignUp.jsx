@@ -59,7 +59,7 @@ const SignUp = () => {
                     <span className='block text-sm font-light'>Track smarter. Apply better.</span>
                 </h2>
                 
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form onSubmit={handleSubmit(onSubmit)} className='relative'>
                     
                     <div className='mb-4'>
                         <label htmlFor="username" className='block text-gray-700' >Name</label>
@@ -70,7 +70,6 @@ const SignUp = () => {
                             errors.username &&
                             <p className='text-sm text-red-600'>{ errors.username.message }</p> 
                         }
-                        { formError && <p className='text-sm text-red-600'>{ formError }</p> }
                     </div>
 
                     <div className='mb-4'>
@@ -111,6 +110,21 @@ const SignUp = () => {
                     type='submit'
                     value='Create Account'
                     className='w-full bg-[#F51D28] text-white py-2 rounded cursor-pointer' />
+
+                    {/* Sign up info */}
+                    <div className='absolute left-0 right-0 bottom-50'>
+                        {
+                            // setTimeout(() => {
+                                formError ?
+                                <p className='text-lg text-white px-2 py-4 bg-red-600 border border-red-600'>
+                                    { formError }
+                                </p> :
+                                <p className='text-lg text-white px-2 py-4 bg-green-600 border border-green-600'>
+                                    Registration successful
+                                </p>
+                            // }, 3000)
+                        }
+                    </div>
                 </form>
 
                 <div className='text-center text-sm mt-2'>
