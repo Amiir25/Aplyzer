@@ -7,7 +7,8 @@ import * as yup from "yup";
 
 const SignUp = () => {
     const navigate = useNavigate();
-    const [formError, setFormError] = useState('')
+    const [formError, setFormError] = useState('');
+    const [showSignupMsg, setShowSignupMsg] = useState(false);
 
     // Form validation
     const schema = yup.object().shape({
@@ -37,15 +38,15 @@ const SignUp = () => {
     const onSubmit = async (data) => {
         try {
             await axios.post('http://localhost:3000/auth/sign-up', data);
+            setFormError('');
+            setShowSignupMsg(true);
+            setTimeout(() => setShowSignupMsg(false), 3000);
             navigate('/');
         } catch (error) {
-            if (error.response?.data?.message) {
-                setFormError(error.response.data.message);
-            } else {
-                setFormError('Somthing went wrong. Please try again.');
-            }
-
-            console.error('Error during sign up', error);
+            const errorMsg = error.response?.data?.message || 'Somthing went wrong. Please try again.';
+            setFormError(errorMsg);
+            setShowSignupMsg(true);
+            setTimeout(() => setShowSignupMsg(false), 3000);
         }
     }
     
@@ -59,7 +60,7 @@ const SignUp = () => {
                     <span className='block text-sm font-light'>Track smarter. Apply better.</span>
                 </h2>
                 
-                <form onSubmit={handleSubmit(onSubmit)} className='relative'>
+                <form onSubmit={handleSubmit(onSubmit)} className=''>
                     
                     <div className='mb-4'>
                         <label htmlFor="username" className='block text-gray-700' >Name</label>
@@ -110,26 +111,18 @@ const SignUp = () => {
                     type='submit'
                     value='Create Account'
                     className='w-full bg-[#F51D28] text-white py-2 rounded cursor-pointer' />
-
-                    {/* Sign up info */}
-                    <div className='absolute left-0 right-0 bottom-50'>
-                        {
-                            // setTimeout(() => {
-                                formError ?
-                                <p className='text-lg text-white px-2 py-4 bg-red-600 border border-red-600'>
-                                    { formError }
-                                </p> :
-                                <p className='text-lg text-white px-2 py-4 bg-green-600 border border-green-600'>
-                                    Registration successful
-                                </p>
-                            // }, 3000)
-                        }
-                    </div>
                 </form>
 
                 <div className='text-center text-sm mt-2'>
                     <span>Already have an account? </span>
                     <Link to='/signin' className='text-[#F51D28]'>Sign in</Link>
+                </div>
+
+                {/* Sign up message */}
+                <div className={`hidden top-20 w-80 text-center ${ showSignupMsg && 'fixed' }`}>
+                    <p className={`text-lg text-white p-2 rounded ${ formError ? 'bg-red-500' : 'bg-green-500' }`}>
+                      { formError || 'Registration Successful' }  
+                    </p>
                 </div>
             </div>
         </div>
