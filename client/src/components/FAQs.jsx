@@ -35,7 +35,7 @@ const FAQs = () => {
                                 </button>
                                 <div 
                                 className={
-                                    `overflow-hidden max-h-0 ${isOpen && 'max-h-40 px-2 py-4 border-b-2 border-[#F51D28] rounded-3xl'} transition-all duration-200 shadow-lg`
+                                    `overflow-hidden max-h-0 ${isOpen && 'max-h-40 px-2 py-4 border-b-2 border-[#02A9EB] rounded-3xl'} transition-all duration-200 shadow-lg`
                                     }>
                                     <p>{ faq.answer }</p>
                                 </div>
@@ -44,8 +44,8 @@ const FAQs = () => {
                     })
                 }
 
-                <button className='border w-44 py-2 mt-4 md:text-xl font-medium border border-[#F51D28]
-                hover:text-gray-200 hover:bg-[#F51D28] rounded-lg'>
+                <button className='border w-44 py-2 mt-4 md:text-xl font-medium border border-[#02A9EB]
+                hover:text-gray-200 hover:bg-gradient-main rounded-lg'>
                     Check all FAQs
                 </button>
             </div>
