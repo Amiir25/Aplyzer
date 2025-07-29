@@ -27,7 +27,7 @@ const SignIn = () => {
             await axios.post('http://localhost:3000/auth/sign-in', data);
             navigate('/');
         } catch (error) {
-            console.error("Error during sign-up:", error);
+            console.error("Error during sign-in:", error);
             if (error.response) console.error("Response:", error.response.data)
         }
     }
@@ -35,7 +35,7 @@ const SignIn = () => {
     return (
         <>
         <div className='flex items-center justify-center h-screen'>
-            <div className='shadow-xl px-8 py-5 border border-[#F51D28]/30 w-96'>
+            <div className='shadow-xl px-8 py-5 border border-[#02A9EB]/30 w-96'>
                 
                 <h2 className='text-xl font-bold mb-4'>
                     Welcome Back to Aplyzer
@@ -66,14 +66,14 @@ const SignIn = () => {
                         }
                     </div>
 
-                    <button type='submit' className='w-full bg-[#F51D28] text-white py-2 rounded cursor-pointer'>
+                    <button type='submit' className='w-full bg-gradient-main text-white py-2 rounded cursor-pointer'>
                         Sign in
                     </button>
                 </form>
 
                 <div className='text-center text-sm mt-2'>
                     <span>Already have an account? </span>
-                    <Link to='/signup' className='text-[#F51D28]'>Sign up</Link>
+                    <Link to='/signup' className='text-[#02A9EB]'>Sign up</Link>
                 </div>
             </div>
         </div>
