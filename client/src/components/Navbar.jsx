@@ -79,7 +79,7 @@ const Navbar = () => {
 
             {/* Sign Up */}
             <Link
-            to='/signup'
+            to='auth/signup'
             className="hidden md:block border border-[#02A9EB] px-4 py-2 rounded
             hover:text-white hover:bg-gradient-main ">
                 Sign up
