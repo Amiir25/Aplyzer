@@ -1,1 +1,11 @@
 @import "tailwindcss";
+
+@layer utilities {
+    .bg-gradient-main {
+        background-image: linear-gradient(to right, #2B3C8F, #02A9EB);
+    }
+
+    .hover\:bg-gradient-main:hover {
+        background-image: linear-gradient(to right, #2B3C8F, #02A9EB);
+    }
+}
