@@ -5,8 +5,8 @@ import Hero from '../components/Hero';
 import LookInside from '../components/LookInside';
 import SmarterTools from '../components/SmarterTools';
 import Testimonials from '../components/Testimonials';
-import CTA from '../components/CTA';
 import FAQs from '../components/FAQs';
+import CTA from '../components/CTA';
 
 const Home = () => {
     return (
@@ -15,18 +15,10 @@ const Home = () => {
             <SmarterTools/>
             <LookInside/>
             <Testimonials/>
-            <CTA/>
             <FAQs/>
+            <CTA/>
         </div>
     )
 }
 
-export default Home
-
-/**
- * - Favorite jobs
- * - "Keep Your Job Search Organized"
- * - <a href="https://storyset.com/job">Job illustrations by Storyset</a>
- * 
- * - Links: AI Resume Builder | AI Resume Review | Job Application Tracker
- */
+export default Home;
