@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
@@ -7,6 +7,8 @@ import * as yup from 'yup';
 
 const SignIn = () => {
     const navigate = useNavigate();
+    const [signinError, setSigninError] = useState('');
+    const [signinMsg, setSigninMsg] = useState(false);
 
     const schema = yup.object().shape({
         email: yup
@@ -24,11 +26,17 @@ const SignIn = () => {
 
     const onSubmit = async (data) => {
         try {
-            await axios.post('http://localhost:3000/auth/sign-in', data);
-            navigate('/');
+            const response = await axios.post('http://localhost:3000/auth/sign-in', data);
+            setSigninMsg(true);
+            setTimeout(() => setSigninMsg(false), 3000);
+
+            const user = response.data.user;
+            navigate(`/dashboard/${user.id}`);
         } catch (error) {
-            console.error("Error during sign-in:", error);
-            if (error.response) console.error("Response:", error.response.data)
+            const errorMsg = error.response?.data?.message || 'Something went wrong. Please try again.';
+            setSigninError(errorMsg);
+            setSigninMsg(true);
+            setTimeout(() => setSigninMsg(false), 3000);
         }
     }
     
@@ -75,6 +83,14 @@ const SignIn = () => {
                     <span>Already have an account? </span>
                     <Link to='/signup' className='text-[#02A9EB]'>Sign up</Link>
                 </div>
+
+                {/* Sign in message */}
+                <div className={ `${ signinMsg ? 'fixed' : 'hidden' } top-40 w-80 text-center` }>
+                    <p className={`text-lg text-white p-2 rounded ${ signinError ? 'bg-red-600' : 'bg-green-600' }`}>
+                        { signinError || 'Login Successfull' }
+                    </p>
+                </div>
+
             </div>
         </div>
         </>
