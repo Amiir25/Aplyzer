@@ -8,13 +8,13 @@ export const signUp = (req, res, next) => {
 
         // Check if the user exists
         const checkQuery = 'SELECT * FROM users WHERE username = ? OR email = ?';
-        db.query(checkQuery, [username, email], async (err, user) => {
+        db.query(checkQuery, [username, email], async (err, users) => {
             if (err) {
                 console.error('DB error', err);
                 return res.status(500).json({ message: 'Database error' });
             }
 
-            if (user.length) return res.status(409).json({ message: 'Username or email already exists' });
+            if (users.length) return res.status(409).json({ message: 'Username or email already exists' });
 
             // Hash password
             const hashedPassword = await bcrypt.hash(password, 10);
@@ -28,7 +28,7 @@ export const signUp = (req, res, next) => {
             db.query(insertQuery, values, (err) => {
                 if (err) {
                     console.error("Insert error:", err);
-                    return res.status(500).json({ message: 'Failed to create user' })
+                    return res.status(500).json({ message: 'Failed to create user' });
                 }
                 res.status(201).json({ message: 'User has been created succussfully' });
             });
@@ -40,8 +40,33 @@ export const signUp = (req, res, next) => {
     }
 }
 
+// Sign In
 export const signIn = (req, res, next) => {
     const { email, password } = req.body;
-    console.log("Sign in successfull", email, password);
-    res.status(200).json({ message: 'Sign in successful' })
+    
+    // Check if the user exists
+    const checkQuery = 'SELECT * FROM users WHERE email = ?';
+    db.query(checkQuery, email, async (err, users) => {
+        if (err) {
+            console.error('DB error', err);
+            res.status(500).json({message: 'Database Error'});
+        }
+
+        if (!users.length) return res.status(409).json({ message: 'Email not found' });
+
+        const user = users[0];
+
+        // Check password
+        const isPasswordMatch = await bcrypt.compare(password, user.password);
+        if (!isPasswordMatch) return res.status(401).json({ message: 'Incorrect password' });
+
+        return res.status(200).json({ 
+            message: 'Login successful',
+            user: {
+                id: user.uid,
+                username: user.username,
+                email: user.email,
+            }
+         });
+    })
 }
