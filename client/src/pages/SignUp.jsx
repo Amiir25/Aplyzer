@@ -7,7 +7,7 @@ import * as yup from "yup";
 
 const SignUp = () => {
     const navigate = useNavigate();
-    const [formError, setFormError] = useState('');
+    const [signupError, setSignupError] = useState('');
     const [showSignupMsg, setShowSignupMsg] = useState(false);
 
     // Form validation
@@ -38,7 +38,7 @@ const SignUp = () => {
     const onSubmit = async (data) => {
         try {
             await axios.post('http://localhost:3000/auth/sign-up', data);
-            setFormError('');
+            setSignupError('');
             setShowSignupMsg(true);
             
             // 3 seconds delay before navigation
@@ -48,7 +48,7 @@ const SignUp = () => {
             },3000);
         } catch (error) {
             const errorMsg = error.response?.data?.message || 'Somthing went wrong. Please try again.';
-            setFormError(errorMsg);
+            setSignupError(errorMsg);
             setShowSignupMsg(true);
             setTimeout(() => setShowSignupMsg(false), 3000);
         }
@@ -124,8 +124,8 @@ const SignUp = () => {
 
                 {/* Sign up message */}
                 <div className={`${ showSignupMsg ? 'fixed' : 'hidden' } top-20 w-80 text-center`}>
-                    <p className={`text-lg text-white p-2 rounded ${ formError ? 'bg-red-500' : 'bg-green-500' }`}>
-                      { formError || 'Registration Successful' }  
+                    <p className={`text-lg text-white p-2 rounded ${ signupError ? 'bg-red-500' : 'bg-green-500' }`}>
+                      { signupError || 'Registration Successful' }  
                     </p>
                 </div>
             </div>
