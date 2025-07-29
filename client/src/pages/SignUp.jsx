@@ -119,7 +119,7 @@ const SignUp = () => {
 
                 <div className='text-center text-sm mt-2'>
                     <span>Already have an account? </span>
-                    <Link to='/signin' className='text-[#02A9EB]'>Sign in</Link>
+                    <Link to='/auth/signin' className='text-[#02A9EB]'>Sign in</Link>
                 </div>
 
                 {/* Sign up message */}
