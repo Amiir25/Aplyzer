@@ -31,7 +31,7 @@ const SignIn = () => {
             setTimeout(() => setSigninMsg(false), 3000);
 
             const user = response.data.user;
-            navigate(`/dashboard/${user.id}`);
+            navigate(`/user/dashboard/${user.id}`);
         } catch (error) {
             const errorMsg = error.response?.data?.message || 'Something went wrong. Please try again.';
             setSigninError(errorMsg);
@@ -81,7 +81,7 @@ const SignIn = () => {
 
                 <div className='text-center text-sm mt-2'>
                     <span>Already have an account? </span>
-                    <Link to='/signup' className='text-[#02A9EB]'>Sign up</Link>
+                    <Link to='/auth/signup' className='text-[#02A9EB]'>Sign up</Link>
                 </div>
 
                 {/* Sign in message */}
