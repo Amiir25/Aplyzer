@@ -15,7 +15,7 @@ const SignUp = () => {
         username: yup
             .string()
             .required('username is required')
-            .matches(/^[A-Za-z ]+$/, "Username must not include numbers or special characters"),
+            .matches(/^[A-Za-z0-9]+$/, "Username must not include special characters"),
         email: yup
             .string()
             .required('Email is required')
@@ -40,8 +40,12 @@ const SignUp = () => {
             await axios.post('http://localhost:3000/auth/sign-up', data);
             setFormError('');
             setShowSignupMsg(true);
-            setTimeout(() => setShowSignupMsg(false), 3000);
-            navigate('/');
+            
+            // 3 seconds delay before navigation
+            setTimeout(() => {
+                setShowSignupMsg(false)
+                navigate('/');
+            },3000);
         } catch (error) {
             const errorMsg = error.response?.data?.message || 'Somthing went wrong. Please try again.';
             setFormError(errorMsg);
@@ -119,7 +123,7 @@ const SignUp = () => {
                 </div>
 
                 {/* Sign up message */}
-                <div className={`hidden top-20 w-80 text-center ${ showSignupMsg && 'fixed' }`}>
+                <div className={`${ showSignupMsg ? 'fixed' : 'hidden' } top-20 w-80 text-center`}>
                     <p className={`text-lg text-white p-2 rounded ${ formError ? 'bg-red-500' : 'bg-green-500' }`}>
                       { formError || 'Registration Successful' }  
                     </p>
