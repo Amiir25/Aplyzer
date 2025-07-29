@@ -1,5 +1,6 @@
 import db from "../database/db.js";
 import bcrypt from 'bcryptjs';
+import { v4 as uuidv4 } from 'uuid';
 
 export const signUp = (req, res, next) => {
     const { username, email, password } = req.body;
@@ -18,10 +19,13 @@ export const signUp = (req, res, next) => {
             // Hash password
             const hashedPassword = await bcrypt.hash(password, 10);
 
+            // Unique user Id
+            const userId = uuidv4();
+
             // Insert new user
-            const insertQuery = 'INSERT INTO users (username, email, password) VALUES (?)';
-            const values = [username, email, hashedPassword];
-            db.query(insertQuery, [values], (err) => {
+            const insertQuery = 'INSERT INTO users (uid, username, email, password) VALUES (?, ?, ?, ?)';
+            const values = [userId, username, email, hashedPassword];
+            db.query(insertQuery, values, (err) => {
                 if (err) {
                     console.error("Insert error:", err);
                     return res.status(500).json({ message: 'Failed to create user' })
