@@ -8,18 +8,18 @@ const Hero = () => {
         <h1 className='text-5xl md:text-7xl font-bold'>Track Jobs. Optimize Resumes. Get Hired.</h1>
         <p className='text-xl md:text-3xl font-light my-4'>
           From first application to final offer —
-          <span className='underline decoration-[#F51D28] mx-2'>Aplyzer</span>
+          <span className='underline decoration-[#02a9eb] mx-2'>Aplyzer</span>
           keeps you organized and ahead with smart career tools.
         </p>
 
         {/* Hero buttons */}
         <div className='mt-10 flex gap-12'>
           
-          <button className='text-lg md:text-2xl font-medium px-4 py-2 md:px-6 md:py-4 rounded bg-[#F51D28] text-white hover:opacity-90 '>
+          <button className='text-lg md:text-2xl font-medium px-4 py-2 md:px-6 md:py-4 rounded bg-gradient-main text-white hover:opacity-90 '>
             Get Started Free
           </button>
 
-          <button className='text-lg md:text-2xl font-medium border px-4 py-2 md:px-6 md:py-4 rounded border-[#F51D28] hover:text-gray-600 '>
+          <button className='text-lg md:text-2xl font-medium px-4 py-2 md:px-6 md:py-4 rounded border border-[#02A9EB] hover:text-gray-600 '>
             See How It Works
           </button>
 
