@@ -17,7 +17,7 @@ const Navbar = () => {
 
             {/* Logo */}
             <Link to={'/'} className="w-1/4 md:w-1/5">
-                <img src="/logo-header.png" alt="Logo Image" />
+                <img src="/logo-2.PNG" alt="Logo Image" />
             </Link>
 
             {/* Links */}
@@ -80,8 +80,8 @@ const Navbar = () => {
             {/* Sign Up */}
             <Link
             to='/signup'
-            className="hidden md:block border border-[#F51D28] px-4 py-2 rounded
-            hover:text-white hover:bg-[#F51D28] ">
+            className="hidden md:block border border-[#02A9EB] px-4 py-2 rounded
+            hover:text-white hover:bg-gradient-main ">
                 Sign up
             </Link>
 
