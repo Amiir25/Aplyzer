@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios';
 import UserNavbar from './UserNavbar';
+import JobCard from './JobCard';
 
 const Dashboard = () => {
     const { userId } = useParams();
@@ -12,7 +13,6 @@ const Dashboard = () => {
             try {
                 const response = await axios.get(`http://localhost:3000/user/dashboard/${userId}`);
                 setUser(response.data.user);
-                console.log(response.data.user.email);
             } catch (error) {
                 const errorMsg = error.response?.data?.message;
             }
@@ -30,7 +30,7 @@ const Dashboard = () => {
             <p>You have 8 active job applications. Keep going!</p>
 
             {/* Quick Stats */}
-            <div className='absolute top-0 right-32 w-fit px-4 py-2 shadow-xl border-t-6 border-[#02A9EB]'>
+            <div className='absolute top-0 right-2 w-fit px-4 py-2 shadow-xl border-t-6 border-[#02A9EB]'>
                 <h1 className='text-2xl font-semibold mb-6'>Quick Stats</h1>
                 <div className='grid grid-cols-2 gap-8 mb-4'>
                     <p>Application Sent</p>
@@ -49,6 +49,9 @@ const Dashboard = () => {
                     <p>1</p>
                 </div>
             </div>
+
+            {/* Jobs */}
+            <JobCard/>
         </div>
         </>
     )
