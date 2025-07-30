@@ -21,10 +21,10 @@ const UserNavbar = ({ user }) => {
               hover:text-gray-600`}>
               Dashboard
             </Link>
-            {/* <Link to='/' className="text-sm hover:text-gray-600">Job Application Tracker</Link> */}
-            <Link to='/' className="text-sm hover:text-gray-600">AI Resume Cheker</Link>
-            <Link to='/' className="text-sm hover:text-gray-600">Job Description Matching</Link>
-            <Link to='/' className="text-sm hover:text-gray-600">Cover Letter Generator</Link>
+            <Link to='/' className="text-sm hover:text-gray-600">Jobs</Link>
+            <Link to='/' className="text-sm hover:text-gray-600">Resume Cheker</Link>
+            <Link to='/' className="text-sm hover:text-gray-600">Job Matching</Link>
+            <Link to='/' className="text-sm hover:text-gray-600">Cover Letter</Link>
         </div>
 
         {/* Profile */}
