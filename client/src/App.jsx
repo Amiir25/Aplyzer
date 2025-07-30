@@ -6,6 +6,8 @@ import SignUp from './pages/SignUp'
 import SignIn from './pages/SignIn'
 import Footer from './components/Footer'
 import Dashboard from './user/Dashboard'
+import UserLayout from './user/UserLayout'
+import Jobs from './user/Jobs'
 
 const App = () => {
 
@@ -19,13 +21,16 @@ const App = () => {
       
       <Routes>
 
-        {/* Before Login */}
+        {/* Home routes */}
         <Route path='/' element={ <Home/> } />
         <Route path='/auth/signup' element={ <SignUp/> } />
         <Route path='/auth/signin' element={ <SignIn/> } />
 
-        {/* After Login */}
-        <Route path='/user/dashboard/:userId' element={ <Dashboard/> } />
+        {/* User routes */}
+        <Route path='/user' element={ <UserLayout/> }>
+          <Route path='dashboard/:userId' element={ <Dashboard/> } />
+          <Route path='jobs' element={ <Jobs/> } />
+        </Route>
       </Routes>
       
       {/* Footer */}
@@ -34,4 +39,4 @@ const App = () => {
   )
 }
 
-export default App
+export default App;
