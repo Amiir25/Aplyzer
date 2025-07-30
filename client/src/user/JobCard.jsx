@@ -1,7 +1,6 @@
+import React from 'react'
 import { faCircleDot, faLocationDot } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React from 'react'
-
 const JobCard = () => {
 
     const Jobs = [
