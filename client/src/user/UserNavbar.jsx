@@ -31,7 +31,7 @@ const UserNavbar = ({ user }) => {
         <div>
           <p className='flex items-center justify-center text-2xl md:text-4xl text-white w-12 h-12
             rounded-full bg-[#02A9EB]'>
-            { user.username[0] }
+            {/* { user.username[0] } */}
           </p>
         </div>
 
