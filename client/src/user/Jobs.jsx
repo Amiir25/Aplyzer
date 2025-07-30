@@ -1,7 +1,8 @@
 import React from 'react'
 import { faCircleDot, faLocationDot } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-const JobCard = () => {
+import UserNavbar from './UserNavbar';
+const Jobs = () => {
 
     const Jobs = [
         {
@@ -170,4 +171,4 @@ const JobCard = () => {
     )
 }
 
-export default JobCard
+export default Jobs;
