@@ -1,9 +1,11 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom';
 
-const UserNavbar = ({ user }) => {
+const UserNavbar = ({ userData }) => {
 
   const location = useLocation();
+  console.log('UserNav:', userData)
+
   return (
     <>
     <nav className="relative px-6 md:px-16 lg:px-24 xl:px-32 py-4 flex items-center justify-between
@@ -16,12 +18,15 @@ const UserNavbar = ({ user }) => {
 
         {/* Links */}
         <div className="relative gap-8 hidden md:flex">
-            <Link to='/user/dashboard'
+            
+            <Link to={`/user/dashboard/${userData?.uid}`}
               className={`${ location.pathname.includes('/dashboard') && 'border-b-3 border-[#02A9EB]' }
                 text-sm hover:text-gray-600`}>
               Dashboard
             </Link>
-            <Link to='/user/jobs' className={`${ location.pathname.includes('/jobs') && 'border-b-3 border-[#02A9EB]' }
+            
+            <Link to={`/user/jobs/${userData?.uid}`}
+            className={`${ location.pathname.includes('/jobs') && 'border-b-3 border-[#02A9EB]' }
               text-sm hover:text-gray-600`}>
               Jobs
             </Link>
