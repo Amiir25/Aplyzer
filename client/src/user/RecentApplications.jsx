@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const RecentApplications = () => {
+const RecentApplications = ({ userData }) => {
     return (
         <>
         <div className='px-6 md:px-12 lg:px-24 xl:px-32 my-40'>
@@ -39,7 +39,7 @@ const RecentApplications = () => {
             <button
             className='border w-64 py-2 mt-10 md:text-xl font-medium border border-[#02A9EB]
             hover:text-gray-200 hover:bg-gradient-main rounded-lg'>
-                <Link to={'/user/jobs'}>
+                <Link to={`/user/jobs/${userData.uid}`}>
                     View All Applications
                 </Link>
             </button>
