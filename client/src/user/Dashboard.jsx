@@ -11,13 +11,14 @@ import QuickActions from './QuickActions';
 
 const Dashboard = () => {
     const { userId } = useParams();
-    const [user, setUser] = useState({});
+    const [userData, setUserData] = useState({});
 
     useEffect(() => {
         const fetchUserData = async () => {
             try {
                 const response = await axios.get(`http://localhost:3000/user/dashboard/${userId}`);
-                setUser(response.data.user);
+                setUserData(response.data.user);
+                console.log('Dashboard response', response.data.user);
             } catch (error) {
                 const errorMsg = error.response?.data?.message;
             }
@@ -28,21 +29,24 @@ const Dashboard = () => {
     return (
         <>
         <div>
+            <UserNavbar userData={userData}/>
+            {/* {alert(JSON.stringify(userData))} */}
+
             
             <div className='px-6 md:px-12 lg:px-24 xl:px-32 mt-20 mb-40'>
                 
                 <h1 className='text-2xl md:text-3xl'>
-                    Hi <span className='font-mono font-bold text-shadow-lg'>{ user.username }</span>
+                    Hi <span className='font-mono font-bold text-shadow-lg'>{ userData.username }</span>
                 </h1>
                 <p className='text-lg md:text-xl text-gray-600'>Here's a quick look at your job applications </p>
             </div>            
 
-            <StatusSummery/>
-            <LastWeek/>
-            <GetReady/>
-            <RecentApplications/>
-            <StatusBreakdown/>
-            <QuickActions/>
+            <StatusSummery  userData={userData} />
+            <LastWeek userData={userData} />
+            <GetReady userData={userData} />
+            <RecentApplications userData={userData} />
+            <StatusBreakdown userData={userData} />
+            <QuickActions userData={userData} />
 
         </div>
         </>
