@@ -16,12 +16,15 @@ const UserNavbar = ({ user }) => {
 
         {/* Links */}
         <div className="relative gap-8 hidden md:flex">
-            <Link to='/'
-              className={`${ location.pathname.includes('/dashboard') && 'border-b-3 border-[#02A9EB]' } text-sm
-              hover:text-gray-600`}>
+            <Link to='/user/dashboard'
+              className={`${ location.pathname.includes('/dashboard') && 'border-b-3 border-[#02A9EB]' }
+                text-sm hover:text-gray-600`}>
               Dashboard
             </Link>
-            <Link to='/' className="text-sm hover:text-gray-600">Jobs</Link>
+            <Link to='/user/jobs' className={`${ location.pathname.includes('/jobs') && 'border-b-3 border-[#02A9EB]' }
+              text-sm hover:text-gray-600`}>
+              Jobs
+            </Link>
             <Link to='/' className="text-sm hover:text-gray-600">Resume Cheker</Link>
             <Link to='/' className="text-sm hover:text-gray-600">Job Matching</Link>
             <Link to='/' className="text-sm hover:text-gray-600">Cover Letter</Link>
