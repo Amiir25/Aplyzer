@@ -27,10 +27,9 @@ const App = () => {
         <Route path='/auth/signin' element={ <SignIn/> } />
 
         {/* User routes */}
-        <Route path='/user' element={ <UserLayout/> }>
-          <Route path='dashboard/:userId' element={ <Dashboard/> } />
-          <Route path='jobs' element={ <Jobs/> } />
-        </Route>
+        <Route path='/user/dashboard/:userId' element={ <Dashboard/> } />
+        <Route path='/user/jobs/:userId' element={ <Jobs/> } />
+        
       </Routes>
       
       {/* Footer */}
