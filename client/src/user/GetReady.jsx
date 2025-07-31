@@ -49,7 +49,8 @@ const GetReady = () => {
 
             {
                 Jobs.map((job, i) => (
-                    <div className={`relative w-80 h-74 mt-10 py-2 px-4 shadow-lg rounded
+                    <div key={i}
+                    className={`relative w-80 h-74 mt-10 py-2 px-4 shadow-lg rounded
                         ${ job.status.includes('Deadline') && 'border-l-4 border-red-500' }
                         ${ job.status.includes('Interview') && 'border-l-4 border-green-500' }
                         ${ job.status.includes('Follow-up') && 'border-l-4 border-blue-500' }`}>
