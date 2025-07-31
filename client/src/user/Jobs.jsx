@@ -3,6 +3,7 @@ import { faCircleDot, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar as solidStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
+import UserNavbar from './UserNavbar';
 
 const Jobs = () => {
 
@@ -130,6 +131,8 @@ const Jobs = () => {
 
     return (
         <>
+        <UserNavbar/>
+        
         <div className='px-6 md:px-12 lg:px-24 xl:px-32 my-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
             {
                 Jobs.map((job, i) => {
