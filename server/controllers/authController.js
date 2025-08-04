@@ -49,7 +49,7 @@ export const signIn = (req, res, next) => {
     db.query(checkQuery, email, async (err, users) => {
         if (err) {
             console.error('DB error', err);
-            res.status(500).json({message: 'Database Error'});
+            return res.status(500).json({message: 'Database Error'});
         }
 
         if (!users.length) return res.status(409).json({ message: 'Email not found' });
