@@ -5,9 +5,8 @@ import Navbar from './components/Navbar'
 import SignUp from './pages/SignUp'
 import SignIn from './pages/SignIn'
 import Footer from './components/Footer'
-import Dashboard from './user/Dashboard'
-import UserLayout from './user/UserLayout'
-import Jobs from './user/Jobs'
+import Dashboard from './user/pages/Dashboard'
+import Jobs from './user/pages/Jobs'
 
 const App = () => {
 
