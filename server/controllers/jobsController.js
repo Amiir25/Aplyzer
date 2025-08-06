@@ -1,6 +1,6 @@
-import { db } from "../database/db";
+import db from "../database/db.js";
 
-export const getJobs = (req, res, next) => {
+export const getAllJobs = (req, res, next) => {
 
 }
 
