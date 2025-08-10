@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClockFour, faFileLines, faUserCheck, faXmarkCircle } from '@fortawesome/free-solid-svg-icons';
+import { assets } from '../../assets/assets';
 
 const StatusSummery = () => {
   return (
@@ -13,8 +14,7 @@ const StatusSummery = () => {
 
             {/* Total */}
             <div className='relative h-64 w-fit px-4 py-2 shadow-xl border-t-6 border-sky-500'>
-                <FontAwesomeIcon icon={ faFileLines }
-                className='text-center text-7xl text-sky-500 w-full my-4' />
+                <img src={ assets.file } alt="3D File Icon" className='w-1/3 mx-auto m-2'/>
                 <div>
                     <h1 className='text-2xl font-bold'>Total Applications</h1>
                     <p className='text-gray-700 text-sm'>All applications you've submitted so far.</p>
@@ -27,8 +27,7 @@ const StatusSummery = () => {
             
             {/* Interviwed */}
             <div className='relative h-64 w-fit px-4 py-2 shadow-xl border-t-6 border-green-500'>
-                <FontAwesomeIcon icon={ faUserCheck }
-                className='text-center text-7xl text-green-500 w-full my-4' />
+                <img src={ assets.user } alt="3D File Icon" className='w-1/3 mx-auto m-2'  />
                 <div>
                     <h1 className='text-2xl font-bold'>Interviews</h1>
                     <p className='text-gray-700 text-sm'>Applications that led to interviews.</p>
@@ -41,8 +40,7 @@ const StatusSummery = () => {
 
             {/* Rejected */}
             <div className='relative h-64 w-fit px-4 py-2 shadow-xl border-t-6 border-red-500'>
-                <FontAwesomeIcon icon={ faXmarkCircle }
-                className='text-center text-7xl text-red-500 w-full my-4' />
+                <img src={ assets.x } alt="3D File Icon" className='w-1/3 mx-auto m-2'  />
                 <div>
                     <h1 className='text-2xl font-bold'>Rejected</h1>
                     <p className='text-gray-700 text-sm'>Applications that were declined or marked unsuccessful.</p>
@@ -55,8 +53,7 @@ const StatusSummery = () => {
 
             {/* Pending */}
             <div className='relative h-64 w-fit px-4 py-2 shadow-xl border-t-6 border-amber-500'>
-                <FontAwesomeIcon icon={ faClockFour }
-                className='text-center text-7xl text-amber-500 w-full my-4' />
+                <img src={ assets.clock } alt="3D File Icon" className='w-1/3 mx-auto m-2'  />
                 <div>
                     <h1 className='text-2xl font-bold'>Pending</h1>
                     <p className='text-gray-700 text-sm'>Applications with no response yet or still in progress.</p>
