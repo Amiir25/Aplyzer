@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Route, Routes, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import axios from 'axios';
 import UserNavbar from '../components/UserNavbar';
 import StatusSummery from '../components/StatusSummery';
@@ -11,14 +11,14 @@ import QuickActions from '../components/QuickActions';
 
 const Dashboard = () => {
     const { userId } = useParams();
-    const [userData, setUserData] = useState({});
+    const [jobs, setJobs] = useState({});
 
     useEffect(() => {
         const fetchUserData = async () => {
             try {
                 const response = await axios.get(`http://localhost:3000/user/dashboard/${userId}`);
-                setUserData(response.data.user);
-                console.log('Dashboard response', response.data.user);
+                setJobs(response.data.jobs);
+                // console.log('Dashboard response', response.data.jobs);
             } catch (error) {
                 const errorMsg = error.response?.data?.message;
             }
@@ -26,27 +26,27 @@ const Dashboard = () => {
         fetchUserData();
     }, [userId]);
 
+    console.log(jobs[1]);
+
     return (
         <>
             <div>
-                <UserNavbar userData={userData} />
-                {/* {alert(JSON.stringify(userData))} */}
-
+                <UserNavbar/>
 
                 <div className='px-6 md:px-12 lg:px-24 xl:px-32 mt-20 mb-40'>
 
                     <h1 className='text-2xl md:text-3xl'>
-                        Hi <span className='font-mono font-bold text-shadow-lg'>{userData.username}</span>
+                        {/* Hi <span className='font-mono font-bold text-shadow-lg'>{jobs.job_title }</span> */}
                     </h1>
                     <p className='text-lg md:text-xl text-gray-600'>Here's a quick look at your job applications </p>
                 </div>
 
-                <StatusSummery userData={userData} />
-                <LastWeek userData={userData} />
-                <GetReady userData={userData} />
-                <RecentApplications userData={userData} />
-                <StatusBreakdown userData={userData} />
-                <QuickActions userData={userData} />
+                {/* <StatusSummery jobs={jobs} />
+                <LastWeek jobs={jobs} />
+                <GetReady jobs={jobs} />
+                <RecentApplications jobs={jobs} />
+                <StatusBreakdown jobs={jobs} />
+                <QuickActions jobs={jobs} /> */}
 
             </div>
         </>
