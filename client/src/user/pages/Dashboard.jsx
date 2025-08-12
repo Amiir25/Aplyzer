@@ -12,7 +12,7 @@ import QuickActions from '../components/QuickActions';
 const Dashboard = () => {
     const { userId } = useParams();
 
-    const [username, setUsername] = useState();
+    const [username, setUsername] = useState('');
     const [jobs, setJobs] = useState([]);
     const [recentJobs, setRecentJobs] = useState([]);
 
