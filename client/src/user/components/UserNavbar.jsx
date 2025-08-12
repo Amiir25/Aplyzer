@@ -1,10 +1,10 @@
 import React from 'react'
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 
 const UserNavbar = ({ username }) => {
 
   const location = useLocation();
-  // console.log('UserNav:', userData)
+  const { userId } = useParams();
 
   return (
     <>
@@ -19,13 +19,13 @@ const UserNavbar = ({ username }) => {
         {/* Links */}
         <div className="relative gap-8 hidden md:flex">
             
-            <Link to={`/user/dashboard/${userData?.id}`}
+            <Link to={`/user/dashboard/${userId}`}
               className={`${ location.pathname.includes('/dashboard') && 'border-b-3 border-[#02A9EB]' }
                 text-sm hover:text-gray-600`}>
               Dashboard
             </Link>
             
-            <Link to={`/user/jobs/${userData?.id}`}
+            <Link to={`/user/jobs/${userId}`}
             className={`${ location.pathname.includes('/jobs') && 'border-b-3 border-[#02A9EB]' }
               text-sm hover:text-gray-600`}>
               Jobs
@@ -39,7 +39,7 @@ const UserNavbar = ({ username }) => {
         <div>
           <p className='flex items-center justify-center text-2xl md:text-4xl text-white w-12 h-12
             rounded-full bg-[#02A9EB]'>
-            {/* { user.username[0] } */}
+            {/* { username[0] } */}
           </p>
         </div>
 
