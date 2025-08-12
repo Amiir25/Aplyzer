@@ -47,7 +47,7 @@ const Dashboard = () => {
                 <StatusSummery jobs={jobs} />
                 {/* <LastWeek jobs={jobs} /> */}
                 {/* <GetReady jobs={jobs} /> */}
-                <RecentApplications jobs={jobs} />
+                <RecentApplications recentJobs={recentJobs} />
                 {/*<StatusBreakdown jobs={jobs} />
                 <QuickActions jobs={jobs} /> */}
 
