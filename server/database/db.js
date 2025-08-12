@@ -1,4 +1,5 @@
 import mysql from 'mysql2';
+import util from 'util';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -9,6 +10,9 @@ const db = mysql.createPool({
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME
 });
+
+// Convert db.query into a Promise-based function
+db.query = util.promisify(db.query).bind(db);
 
 db.query('SELECT 1', (err) => {
   if (err) {
