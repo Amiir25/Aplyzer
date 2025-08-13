@@ -1,47 +1,71 @@
-import React from 'react';
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from 'recharts';
+import React, { useState, useEffect } from "react";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 
-const data = [
-  { month: 'Jan', sales: 400 },
-  { month: 'Feb', sales: 300 },
-  { month: 'Mar', sales: 500 },
-  { month: 'Apr', sales: 700 },
-  { month: 'May', sales: 600 },
-];
-
-const LastWeek = () => {
-    return (
-        <div className="px-6 md:px-12 lg:px-24 xl:px-32 w-full h-120 mx-auto my-40">
-            
-            <h1 className='text-2xl md:text-4xl font-semibold mb-10'>Last Week</h1>
-            
-            <ResponsiveContainer>
-                <LineChart data={data} margin={{ top: 20, right: 30, left: 0, bottom: 5 }}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="month" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                <Line
-                    type="monotone"
-                    dataKey="sales"
-                    stroke="#007bff"
-                    strokeWidth={3}
-                    activeDot={{ r: 8 }}
-                />
-                </LineChart>
-            </ResponsiveContainer>
-        </div>
-    );
+// Helper: Get last week's Monday and Sunday
+function getLastWeekRange() {
+  const today = new Date();
+  const dayOfWeek = today.getDay();
+  
+  // Go to last week's Monday
+  const lastMonday = new Date(today);
+  lastMonday.setDate(today.getDate() - dayOfWeek - 6);
+  
+  const lastSunday = new Date(lastMonday);
+  lastSunday.setDate(lastMonday.getDate() + 6);
+  
+  return { lastMonday, lastSunday };
 }
 
-export default LastWeek;
+// Format date like "Aug 11 2025"
+function formatDate(date) {
+  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul",
+                  "Aug", "Sep", "Oct", "Nov", "Dec"];
+  return `${months[date.getMonth()]} ${date.getDate()} ${date.getFullYear()}`;
+}
+
+export default function LastWeekLineChart() {
+  const [dateRange, setDateRange] = useState(getLastWeekRange());
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    // Generate mock data for the last week
+    const { lastMonday } = dateRange;
+    const mockData = Array.from({ length: 7 }, (_, i) => {
+      const day = new Date(lastMonday);
+      day.setDate(lastMonday.getDate() + i);
+      return {
+        date: day.toLocaleDateString("en-US", { month: "short", day: "numeric" }),
+        value: Math.floor(Math.random() * 100) // random for demo
+      };
+    });
+    setData(mockData);
+  }, [dateRange]);
+
+  useEffect(() => {
+    // Check every day if it's Monday; if yes, update date range
+    const checkForMonday = setInterval(() => {
+      if (new Date().getDay() === 1) {
+        setDateRange(getLastWeekRange());
+      }
+    }, 1000 * 60 * 60 * 24); // check daily
+
+    return () => clearInterval(checkForMonday);
+  }, []);
+
+  return (
+    <div style={{ width: "100%", height: 400 }}>
+      <h2>
+        Last Week ({formatDate(dateRange.lastMonday)} - {formatDate(dateRange.lastSunday)})
+      </h2>
+      <ResponsiveContainer>
+        <LineChart data={data}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="date" />
+          <YAxis />
+          <Tooltip />
+          <Line type="monotone" dataKey="value" stroke="#8884d8" />
+        </LineChart>
+      </ResponsiveContainer>
+    </div>
+  );
+}
