@@ -2,25 +2,34 @@
 
 @layer utilities {
     .bg-gradient-main {
-        background-image: linear-gradient(to right, #2B3C8F, #02A9EB);
+        background: linear-gradient(to right, #2B3C8F, #02A9EB);
     }
 
     .hover\:bg-gradient-main:hover {
-        background-image: linear-gradient(to right, #2B3C8F, #02A9EB);
+        background: linear-gradient(to right, #2B3C8F, #02A9EB);
     }
 
     /* Backgrounds for job status */
     
     .bg-blue {
-        background-image: linear-gradient(to right, #2b8f8a, #02d1d1);
+        background: linear-gradient(to right, #2b8f8a, #02d1d1);
+    }
+    .bg-yellow {
+        background: linear-gradient(to right, #867429, #ecbe02);
+    }
+    .bg-purple {
+        background: linear-gradient(to right, #632f77, #a602e7);
     }
     .bg-green {
-        background-image: linear-gradient(to right, #2e8f2b, #5feb02);
+        background: linear-gradient(to right, #2e8f2b, #5feb02);
     }
     .bg-red {
-        background-image: linear-gradient(to right, #8f2b2b, #eb0202);
+        background: linear-gradient(to right, #8f2b2b, #eb0202);
+    }
+    .bg-gray {
+        background: linear-gradient(to right, #4a5152, #abacac);
     }
     .b {
-        background-image: linear-gradient(to right, #8f2b2b, #ebe702);
+        background: linear-gradient(to right, #8f2b2b, #ebe702);
     }
 }
