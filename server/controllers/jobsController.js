@@ -23,6 +23,6 @@ export const getAllJobs = (req, res) => {
 
 }
 
-export const getJob = (req, res) => {
+export const getJobDetails = (req, res) => {
 
 }
