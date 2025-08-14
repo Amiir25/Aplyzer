@@ -7,6 +7,7 @@ import { faStar as solidStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
 import UserNavbar from '../components/UserNavbar';
 import axios from 'axios';
+import dayjs from 'dayjs';
 
 const Jobs = () => {
 
@@ -97,11 +98,11 @@ const Jobs = () => {
                                 py-3'>
                                     <div>
                                         <p>Applied Date</p>
-                                        <p className='text-xs'>{job.applied_date}</p>
+                                        <p className='text-xs'>{ dayjs(job.applied_date).format('DD-MM-YYYY') }</p>
                                     </div>
                                     <div>
                                         <p>Deadline</p>
-                                        <p className='text-xs text-red-700'>{job.deadline}</p>
+                                        <p className='text-xs text-red-700'>{ dayjs(job.deadline).format('DD-MM-YYYY') }</p>
                                     </div>
                                 </div>
 
