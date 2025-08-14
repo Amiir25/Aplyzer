@@ -110,7 +110,7 @@ const AllJobs = () => {
                                 <div className='flex items-center justify-around gap-4 mt-8'>
                                     
                                     {/* View button */}
-                                    <Link to={`/user/job/${userId}`}
+                                    <Link to={`/user/job-details/${userId}`}
                                     className='text-center px-3 py-1 w-1/3 rounded border border-blue-500 hover:text-white hover:bg-blue-500'>
                                         View
                                     </Link>
