@@ -173,8 +173,8 @@ const Jobs = () => {
                                 {/* Status */}
                                 <p className={`absolute -top-0.5 -left-0.5 text-lg text-gray-100 font-medium px-2 py-1
                                 ${job.status === 'Applied' && 'bg-blue'}
-                                ${job.status === 'Interviwed' && 'bg-green'}
-                                ${job.status === 'Rejected' && 'bg-red'}`} >
+                                ${job.status === 'Interviewed' && 'bg-purple'}
+                                ${job.status === 'Hired' && 'bg-green'}`} >
                                     {job.status}
                                 </p>
 
