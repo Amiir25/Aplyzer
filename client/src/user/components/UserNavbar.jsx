@@ -27,12 +27,20 @@ const UserNavbar = ({ username }) => {
             
             {/* Hide jobs link in job detailes page */}
             {
-              !location.pathname.includes('job') &&
+              !location.pathname.includes('job-details') &&
               <Link to={`/user/all-jobs/${userId}`}
-              className={`${ location.pathname.includes('/jobs') && 'border-b-3 border-[#02A9EB]' }
+              className={`${ location.pathname.includes('/all-jobs') && 'border-b-3 border-[#02A9EB]' }
                 text-sm hover:text-gray-600`}>
                 Jobs
               </Link>
+            }
+
+            {/* Show Job Details link only in Job Details page */}
+            {
+              location.pathname.includes('job-details') &&
+              <button className='border-b-3 border-[#02A9EB] text-sm hover:text-gray-600'>
+                Job Details
+              </button>
             }
 
             <Link to='/' className="text-sm hover:text-gray-600">Resume Cheker</Link>
