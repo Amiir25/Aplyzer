@@ -12,134 +12,136 @@ const Jobs = () => {
 
     const { userId } = useParams();
 
-    const Jobs = [
-        {
-            id: 1,
-            status: 'Applied',
-            title: 'Intern Deeveloper',
-            level: 'Junior',
-            company: 'Afroel Tech',
-            location: 'Addis Ababa',
-            type: 'Internship',
-            mode: 'Remote',
-            applied: '27/Jul/2025',
-            deadline: '01/Aug/2025'
-        },
-        {
-            id: 2,
-            status: 'Interviwed',
-            title: 'Intern Deeveloper',
-            level: 'Junior',
-            company: 'Afroel Tech',
-            location: 'Addis Ababa',
-            type: 'Internship',
-            mode: 'Remote',
-            applied: '27/Jul/2025',
-            deadline: '01/Aug/2025'
-        },
-        {
-            id: 3,
-            status: 'Applied',
-            title: 'Intern Deeveloper',
-            level: 'Junior',
-            company: 'Afroel Tech',
-            location: 'Addis Ababa',
-            type: 'Internship',
-            mode: 'Remote',
-            applied: '27/Jul/2025',
-            deadline: '01/Aug/2025'
-        },
-        {
-            id: 4,
-            status: 'Interviwed',
-            title: 'Intern Deeveloper',
-            level: 'Junior',
-            company: 'Afroel Tech',
-            location: 'Addis Ababa',
-            type: 'Internship',
-            mode: 'Remote',
-            applied: '27/Jul/2025',
-            deadline: '01/Aug/2025'
-        },
-        {
-            id: 5,
-            status: 'Rejected',
-            title: 'Intern Deeveloper',
-            level: 'Junior',
-            company: 'Afroel Tech',
-            location: 'Addis Ababa',
-            type: 'Internship',
-            mode: 'Remote',
-            applied: '27/Jul/2025',
-            deadline: '01/Aug/2025'
-        },
-        {
-            id: 6,
-            status: 'Applied',
-            title: 'Intern Deeveloper',
-            level: 'Junior',
-            company: 'Afroel Tech',
-            location: 'Addis Ababa',
-            type: 'Internship',
-            mode: 'Remote',
-            applied: '27/Jul/2025',
-            deadline: '01/Aug/2025'
-        },
-        {
-            id: 7,
-            status: 'Applied',
-            title: 'Intern Deeveloper',
-            level: 'Junior',
-            company: 'Afroel Tech',
-            location: 'Addis Ababa',
-            type: 'Internship',
-            mode: 'Remote',
-            applied: '27/Jul/2025',
-            deadline: '01/Aug/2025'
-        },
-        {
-            id: 8,
-            status: 'Applied',
-            title: 'Intern Deeveloper',
-            level: 'Junior',
-            company: 'Afroel Tech',
-            location: 'Addis Ababa',
-            type: 'Internship',
-            mode: 'Remote',
-            applied: '27/Jul/2025',
-            deadline: '01/Aug/2025'
-        },
-        {
-            id: 9,
-            status: 'Rejected',
-            title: 'Intern Deeveloper',
-            level: 'Junior',
-            company: 'Afroel Tech',
-            location: 'Addis Ababa',
-            type: 'Internship',
-            mode: 'Remote',
-            applied: '27/Jul/2025',
-            deadline: '01/Aug/2025'
-        },
-        {
-            id: 10,
-            status: 'Interviwed',
-            title: 'Intern Deeveloper',
-            level: 'Junior',
-            company: 'Afroel Tech',
-            location: 'Addis Ababa',
-            type: 'Internship',
-            mode: 'Remote',
-            applied: '27/Jul/2025',
-            deadline: '01/Aug/2025'
-        },
-    ];
+    // const Jobs = [
+    //     {
+    //         id: 1,
+    //         status: 'Applied',
+    //         title: 'Intern Deeveloper',
+    //         level: 'Junior',
+    //         company: 'Afroel Tech',
+    //         location: 'Addis Ababa',
+    //         type: 'Internship',
+    //         mode: 'Remote',
+    //         applied: '27/Jul/2025',
+    //         deadline: '01/Aug/2025'
+    //     },
+    //     {
+    //         id: 2,
+    //         status: 'Interviwed',
+    //         title: 'Intern Deeveloper',
+    //         level: 'Junior',
+    //         company: 'Afroel Tech',
+    //         location: 'Addis Ababa',
+    //         type: 'Internship',
+    //         mode: 'Remote',
+    //         applied: '27/Jul/2025',
+    //         deadline: '01/Aug/2025'
+    //     },
+    //     {
+    //         id: 3,
+    //         status: 'Applied',
+    //         title: 'Intern Deeveloper',
+    //         level: 'Junior',
+    //         company: 'Afroel Tech',
+    //         location: 'Addis Ababa',
+    //         type: 'Internship',
+    //         mode: 'Remote',
+    //         applied: '27/Jul/2025',
+    //         deadline: '01/Aug/2025'
+    //     },
+    //     {
+    //         id: 4,
+    //         status: 'Interviwed',
+    //         title: 'Intern Deeveloper',
+    //         level: 'Junior',
+    //         company: 'Afroel Tech',
+    //         location: 'Addis Ababa',
+    //         type: 'Internship',
+    //         mode: 'Remote',
+    //         applied: '27/Jul/2025',
+    //         deadline: '01/Aug/2025'
+    //     },
+    //     {
+    //         id: 5,
+    //         status: 'Rejected',
+    //         title: 'Intern Deeveloper',
+    //         level: 'Junior',
+    //         company: 'Afroel Tech',
+    //         location: 'Addis Ababa',
+    //         type: 'Internship',
+    //         mode: 'Remote',
+    //         applied: '27/Jul/2025',
+    //         deadline: '01/Aug/2025'
+    //     },
+    //     {
+    //         id: 6,
+    //         status: 'Applied',
+    //         title: 'Intern Deeveloper',
+    //         level: 'Junior',
+    //         company: 'Afroel Tech',
+    //         location: 'Addis Ababa',
+    //         type: 'Internship',
+    //         mode: 'Remote',
+    //         applied: '27/Jul/2025',
+    //         deadline: '01/Aug/2025'
+    //     },
+    //     {
+    //         id: 7,
+    //         status: 'Applied',
+    //         title: 'Intern Deeveloper',
+    //         level: 'Junior',
+    //         company: 'Afroel Tech',
+    //         location: 'Addis Ababa',
+    //         type: 'Internship',
+    //         mode: 'Remote',
+    //         applied: '27/Jul/2025',
+    //         deadline: '01/Aug/2025'
+    //     },
+    //     {
+    //         id: 8,
+    //         status: 'Applied',
+    //         title: 'Intern Deeveloper',
+    //         level: 'Junior',
+    //         company: 'Afroel Tech',
+    //         location: 'Addis Ababa',
+    //         type: 'Internship',
+    //         mode: 'Remote',
+    //         applied: '27/Jul/2025',
+    //         deadline: '01/Aug/2025'
+    //     },
+    //     {
+    //         id: 9,
+    //         status: 'Rejected',
+    //         title: 'Intern Deeveloper',
+    //         level: 'Junior',
+    //         company: 'Afroel Tech',
+    //         location: 'Addis Ababa',
+    //         type: 'Internship',
+    //         mode: 'Remote',
+    //         applied: '27/Jul/2025',
+    //         deadline: '01/Aug/2025'
+    //     },
+    //     {
+    //         id: 10,
+    //         status: 'Interviwed',
+    //         title: 'Intern Deeveloper',
+    //         level: 'Junior',
+    //         company: 'Afroel Tech',
+    //         location: 'Addis Ababa',
+    //         type: 'Internship',
+    //         mode: 'Remote',
+    //         applied: '27/Jul/2025',
+    //         deadline: '01/Aug/2025'
+    //     },
+    // ];
+
+    const [jobs, setJobs] = useState([]);
 
     useEffect(() => {
         const fetchAllJobs = async () => {
             try {
                 const response = await axios.get(`http://localhost:3000/user/jobs/${userId}`);
-                console.log(response);
+                setJobs(response.data.jobs);
             } catch (error) {
                 const errorMsg = error.response?.data?.message;
             }
@@ -156,21 +158,20 @@ const Jobs = () => {
         }))
     }
 
+    console.log(jobs);
+
     return (
         <>
             <UserNavbar />
 
             <div className='px-6 md:px-12 lg:px-24 xl:px-32 my-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                 {
-                    Jobs.map((job, i) => {
-
-                        return (
-                            <div key={job.id}
+                    jobs.map((job, i) => (
+                            <div key={ i }
                                 className='relative w-80 mt-10 pt-10 pb-2 px-4 shadow-lg rounded border border-gray-200'>
 
                                 {/* Status */}
-                                <p
-                                    className={`absolute -top-0.5 -left-0.5 text-lg text-gray-100 font-medium px-2 py-1
+                                <p className={`absolute -top-0.5 -left-0.5 text-lg text-gray-100 font-medium px-2 py-1
                                 ${job.status === 'Applied' && 'bg-blue'}
                                 ${job.status === 'Interviwed' && 'bg-green'}
                                 ${job.status === 'Rejected' && 'bg-red'}`} >
@@ -185,16 +186,16 @@ const Jobs = () => {
                                         className={`${favourite[job.id] && 'text-amber-500'}`} />
                                 </button>
 
-                                {/* Title & Level */}
-                                <div className='relative'>
-                                    <span className='text-2xl md:text-3xl font-bold'>{job.title}</span>
-                                    <small className='absolute bottom-0 -right-2 text-pink-500'>{ job.level }</small>
+                                {/* Title & Experiance level */}
+                                <div>
+                                    <span className='text-2xl md:text-3xl font-bold'>{job.job_title}</span>
+                                    <small className='text-xs text-pink-500 ml-2'>{ job.exp_level }</small>
                                 </div>
 
                                 {/* Company, Location, Type, and Mode */}
                                 <div className='flex items-center justify-between'>
                                     <div className='text-gray-700'>
-                                        <p className='text-lg md:text-xl'>{job.company}</p>
+                                        <p className='text-lg md:text-xl'>{job.company_name}</p>
                                         <p className='text-sm'>
                                             <FontAwesomeIcon icon={faLocationDot} className='me-1' />
                                             {job.location}
@@ -202,7 +203,7 @@ const Jobs = () => {
                                     </div>
                                     <p className='text-xs bg-gray-200 px-2 py-1 text-fuchsia-800 rounded-full'>
                                         <FontAwesomeIcon icon={faCircleDot} className='me-1' />
-                                        {job.type} / {job.mode}
+                                        {job.job_type} / {job.work_mode}
                                     </p>
                                 </div>
 
@@ -211,7 +212,7 @@ const Jobs = () => {
                                 py-3'>
                                     <div>
                                         <p>Applied Date</p>
-                                        <p className='text-xs'>{job.applied}</p>
+                                        <p className='text-xs'>{job.applied_date}</p>
                                     </div>
                                     <div>
                                         <p>Deadline</p>
@@ -232,9 +233,7 @@ const Jobs = () => {
                                     </button>
                                 </div>
                             </div>
-                        )
-
-                    })
+                        ))
                 }
             </div>
         </>
