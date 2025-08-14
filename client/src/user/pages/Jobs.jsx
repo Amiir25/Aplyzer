@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { faCircleDot, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar as solidStar } from '@fortawesome/free-solid-svg-icons';
@@ -108,12 +108,19 @@ const Jobs = () => {
 
                                 {/* Buttons */}
                                 <div className='flex items-center justify-around gap-4 mt-8'>
-                                    <button className='px-3 py-1 w-1/3 rounded border border-blue-500 hover:text-white hover:bg-blue-500'>
+                                    
+                                    {/* View button */}
+                                    <Link to={`/user/job/${userId}`}
+                                    className='text-center px-3 py-1 w-1/3 rounded border border-blue-500 hover:text-white hover:bg-blue-500'>
                                         View
-                                    </button>
+                                    </Link>
+
+                                    {/* Update button */}
                                     <button className='px-3 py-1 w-1/3 rounded border border-green-500 hover:text-white hover:bg-green-500'>
                                         Update
                                     </button>
+
+                                    {/* Delete button */}
                                     <button className='px-3 py-1 w-1/3 rounded border border-red-500 hover:text-white hover:bg-red-500'>
                                         Delete
                                     </button>
