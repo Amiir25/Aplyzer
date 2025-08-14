@@ -183,10 +183,10 @@ const Jobs = () => {
 
                                 {/* Star */}
                                 <button
-                                    onClick={() => toogleFavorite(job.id)}
+                                    onClick={() => toogleFavorite(job.jid)}
                                     className={`absolute top-1 right-1 text-lg text-gray-800 font-medium`}>
-                                    <FontAwesomeIcon icon={favourite[job.id] ? solidStar : regularStar}
-                                        className={`${favourite[job.id] && 'text-amber-500'}`} />
+                                    <FontAwesomeIcon icon={favourite[job.jid] ? solidStar : regularStar}
+                                        className={`${favourite[job.jid] && 'text-amber-500'}`} />
                                 </button>
 
                                 {/* Title & Experiance level */}
