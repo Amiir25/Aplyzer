@@ -6,7 +6,8 @@ import SignUp from './pages/SignUp'
 import SignIn from './pages/SignIn'
 import Footer from './components/Footer'
 import Dashboard from './user/pages/Dashboard'
-import Jobs from './user/pages/Jobs'
+import AllJobs from './user/pages/AllJobs'
+import Job from './user/pages/Job'
 
 const App = () => {
 
@@ -27,7 +28,8 @@ const App = () => {
 
         {/* User routes */}
         <Route path='/user/dashboard/:userId' element={ <Dashboard/> } />
-        <Route path='/user/jobs/:userId' element={ <Jobs/> } />
+        <Route path='/user/all-jobs/:userId' element={ <AllJobs/> } />
+        <Route path='/user/job/:userId' element={ <Job/> } />
         
       </Routes>
       
