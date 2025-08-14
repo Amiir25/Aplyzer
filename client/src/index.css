@@ -12,22 +12,22 @@
     /* Backgrounds for job status */
     
     .bg-blue {
-        background: linear-gradient(to right, #00d6cb, #79ffff);
+        background: linear-gradient(to right, #049ef7, #8accf3);
     }
     .bg-yellow {
-        background: linear-gradient(to right, #f1c204, #fde172);
+        background: linear-gradient(to right, #f5c504, #f5df8a);
     }
     .bg-purple {
-        background: linear-gradient(to right, #a000df, #d876ff);
+        background: linear-gradient(to right, #b204f7, #d88cf7);
     }
     .bg-green {
-        background: linear-gradient(to right, #08df01, #acff75);
+        background: linear-gradient(to right, #0df704, #b5f58b);
     }
     .bg-red {
-        background: linear-gradient(to right, #e40101, #ff6e6e);
+        background: linear-gradient(to right, #f70404, #f78c8c);
     }
     .bg-gray {
-        background: linear-gradient(to right, #7c7c7c, #dfdfdf);
+        background: linear-gradient(to right, #636161, #c4c1c1);
     }
     .b {
         background: linear-gradient(to right, #8f2b2b, #ebe702);
