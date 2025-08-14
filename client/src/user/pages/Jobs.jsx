@@ -11,132 +11,9 @@ import axios from 'axios';
 const Jobs = () => {
 
     const { userId } = useParams();
-
-    // const Jobs = [
-    //     {
-    //         id: 1,
-    //         status: 'Applied',
-    //         title: 'Intern Deeveloper',
-    //         level: 'Junior',
-    //         company: 'Afroel Tech',
-    //         location: 'Addis Ababa',
-    //         type: 'Internship',
-    //         mode: 'Remote',
-    //         applied: '27/Jul/2025',
-    //         deadline: '01/Aug/2025'
-    //     },
-    //     {
-    //         id: 2,
-    //         status: 'Interviwed',
-    //         title: 'Intern Deeveloper',
-    //         level: 'Junior',
-    //         company: 'Afroel Tech',
-    //         location: 'Addis Ababa',
-    //         type: 'Internship',
-    //         mode: 'Remote',
-    //         applied: '27/Jul/2025',
-    //         deadline: '01/Aug/2025'
-    //     },
-    //     {
-    //         id: 3,
-    //         status: 'Applied',
-    //         title: 'Intern Deeveloper',
-    //         level: 'Junior',
-    //         company: 'Afroel Tech',
-    //         location: 'Addis Ababa',
-    //         type: 'Internship',
-    //         mode: 'Remote',
-    //         applied: '27/Jul/2025',
-    //         deadline: '01/Aug/2025'
-    //     },
-    //     {
-    //         id: 4,
-    //         status: 'Interviwed',
-    //         title: 'Intern Deeveloper',
-    //         level: 'Junior',
-    //         company: 'Afroel Tech',
-    //         location: 'Addis Ababa',
-    //         type: 'Internship',
-    //         mode: 'Remote',
-    //         applied: '27/Jul/2025',
-    //         deadline: '01/Aug/2025'
-    //     },
-    //     {
-    //         id: 5,
-    //         status: 'Rejected',
-    //         title: 'Intern Deeveloper',
-    //         level: 'Junior',
-    //         company: 'Afroel Tech',
-    //         location: 'Addis Ababa',
-    //         type: 'Internship',
-    //         mode: 'Remote',
-    //         applied: '27/Jul/2025',
-    //         deadline: '01/Aug/2025'
-    //     },
-    //     {
-    //         id: 6,
-    //         status: 'Applied',
-    //         title: 'Intern Deeveloper',
-    //         level: 'Junior',
-    //         company: 'Afroel Tech',
-    //         location: 'Addis Ababa',
-    //         type: 'Internship',
-    //         mode: 'Remote',
-    //         applied: '27/Jul/2025',
-    //         deadline: '01/Aug/2025'
-    //     },
-    //     {
-    //         id: 7,
-    //         status: 'Applied',
-    //         title: 'Intern Deeveloper',
-    //         level: 'Junior',
-    //         company: 'Afroel Tech',
-    //         location: 'Addis Ababa',
-    //         type: 'Internship',
-    //         mode: 'Remote',
-    //         applied: '27/Jul/2025',
-    //         deadline: '01/Aug/2025'
-    //     },
-    //     {
-    //         id: 8,
-    //         status: 'Applied',
-    //         title: 'Intern Deeveloper',
-    //         level: 'Junior',
-    //         company: 'Afroel Tech',
-    //         location: 'Addis Ababa',
-    //         type: 'Internship',
-    //         mode: 'Remote',
-    //         applied: '27/Jul/2025',
-    //         deadline: '01/Aug/2025'
-    //     },
-    //     {
-    //         id: 9,
-    //         status: 'Rejected',
-    //         title: 'Intern Deeveloper',
-    //         level: 'Junior',
-    //         company: 'Afroel Tech',
-    //         location: 'Addis Ababa',
-    //         type: 'Internship',
-    //         mode: 'Remote',
-    //         applied: '27/Jul/2025',
-    //         deadline: '01/Aug/2025'
-    //     },
-    //     {
-    //         id: 10,
-    //         status: 'Interviwed',
-    //         title: 'Intern Deeveloper',
-    //         level: 'Junior',
-    //         company: 'Afroel Tech',
-    //         location: 'Addis Ababa',
-    //         type: 'Internship',
-    //         mode: 'Remote',
-    //         applied: '27/Jul/2025',
-    //         deadline: '01/Aug/2025'
-    //     },
-    // ];
-
     const [jobs, setJobs] = useState([]);
 
+    // Fech jobs
     useEffect(() => {
         const fetchAllJobs = async () => {
             try {
@@ -158,6 +35,15 @@ const Jobs = () => {
         }))
     }
 
+    const statusClasses = {
+        Applied: 'bg-blue',
+        Waiting: 'bg-yellow',
+        Interviewed: 'bg-purple',
+        Hired: 'bg-green',
+        Rejected: 'bg-red',
+        Quit: 'bg-gray',
+    }
+
     console.log(jobs);
 
     return (
@@ -172,12 +58,8 @@ const Jobs = () => {
 
                                 {/* Status */}
                                 <p className={`absolute -top-0.5 -left-0.5 text-lg text-gray-100 font-medium px-2 py-1
-                                ${job.status === 'Applied' && 'bg-blue'}
-                                ${job.status === 'Waiting' && 'bg-yellow'}
-                                ${job.status === 'Interviewed' && 'bg-purple'}
-                                ${job.status === 'Hired' && 'bg-green'}
-                                ${job.status === 'Rejected' && 'bg-red'}
-                                ${job.status === 'Quit' && 'bg-gray'}`} >
+                                ${ statusClasses[job.status] }`
+                                }>
                                     {job.status}
                                 </p>
 
