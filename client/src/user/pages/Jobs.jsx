@@ -1,11 +1,16 @@
 import React, { useState } from 'react'
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { faCircleDot, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar as solidStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
 import UserNavbar from '../components/UserNavbar';
+import axios from 'axios';
 
 const Jobs = () => {
+
+    const { userId } = useParams();
 
     const Jobs = [
         {
@@ -130,8 +135,19 @@ const Jobs = () => {
         },
     ];
 
-    const [favourite, setFavourite] = useState({});
+    useEffect(() => {
+        const fetchAllJobs = () => {
+            try {
+                const response = axios.get(`http://localhost:3000/user/jobs/${userId}`);
+            } catch (error) {
+                const errorMsg = error.response?.data?.message;
+            }
+        }
+        fetchAllJobs();
+    }, [userId])
 
+    // Favorite Jobs
+    const [favourite, setFavourite] = useState({});
     const toogleFavorite = (id) => {
         setFavourite((prev) => ({
             ...prev,
