@@ -136,9 +136,10 @@ const Jobs = () => {
     ];
 
     useEffect(() => {
-        const fetchAllJobs = () => {
+        const fetchAllJobs = async () => {
             try {
-                const response = axios.get(`http://localhost:3000/user/jobs/${userId}`);
+                const response = await axios.get(`http://localhost:3000/user/jobs/${userId}`);
+                console.log(response);
             } catch (error) {
                 const errorMsg = error.response?.data?.message;
             }
