@@ -18,7 +18,7 @@ const AllJobs = () => {
     useEffect(() => {
         const fetchAllJobs = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/user/jobs/${userId}`);
+                const response = await axios.get(`http://localhost:3000/user/all-jobs/${userId}`);
                 setJobs(response.data.jobs);
             } catch (error) {
                 const errorMsg = error.response?.data?.message;

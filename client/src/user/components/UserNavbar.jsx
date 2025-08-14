@@ -25,11 +25,16 @@ const UserNavbar = ({ username }) => {
               Dashboard
             </Link>
             
-            <Link to={`/user/jobs/${userId}`}
-            className={`${ location.pathname.includes('/jobs') && 'border-b-3 border-[#02A9EB]' }
-              text-sm hover:text-gray-600`}>
-              Jobs
-            </Link>
+            {/* Hide jobs link in job detailes page */}
+            {
+              !location.pathname.includes('job') &&
+              <Link to={`/user/all-jobs/${userId}`}
+              className={`${ location.pathname.includes('/jobs') && 'border-b-3 border-[#02A9EB]' }
+                text-sm hover:text-gray-600`}>
+                Jobs
+              </Link>
+            }
+
             <Link to='/' className="text-sm hover:text-gray-600">Resume Cheker</Link>
             <Link to='/' className="text-sm hover:text-gray-600">Job Matching</Link>
             <Link to='/' className="text-sm hover:text-gray-600">Cover Letter</Link>
