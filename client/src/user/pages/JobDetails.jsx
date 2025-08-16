@@ -36,10 +36,10 @@ const JobDetails = () => {
         <UserNavbar/>
 
         {/* Job Details */}
-        <div className='px-6 md:px-12 lg:px-24 xl:px-32 my-10 flex flex-col md:flex-row gap-8'>
+        <div className='px-6 md:px-12 lg:px-24 xl:px-32 my-10'>
 
           {/* Left Content */}
-          <div className='mb-6 flex-2'>
+          <div className='mb-6'>
             {/* Top-Left Content */}
             <div className='flex items-start justify-between pb-6 border-b border-gray-300'>
 
@@ -101,7 +101,7 @@ const JobDetails = () => {
           </div> {/* Left content */}
 
           {/* Right Contet */}
-          <div className='flex-1 ml-10'>
+          <div className=''>
             {/* Job Description */}
             <div className='mb-4'>
               <h1 className='text-xl text-gray-800 font-bold mb-1'>Job Description</h1>
