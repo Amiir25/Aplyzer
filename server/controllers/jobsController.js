@@ -24,5 +24,20 @@ export const getAllJobs = (req, res) => {
 }
 
 export const getJobDetails = (req, res) => {
+    const { id } = req.params;
 
+    try {
+        const fetchQuery = 'SELECT * FROM jobs WHERE jid = ?';
+        db.query(fetchQuery, [id], (err, jobs) => {
+            if (err) {
+                console.log('Database error:', err);
+                return res.status(500).json({ message: 'Database error' });
+            }
+
+            return res.status(200).json({ job: jobs[0] });
+        })
+    } catch (error) {
+        console.log('Server error:', error);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
 }
