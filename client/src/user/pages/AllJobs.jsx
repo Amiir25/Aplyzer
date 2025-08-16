@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { faCircleDot, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar as solidStar } from '@fortawesome/free-solid-svg-icons';
@@ -13,6 +13,7 @@ const AllJobs = () => {
 
     const { userId } = useParams();
     const [jobs, setJobs] = useState([]);
+    const navigate = useNavigate();
 
     // Fech jobs
     useEffect(() => {
@@ -36,6 +37,7 @@ const AllJobs = () => {
         }))
     }
 
+    // Colors for job status
     const statusClasses = {
         Applied: 'bg-blue',
         Waiting: 'bg-yellow',
@@ -45,7 +47,10 @@ const AllJobs = () => {
         Quit: 'bg-gray',
     }
 
-    console.log(jobs);
+    // Open job details page
+    const openJobDetail = (jid) => {
+        navigate(`/user/job-details/${jid}`);
+    }
 
     return (
         <>
@@ -110,10 +115,11 @@ const AllJobs = () => {
                                 <div className='flex items-center justify-around gap-4 mt-8'>
                                     
                                     {/* View button */}
-                                    <Link to={`/user/job-details/${userId}`}
-                                    className='text-center px-3 py-1 w-1/3 rounded border border-blue-500 hover:text-white hover:bg-blue-500'>
+                                    <button
+                                    onClick={() => openJobDetail(job.jid)}
+                                    className='px-3 py-1 w-1/3 rounded border border-blue-500 hover:text-white hover:bg-blue-500'>
                                         View
-                                    </Link>
+                                    </button>
 
                                     {/* Update button */}
                                     <button className='px-3 py-1 w-1/3 rounded border border-green-500 hover:text-white hover:bg-green-500'>
