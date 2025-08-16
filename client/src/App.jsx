@@ -29,7 +29,7 @@ const App = () => {
         {/* User routes */}
         <Route path='/user/dashboard/:userId' element={ <Dashboard/> } />
         <Route path='/user/all-jobs/:userId' element={ <AllJobs/> } />
-        <Route path='/user/job-details/:userId' element={ <JobDetails/> } />
+        <Route path='/user/job-details/:jobId' element={ <JobDetails/> } />
         
       </Routes>
       
