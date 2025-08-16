@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAt, faLocationDot, faStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as solidStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
+import dayjs from 'dayjs';
 
 const JobDetails = () => {
 
@@ -37,8 +38,8 @@ const JobDetails = () => {
         {/* Job Details */}
         <div className='px-6 md:px-12 lg:px-24 xl:px-32 my-10'>
 
-          {/* Left Content */}
-          <div className='flex items-start justify-between'>
+          {/* Top-Left Content */}
+          <div className='flex items-start justify-between pb-6 border-b border-gray-300'>
 
             {/* Title, company & location */}
             <div>
@@ -61,6 +62,41 @@ const JobDetails = () => {
             </div>
 
           </div>
+
+          {/* Bottom-Left Content */}
+          <div className='grid grid-cols-1 md:grid-cols-2 mt-6'>
+            {/* Job Type */}
+            <p className='text-xl text-gray-800 mb-1'>
+              Job Type:
+              <span className='font-semibold text-black'> { job.job_type }</span>
+            </p>
+            {/* Work Mode */}
+            <p className='text-xl text-gray-800 mb-1'>
+              Work Mode:
+              <span className='font-semibold text-black'> { job.work_mode }</span>
+            </p>
+            {/* Experiance Level */}
+            <p className='text-xl text-gray-800 mb-1'>
+              Experiance Level:
+              <span className='font-semibold text-black'> { job.exp_level }</span>
+            </p>
+            {/* Applied Date */}
+            <p className='text-xl text-gray-800 mb-1'>
+              Applied Date:
+              <span className='font-semibold text-black'> { dayjs(job.applied_date).format('DD-MM-YYYY') }</span>
+            </p>
+            {/* Application Deadline */}
+            <p className='text-xl text-gray-800 mb-1'>
+              Application Deadline:
+              <span className='font-semibold text-red-700'> { dayjs(job.deadline).format('DD-MM-YYYY') }</span>
+            </p>
+            {/* Required Skills */}
+            <p className='text-xl text-gray-800 mb-1'>
+              Required Skills:
+              <span className='font-semibold text-black'> { job.required_skills }</span>
+            </p>
+          </div>
+
         </div>
 
     </div>
