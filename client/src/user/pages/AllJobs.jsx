@@ -49,7 +49,7 @@ const AllJobs = () => {
 
     // Open job details page
     const openJobDetail = (jid) => {
-        navigate(`/user/job-details/${jid}`);
+        window.open(`/user/job-details/${jid}`, '_blank', 'noopener,noreferrer');
     }
 
     return (
