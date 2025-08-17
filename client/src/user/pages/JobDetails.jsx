@@ -36,7 +36,7 @@ const JobDetails = () => {
         <UserNavbar/>
 
         {/* Job Details */}
-        <div className='px-6 md:px-12 lg:px-24 xl:px-32 my-10'>
+        <div className='px-6 md:px-24 lg:px-48 xl:px-60 my-20'>
 
           {/* --- */}
           <div className='flex items-start justify-between pb-6 border-b border-gray-300'>
@@ -64,41 +64,49 @@ const JobDetails = () => {
           </div>
 
           {/* --- */}
-          <div className='grid grid-cols-1 md:grid-cols-2 mt-6 pb-6 border-b border-gray-300'>
-            {/* Job Type */}
-            <p className='text-xl text-gray-800 mb-1'>
-              Job Type:
-              <span className='font-semibold text-black'> { job.job_type }</span>
-            </p>
-            {/* Work Mode */}
-            <p className='text-xl text-gray-800 mb-1'>
-              Work Mode:
-              <span className='font-semibold text-black'> { job.work_mode }</span>
-            </p>
-            {/* Experiance Level */}
-            <p className='text-xl text-gray-800 mb-1'>
-              Experiance Level:
-              <span className='font-semibold text-black'> { job.exp_level }</span>
-            </p>
-            {/* Applied Date */}
-            <p className='text-xl text-gray-800 mb-1'>
-              Applied Date:
-              <span className='font-semibold text-black'> { dayjs(job.applied_date).format('DD-MM-YYYY') }</span>
-            </p>
-            {/* Application Deadline */}
-            <p className='text-xl text-gray-800 mb-1'>
-              Application Deadline:
-              <span className='font-semibold text-red-700'> { dayjs(job.deadline).format('DD-MM-YYYY') }</span>
-            </p>
-            {/* Required Skills */}
-            <p className='text-xl text-gray-800 mb-1'>
-              Required Skills:
-              <span className='font-semibold text-black'> { job.required_skills }</span>
-            </p>
+          <div className='flex flex-col md:flex-row items-start justify-between mt-6 pb-6 border-b border-gray-300'>
+            {/* Type, mode, level & skills */}
+            <div>
+              {/* Job Type */}
+              <p className='text-xl text-gray-800 mb-1'>
+                Job Type:
+                <span className='font-semibold text-black'> { job.job_type }</span>
+              </p>
+              {/* Work Mode */}
+              <p className='text-xl text-gray-800 mb-1'>
+                Work Mode:
+                <span className='font-semibold text-black'> { job.work_mode }</span>
+              </p>
+              {/* Experiance Level */}
+              <p className='text-xl text-gray-800 mb-1'>
+                Experiance Level:
+                <span className='font-semibold text-black'> { job.exp_level }</span>
+              </p>
+              {/* Required Skills */}
+              <p className='text-xl text-gray-800 mb-1'>
+                Required Skills:
+                <span className='font-semibold text-black'> { job.required_skills }</span>
+              </p>
+            </div>
+
+            {/* Dates */}
+            <div>
+              {/* Applied Date */}
+              <p className='text-xl text-gray-800 mb-1'>
+                Applied Date:
+                <span className='font-semibold text-black'> { dayjs(job.applied_date).format('DD-MM-YYYY') }</span>
+              </p>
+              {/* Application Deadline */}
+              <p className='text-xl text-gray-800 mb-1'>
+                Application Deadline:
+                <span className='font-semibold text-red-700'> { dayjs(job.deadline).format('DD-MM-YYYY') }</span>
+              </p>
+            </div>
+            
           </div>
 
           {/* Job Description */}
-          <div className='mb-4'>
+          <div className='my-4'>
             <h1 className='text-xl text-gray-800 font-bold mb-1'>Job Description</h1>
             <p>{ job.job_description }</p>
           </div>
