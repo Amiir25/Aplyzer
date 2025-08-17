@@ -41,3 +41,7 @@ export const getJobDetails = (req, res) => {
         return res.status(500).json({ message: 'Internal server error' });
     }
 }
+
+export const addNewJob = (req, res) => {
+    
+}
