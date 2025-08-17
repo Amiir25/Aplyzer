@@ -38,82 +38,76 @@ const JobDetails = () => {
         {/* Job Details */}
         <div className='px-6 md:px-12 lg:px-24 xl:px-32 my-10'>
 
-          {/* Left Content */}
-          <div className='mb-6'>
-            {/* Top-Left Content */}
-            <div className='flex items-start justify-between pb-6 border-b border-gray-300'>
+          {/* --- */}
+          <div className='flex items-start justify-between pb-6 border-b border-gray-300'>
 
-              {/* Title, company & location */}
-              <div>
-                <h1 className='text-5xl font-bold'>{ job.job_title }</h1>
-                <h2 className='text-3xl text-gray-700 my-2'>
-                  <FontAwesomeIcon icon={ faAt } /> { job.company_name }
-                </h2>
-                <h3 className='text-xl text-gray-600'>
-                  <FontAwesomeIcon icon={ faLocationDot } /> { job.location }
-                </h3>
-              </div>
-
-              {/* Favorite & status */}
-              <div className='flex items-center gap-4 mt-2'>
-                <FontAwesomeIcon icon={ favorite ? solidStar : regularStar }
-                onClick={() => setFavorite(!favorite)}
-                className={`${favorite && 'text-amber-500'} text-2xl`} />
-
-                <h2 className='text-2xl'>{ job.status }</h2>
-              </div>
-
+            {/* Title, company & location */}
+            <div>
+              <h1 className='text-5xl font-bold'>{ job.job_title }</h1>
+              <h2 className='text-3xl text-gray-700 my-2'>
+                <FontAwesomeIcon icon={ faAt } /> { job.company_name }
+              </h2>
+              <h3 className='text-xl text-gray-600'>
+                <FontAwesomeIcon icon={ faLocationDot } /> { job.location}
+              </h3>
             </div>
 
-            {/* Bottom-Left Content */}
-            <div className='grid grid-cols-1 md:grid-cols-2 mt-6 pb-6 border-b border-gray-300'>
-              {/* Job Type */}
-              <p className='text-xl text-gray-800 mb-1'>
-                Job Type:
-                <span className='font-semibold text-black'> { job.job_type }</span>
-              </p>
-              {/* Work Mode */}
-              <p className='text-xl text-gray-800 mb-1'>
-                Work Mode:
-                <span className='font-semibold text-black'> { job.work_mode }</span>
-              </p>
-              {/* Experiance Level */}
-              <p className='text-xl text-gray-800 mb-1'>
-                Experiance Level:
-                <span className='font-semibold text-black'> { job.exp_level }</span>
-              </p>
-              {/* Applied Date */}
-              <p className='text-xl text-gray-800 mb-1'>
-                Applied Date:
-                <span className='font-semibold text-black'> { dayjs(job.applied_date).format('DD-MM-YYYY') }</span>
-              </p>
-              {/* Application Deadline */}
-              <p className='text-xl text-gray-800 mb-1'>
-                Application Deadline:
-                <span className='font-semibold text-red-700'> { dayjs(job.deadline).format('DD-MM-YYYY') }</span>
-              </p>
-              {/* Required Skills */}
-              <p className='text-xl text-gray-800 mb-1'>
-                Required Skills:
-                <span className='font-semibold text-black'> { job.required_skills }</span>
-              </p>
-            </div>
-          </div> {/* Left content */}
+            {/* Favorite & status */}
+            <div className='flex items-center gap-4 mt-2'>
+              <FontAwesomeIcon icon={ favorite ? solidStar : regularStar }
+              onClick={() => setFavorite(!favorite)}
+              className={`${favorite && 'text-amber-500'} text-2xl`} />
 
-          {/* Right Contet */}
-          <div className=''>
-            {/* Job Description */}
-            <div className='mb-4'>
-              <h1 className='text-xl text-gray-800 font-bold mb-1'>Job Description</h1>
-              <p>{ job.job_description }</p>
+              <h2 className='text-2xl'>{ job.status }</h2>
             </div>
 
-            {/* More Info */}
-            <div className='mb-4'>
-              <h1 className='text-xl text-gray-800 font-bold mb-1'>More Info.</h1>
-              <p>{ job.more_info }</p>
-            </div>
-          </div> {/* Right content */}
+          </div>
+
+          {/* --- */}
+          <div className='grid grid-cols-1 md:grid-cols-2 mt-6 pb-6 border-b border-gray-300'>
+            {/* Job Type */}
+            <p className='text-xl text-gray-800 mb-1'>
+              Job Type:
+              <span className='font-semibold text-black'> { job.job_type }</span>
+            </p>
+            {/* Work Mode */}
+            <p className='text-xl text-gray-800 mb-1'>
+              Work Mode:
+              <span className='font-semibold text-black'> { job.work_mode }</span>
+            </p>
+            {/* Experiance Level */}
+            <p className='text-xl text-gray-800 mb-1'>
+              Experiance Level:
+              <span className='font-semibold text-black'> { job.exp_level }</span>
+            </p>
+            {/* Applied Date */}
+            <p className='text-xl text-gray-800 mb-1'>
+              Applied Date:
+              <span className='font-semibold text-black'> { dayjs(job.applied_date).format('DD-MM-YYYY') }</span>
+            </p>
+            {/* Application Deadline */}
+            <p className='text-xl text-gray-800 mb-1'>
+              Application Deadline:
+              <span className='font-semibold text-red-700'> { dayjs(job.deadline).format('DD-MM-YYYY') }</span>
+            </p>
+            {/* Required Skills */}
+            <p className='text-xl text-gray-800 mb-1'>
+              Required Skills:
+              <span className='font-semibold text-black'> { job.required_skills }</span>
+            </p>
+          </div>
+
+          {/* Job Description */}
+          <div className='mb-4'>
+            <h1 className='text-xl text-gray-800 font-bold mb-1'>Job Description</h1>
+            <p>{ job.job_description }</p>
+          </div>
+
+          {/* More Info */}
+          <div className='mb-4'>
+            <h1 className='text-xl text-gray-800 font-bold mb-1'>More Info.</h1>
+            <p>{ job.more_info }</p>
+          </div>
 
         </div>
 
