@@ -112,10 +112,18 @@ const JobDetails = () => {
           </div>
 
           {/* More Info */}
-          <div className='mb-4'>
+          <div className='mb-10'>
             <h1 className='text-xl text-gray-800 font-bold mb-1'>More Info.</h1>
             <p>{ job.more_info }</p>
           </div>
+
+          {/* Button */}
+          <button className='w-full flex justify-center hover:scale-105 transform transition-all duration-200 ease-in-out'>
+            <a href={ job.post_link } target='_blank'
+            className='text-xl text-white bg-gradient-main p-4 rounded-lg'>
+              View Original Job Posting
+            </a>
+          </button>
 
         </div>
 
