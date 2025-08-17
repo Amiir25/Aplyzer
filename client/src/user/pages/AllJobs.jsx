@@ -136,7 +136,7 @@ const AllJobs = () => {
                 }
 
                 {/* Add new job Button */}
-                <Link 
+                <Link to={`/user/add-new-job/${userId}`}
                 className='w-fit mt-20 text-xl text-white bg-gradient-main px-8 py-4 rounded-lg
                 hover:scale-105 transform transition-all duration-200 ease-in-out'>
                     Add new job
