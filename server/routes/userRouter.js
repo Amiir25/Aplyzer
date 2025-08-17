@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { userDashboard, userProfile } from "../controllers/userController.js";
-import { getAllJobs, getJobDetails } from "../controllers/jobsController.js";
+import { addNewJob, getAllJobs, getJobDetails } from "../controllers/jobsController.js";
 
 const userRouter = Router();
 
