@@ -14,7 +14,7 @@ const AddNewJob = () => {
 
   // Form validation
   const schema = yup.object().shape({
-    company_name: yup
+    company: yup
       .string()
       .required('Company name is required'),
     job_title: yup
@@ -28,26 +28,26 @@ const AddNewJob = () => {
       .required('Application deadline is required'),
     
     // ENUMs
-    exp_level: yup
-      .string()
-      .oneOf(['Junior', 'Mid-level', 'Senior', 'Expert', 'Unknown']),
     job_type: yup
       .string()
       .oneOf(['Full-time', 'Part-time', 'Internship', 'Contractual', 'Unknown']),
     work_mode: yup
       .string()
       .oneOf(['Onsite', 'Remote', 'Hybrid', 'Unknown']),
+    exp_level: yup
+      .string()
+      .oneOf(['Junior', 'Mid-level', 'Senior', 'Expert', 'Unknown']),
     status: yup
       .string()
       .oneOf(['Applied', 'Waiting', 'Interviewed', 'Hired', 'Rejected', 'Quit']),
 
     // Optional fields
     location: yup.string(),
-    job_description: yup.string(),
-    required_skills: yup.string(),
+    job_desc: yup.string(),
+    req_skills: yup.string(),
     favorite: yup.boolean(),
     more_info: yup.string(),
-    postLink: yup.string().url("Must be a valid URL").nullable()
+    post_link: yup.string().url("Must be a valid URL").nullable()
   });
 
   const { register, handleSubmit, formState: { errors } } = useForm({
@@ -83,13 +83,13 @@ const AddNewJob = () => {
           <div className='grid grid-col-1 md:grid-cols-2 gap-x-20'>
             {/* Job title */}
             <div className='mb-4'>
-              <label htmlFor="jobTitle" className='block text-xl text-gray-800'>Job Title</label>
-              <input id='jobTitle' type="text" placeholder='e.g. Software Engineer'
+              <label htmlFor="job_title" className='block text-xl text-gray-800'>Job Title</label>
+              <input id='job_title' type="text" placeholder='e.g. Software Engineer'
               className='px-3 py-2 border border-gray-400 rounded w-full
               focus:bg-white focus:outline-none focus:border-white
               transform transition-all duration-500 ease-in-out'
-              { ...register('jobTitle') } />
-              { errors.jobTitle && <p className='text-sm text-red-600'>{ errors.jobTitle.message }</p> }
+              { ...register('job_title') } />
+              { errors.job_title && <p className='text-sm text-red-600'>{ errors.job_title.message }</p> }
             </div>
             {/* Company */}
             <div className='mb-4'>
@@ -113,7 +113,7 @@ const AddNewJob = () => {
             </div>
             {/* Job type */}
             <div className='mb-4'>
-              <label htmlFor="jobType" className='block text-xl text-gray-800'>Job Type</label>
+              <label className='block text-xl text-gray-800'>Job Type</label>
               <select {...register("status")}
               className='px-3 py-2 border border-gray-400 rounded w-full
               focus:bg-white focus:outline-none focus:border-white
@@ -125,7 +125,7 @@ const AddNewJob = () => {
                 <option value="Quit">Contractual</option>
                 <option value="Quit">Unknown</option>
               </select>
-              { errors.jobType && <p className='text-sm text-red-600'>{ errors.jobType.message }</p> }
+              { errors.job_type && <p className='text-sm text-red-600'>{ errors.job_type.message }</p> }
             </div>
             {/* Work Mode */}
             <div className='mb-4'>
@@ -140,7 +140,7 @@ const AddNewJob = () => {
                 <option value="Interviewed">Hybrid</option>
                 <option value="Quit">Unknown</option>
               </select>
-              { errors.workMode && <p className='text-sm text-red-600'>{ errors.workMode.message }</p> }
+              { errors.work_mode && <p className='text-sm text-red-600'>{ errors.work_mode.message }</p> }
             </div>
             {/* Experiance Level */}
             <div className='mb-4'>
@@ -156,7 +156,7 @@ const AddNewJob = () => {
                 <option value="Hired">Expert</option>
                 <option value="Quit">Unknown</option>
               </select>
-              { errors.status && <p className='text-sm text-red-600'>{ errors.status.message }</p> }
+              { errors.exp_level && <p className='text-sm text-red-600'>{ errors.exp_level.message }</p> }
             </div>
           </div>
         </section>
@@ -171,13 +171,13 @@ const AddNewJob = () => {
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-20'>
             {/* Applied Date */}
             <div className='mb-4'>
-              <label htmlFor="appliedDate" className='block text-xl text-gray-800'>Applied Date</label>
-              <input id='appliedDate' type="date"
+              <label htmlFor="applied_date" className='block text-xl text-gray-800'>Applied Date</label>
+              <input id='applied_date' type="date"
               className='px-3 py-2 border border-gray-400 rounded w-full
               focus:bg-white focus:outline-none focus:border-white
               transform transition-all duration-500 ease-in-out'
-              { ...register('appliedDate') } />
-              { errors.appliedDate && <p className='text-sm text-red-600'>{ errors.appliedDate.message }</p> }
+              { ...register('applied_date') } />
+              { errors.applied_date && <p className='text-sm text-red-600'>{ errors.applied_date.message }</p> }
             </div>
             {/* Deadline */}
             <div className='mb-4'>
@@ -219,43 +219,43 @@ const AddNewJob = () => {
           <div className='grid grid-cols-1 md:grid-cols-2 gap-x-20'>
             {/* Job Description */}
             <div className='mb-4'>
-              <label htmlFor="jobDesc" className='block text-xl text-gray-800'>Job Description</label>
-              <textarea id="jobDesc" rows="6" placeholder="Paste the full job description here..."
+              <label htmlFor="job_desc" className='block text-xl text-gray-800'>Job Description</label>
+              <textarea id="job_desc" rows="6" placeholder="Paste the full job description here..."
               className='px-3 py-2 border border-gray-400 rounded w-full
               focus:bg-white focus:outline-none focus:border-white
               transform transition-all duration-500 ease-in-out'
-              { ...register('jobDesc') }></textarea>
-              { errors.jobDesc && <p className='text-sm text-red-600'>{ errors.jobDesc.message }</p> }
+              { ...register('job_desc') }></textarea>
+              { errors.job_desc && <p className='text-sm text-red-600'>{ errors.job_desc.message }</p> }
             </div>
             {/* Required Skills */}
             <div className='mb-4'>
-              <label htmlFor="reqSkills" className='block text-xl text-gray-800'>Required Skills</label>
-              <textarea id="reqSkills" rows="6" placeholder="List skills, one per line or comma-separated"
+              <label htmlFor="req_skills" className='block text-xl text-gray-800'>Required Skills</label>
+              <textarea id="req_skills" rows="6" placeholder="List skills, one per line or comma-separated"
               className='px-3 py-2 border border-gray-400 rounded w-full
               focus:bg-white focus:outline-none focus:border-white
               transform transition-all duration-500 ease-in-out'
-              { ...register('reqSkills') }></textarea>
-              { errors.reqSkills && <p className='text-sm text-red-600'>{ errors.reqSkills.message }</p> }
+              { ...register('req_skills') }></textarea>
+              { errors.req_skills && <p className='text-sm text-red-600'>{ errors.req_skills.message }</p> }
             </div>
             {/* More Information / Notes */}
             <div className='mb-4'>
-              <label htmlFor="moreInfo" className='block text-xl text-gray-800'>More Information / Notes</label>
-              <textarea id="moreInfo" rows="1" placeholder="Add any additional notes here"
+              <label htmlFor="more_info" className='block text-xl text-gray-800'>More Information / Notes</label>
+              <textarea id="more_info" rows="1" placeholder="Add any additional notes here"
               className='px-3 py-2 border border-gray-400 rounded w-full
               focus:bg-white focus:outline-none focus:border-white
               transform transition-all duration-500 ease-in-out'
-              { ...register('moreInfo') }></textarea>
-              { errors.moreInfo && <p className='text-sm text-red-600'>{ errors.moreInfo.message }</p> }
+              { ...register('more_info') }></textarea>
+              { errors.more_info && <p className='text-sm text-red-600'>{ errors.more_info.message }</p> }
             </div>
             {/* Job post link */}
             <div className='mb-4'>
-              <label htmlFor="postLink" className='block text-xl text-gray-800'>Job Post Link</label>
-              <input id='postLink' type="text" placeholder='e.g. Addis Ababa, Ethiopia'
+              <label htmlFor="post_link" className='block text-xl text-gray-800'>Job Post Link</label>
+              <input id='post_link' type="text" placeholder='e.g. Addis Ababa, Ethiopia'
               className='px-3 py-2 border border-gray-400 rounded w-full
               focus:bg-white focus:outline-none focus:border-white
               transform transition-all duration-500 ease-in-out'
-              { ...register('postLink') } />
-              { errors.postLink && <p className='text-sm text-red-600'>{ errors.postLink.message }</p> }
+              { ...register('post_link') } />
+              { errors.post_link && <p className='text-sm text-red-600'>{ errors.post_link.message }</p> }
             </div>
           </div>
         </section>
