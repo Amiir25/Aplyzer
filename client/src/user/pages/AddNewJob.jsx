@@ -82,7 +82,7 @@ const AddNewJob = () => {
         
         {/* Job Essentials */}
         <section className='px-10 py-4 my-10 bg-gray-100 rounded-xl'>
-          <h1 className='text-2xl font-medium mb-4'>
+          <h1 className='text-2xl font-medium mb-10'>
             <FontAwesomeIcon icon={ faSuitcase } className='text-purple-500' />
             <span> Job Essentials</span>
           </h1>
@@ -93,7 +93,8 @@ const AddNewJob = () => {
               <label htmlFor="jobTitle" className='block text-xl text-gray-800'>Job Title</label>
               <input id='jobTitle' type="text" placeholder='e.g. Software Engineer'
               className='px-3 py-2 border border-gray-400 rounded w-full
-              focus:bg-white focus:outline-none focus:border-white'
+              focus:bg-white focus:outline-none focus:border-white
+              transform transition-all duration-500 ease-in-out'
               { ...register('jobTitle') } />
               { errors.jobTitle && <p className='text-sm text-red-600'>{ errors.jobTitle.message }</p> }
             </div>
@@ -102,7 +103,8 @@ const AddNewJob = () => {
               <label htmlFor="company" className='block text-xl text-gray-800'>Company</label>
               <input id='company' type="text" placeholder='e.g. Google'
               className='px-3 py-2 border border-gray-400 rounded w-full
-              focus:bg-white focus:outline-none focus:border-white'
+              focus:bg-white focus:outline-none focus:border-white
+              transform transition-all duration-500 ease-in-out'
               { ...register('company') } />
               { errors.company && <p className='text-sm text-red-600'>{ errors.company.message }</p> }
             </div>
@@ -111,7 +113,8 @@ const AddNewJob = () => {
               <label htmlFor="location" className='block text-xl text-gray-800'>Location</label>
               <input id='location' type="text" placeholder='e.g. Addis Ababa, Ethiopia'
               className='px-3 py-2 border border-gray-400 rounded w-full
-              focus:bg-white focus:outline-none focus:border-white'
+              focus:bg-white focus:outline-none focus:border-white
+              transform transition-all duration-500 ease-in-out'
               { ...register('location') } />
               { errors.location && <p className='text-sm text-red-600'>{ errors.location.message }</p> }
             </div>
@@ -120,7 +123,8 @@ const AddNewJob = () => {
               <label htmlFor="jobType" className='block text-xl text-gray-800'>Job Type</label>
               <input id='jobType' type="text" list='jobTypeList' placeholder='Select job type'
               className='px-3 py-2 border border-gray-400 rounded w-full
-              focus:bg-white focus:outline-none focus:border-white'
+              focus:bg-white focus:outline-none focus:border-white
+              transform transition-all duration-500 ease-in-out'
               { ...register('jobType') } />
               <datalist id='jobTypeList'>
                 <option value="Full-time"></option>
@@ -136,7 +140,8 @@ const AddNewJob = () => {
               <label htmlFor="workMode" className='block text-xl text-gray-800'>Work Mode</label>
               <input id='workMode' type="text" list='workModeList' placeholder='Select work mode'
               className='px-3 py-2 border border-gray-400 rounded w-full
-              focus:bg-white focus:outline-none focus:border-white'
+              focus:bg-white focus:outline-none focus:border-white
+              transform transition-all duration-500 ease-in-out'
               { ...register('workMode') } />
               <datalist id='workModeList'>
                 <option value="Onsite"></option>
@@ -151,7 +156,8 @@ const AddNewJob = () => {
               <label htmlFor="status" className='block text-xl text-gray-800'>Experiance Level</label>
               <input id='status' type="text" list='statusList' placeholder='Select experiance level'
               className='px-3 py-2 border border-gray-400 rounded w-full
-              focus:bg-white focus:outline-none focus:border-white'
+              focus:bg-white focus:outline-none focus:border-white
+              transform transition-all duration-500 ease-in-out'
               { ...register('status') } />
               <datalist id='statusList'>
                 <option value="Onsite"></option>
@@ -166,7 +172,7 @@ const AddNewJob = () => {
 
         {/* Timeline & Status */}
         <section className='px-10 py-4 my-10 bg-gray-100 rounded-xl'>
-          <h1 className='text-2xl font-medium mb-4'>
+          <h1 className='text-2xl font-medium mb-10'>
             <FontAwesomeIcon icon={ faCalendarCheck } className='text-purple-500' />
             <span> Timeline & Status</span>
           </h1>
@@ -177,7 +183,8 @@ const AddNewJob = () => {
               <label htmlFor="appliedDate" className='block text-xl text-gray-800'>Applied Date</label>
               <input id='appliedDate' type="date"
               className='px-3 py-2 border border-gray-400 rounded w-full
-              focus:bg-white focus:outline-none focus:border-white'
+              focus:bg-white focus:outline-none focus:border-white
+              transform transition-all duration-500 ease-in-out'
               { ...register('appliedDate') } />
               { errors.appliedDate && <p className='text-sm text-red-600'>{ errors.appliedDate.message }</p> }
             </div>
@@ -186,7 +193,8 @@ const AddNewJob = () => {
               <label htmlFor="deadline" className='block text-xl text-gray-800'>Deadline</label>
               <input id='deadline' type="date"
               className='px-3 py-2 border border-gray-400 rounded w-full
-              focus:bg-white focus:outline-none focus:border-white'
+              focus:bg-white focus:outline-none focus:border-white
+              transform transition-all duration-500 ease-in-out'
               { ...register('deadline') } />
               { errors.deadline && <p className='text-sm text-red-600'>{ errors.deadline.message }</p> }
             </div>
@@ -195,7 +203,8 @@ const AddNewJob = () => {
               <label htmlFor="status" className='block text-xl text-gray-800'>Status</label>
               <input id='status' type="text" list='statusList' placeholder='Select the current job status'
               className='px-3 py-2 border border-gray-400 rounded w-full
-              focus:bg-white focus:outline-none focus:border-white'
+              focus:bg-white focus:outline-none focus:border-white
+              transform transition-all duration-500 ease-in-out'
               { ...register('status') } />
               <datalist id='statusList'>
                 <option value="Applied"></option>
@@ -212,7 +221,7 @@ const AddNewJob = () => {
 
         {/* Description & Notes */}
         <section className='px-10 py-4 my-10 bg-gray-100 rounded-xl'>
-          <h1 className='text-2xl font-medium mb-4'>
+          <h1 className='text-2xl font-medium mb-10'>
             <FontAwesomeIcon icon={ faAlignLeft } className='text-purple-500' />
             <span> Description & Notes</span>
           </h1>
@@ -223,7 +232,8 @@ const AddNewJob = () => {
               <label htmlFor="jobDesc" className='block text-xl text-gray-800'>Job Description</label>
               <textarea id="jobDesc" rows="6" placeholder="Paste the full job description here..."
               className='px-3 py-2 border border-gray-400 rounded w-full
-              focus:bg-white focus:outline-none focus:border-white'
+              focus:bg-white focus:outline-none focus:border-white
+              transform transition-all duration-500 ease-in-out'
               { ...register('jobDesc') }></textarea>
               { errors.jobDesc && <p className='text-sm text-red-600'>{ errors.jobDesc.message }</p> }
             </div>
@@ -232,7 +242,8 @@ const AddNewJob = () => {
               <label htmlFor="reqSkills" className='block text-xl text-gray-800'>Required Skills</label>
               <textarea id="reqSkills" rows="6" placeholder="List skills, one per line or comma-separated"
               className='px-3 py-2 border border-gray-400 rounded w-full
-              focus:bg-white focus:outline-none focus:border-white'
+              focus:bg-white focus:outline-none focus:border-white
+              transform transition-all duration-500 ease-in-out'
               { ...register('reqSkills') }></textarea>
               { errors.reqSkills && <p className='text-sm text-red-600'>{ errors.reqSkills.message }</p> }
             </div>
@@ -241,7 +252,8 @@ const AddNewJob = () => {
               <label htmlFor="moreInfo" className='block text-xl text-gray-800'>More Information / Notes</label>
               <textarea id="moreInfo" rows="1" placeholder="Add any additional notes here"
               className='px-3 py-2 border border-gray-400 rounded w-full
-              focus:bg-white focus:outline-none focus:border-white'
+              focus:bg-white focus:outline-none focus:border-white
+              transform transition-all duration-500 ease-in-out'
               { ...register('moreInfo') }></textarea>
               { errors.moreInfo && <p className='text-sm text-red-600'>{ errors.moreInfo.message }</p> }
             </div>
@@ -250,7 +262,8 @@ const AddNewJob = () => {
               <label htmlFor="postLink" className='block text-xl text-gray-800'>Job Post Link</label>
               <input id='postLink' type="text" placeholder='e.g. Addis Ababa, Ethiopia'
               className='px-3 py-2 border border-gray-400 rounded w-full
-              focus:bg-white focus:outline-none focus:border-white'
+              focus:bg-white focus:outline-none focus:border-white
+              transform transition-all duration-500 ease-in-out'
               { ...register('postLink') } />
               { errors.postLink && <p className='text-sm text-red-600'>{ errors.postLink.message }</p> }
             </div>
