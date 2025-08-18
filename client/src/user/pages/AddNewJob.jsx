@@ -14,48 +14,34 @@ const AddNewJob = () => {
 
   // Form validation
   const schema = yup.object().shape({
-    jobTitle: yup
-      .string()
-      .required('Job title is required'),
-    company: yup
+    company_name: yup
       .string()
       .required('Company name is required'),
-    location: yup
+    job_title: yup
       .string()
-      .required('Location is required'),
-    jobType: yup
-      .string()
-      .required('Job type is required'),
-    jobDesc: yup
-      .string()
-      .required('Job Description is required'),
-    workMode: yup
-      .string()
-      .required('Work mode is required'),
-    expLevel: yup
-      .string()
-      .required('Experiance Level is required'),
-    reqSkills: yup
-      .string()
-      .required('Required skills is required'),
-    appliedDate: yup
-      .string()
+      .required('Job title is required'),
+    applied_date: yup
+      .date()
       .required('Applied date is required'),
     deadline: yup
-      .string()
+      .date()
       .required('Application deadline is required'),
-    status: yup
-      .string()
-      .required('Status is required'),
-    postLink: yup
-      .string()
-      .required('Job post link is required'),
-    moreInfo: yup
-      .string()
-      .required('More Information is required'),
-    favorite: yup
-      .string()
-      .required('favorite is required'),
+
+    // Optional fields
+    location: yup.string(),
+    job_description: yup.string(),
+    required_skills: yup.string(),
+    exp_level: yup.string()
+      .oneOf(['Junior', 'Mid-level', 'Senior', 'Expert', 'Unknown']),
+    job_type: yup.string()
+      .oneOf(['Full-time', 'Part-time', 'Internship', 'Contractual', 'Unknown']),
+    work_mode: yup.string()
+      .oneOf(['Onsite', 'Remote', 'Hybrid', 'Unknown']),
+    status: yup.string()
+      .oneOf(['Applied', 'Waiting', 'Interviewed', 'Hired', 'Rejected', 'Quit']),
+    favorite: yup.boolean(),
+    more_info: yup.string(),
+    postLink: yup.string().url("Must be a valid URL").nullable()
   });
 
   const { register, handleSubmit, formState: { errors } } = useForm({
@@ -65,7 +51,8 @@ const AddNewJob = () => {
   // Form Submission
   const onSubmit = async (data) => {
     try {
-      await axios.post(`http://localhost:3000/user/add-new-job/${userId}`, data);
+      // await axios.post(`http://localhost:3000/user/add-new-job/${userId}`, data);
+      console.log(data);
     } catch (error) {
       const errorMsg = error.response?.data?.message || 'Something went wrong. Please try again.';
     }
@@ -177,7 +164,7 @@ const AddNewJob = () => {
             <span> Timeline & Status</span>
           </h1>
           
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20'>
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-20'>
             {/* Applied Date */}
             <div className='mb-4'>
               <label htmlFor="appliedDate" className='block text-xl text-gray-800'>Applied Date</label>
