@@ -26,19 +26,25 @@ const AddNewJob = () => {
     deadline: yup
       .date()
       .required('Application deadline is required'),
+    
+    // ENUMs
+    exp_level: yup
+      .string()
+      .oneOf(['Junior', 'Mid-level', 'Senior', 'Expert', 'Unknown']),
+    job_type: yup
+      .string()
+      .oneOf(['Full-time', 'Part-time', 'Internship', 'Contractual', 'Unknown']),
+    work_mode: yup
+      .string()
+      .oneOf(['Onsite', 'Remote', 'Hybrid', 'Unknown']),
+    status: yup
+      .string()
+      .oneOf(['Applied', 'Waiting', 'Interviewed', 'Hired', 'Rejected', 'Quit']),
 
     // Optional fields
     location: yup.string(),
     job_description: yup.string(),
     required_skills: yup.string(),
-    exp_level: yup.string()
-      .oneOf(['Junior', 'Mid-level', 'Senior', 'Expert', 'Unknown']),
-    job_type: yup.string()
-      .oneOf(['Full-time', 'Part-time', 'Internship', 'Contractual', 'Unknown']),
-    work_mode: yup.string()
-      .oneOf(['Onsite', 'Remote', 'Hybrid', 'Unknown']),
-    status: yup.string()
-      .oneOf(['Applied', 'Waiting', 'Interviewed', 'Hired', 'Rejected', 'Quit']),
     favorite: yup.boolean(),
     more_info: yup.string(),
     postLink: yup.string().url("Must be a valid URL").nullable()
@@ -108,50 +114,48 @@ const AddNewJob = () => {
             {/* Job type */}
             <div className='mb-4'>
               <label htmlFor="jobType" className='block text-xl text-gray-800'>Job Type</label>
-              <input id='jobType' type="text" list='jobTypeList' placeholder='Select job type'
+              <select {...register("status")}
               className='px-3 py-2 border border-gray-400 rounded w-full
               focus:bg-white focus:outline-none focus:border-white
-              transform transition-all duration-500 ease-in-out'
-              { ...register('jobType') } />
-              <datalist id='jobTypeList'>
-                <option value="Full-time"></option>
-                <option value="Part-time"></option>
-                <option value="Internship"></option>
-                <option value="Contractual"></option>
-                <option value="Unknown"></option>
-              </datalist>
+              transform transition-all duration-500 ease-in-out'>
+                <option value="" disabled selected hidden>Select work mode</option>
+                <option value="Applied">Full-time</option>
+                <option value="Waiting">Part-time</option>
+                <option value="Interviewed">Internship</option>
+                <option value="Quit">Contractual</option>
+                <option value="Quit">Unknown</option>
+              </select>
               { errors.jobType && <p className='text-sm text-red-600'>{ errors.jobType.message }</p> }
             </div>
             {/* Work Mode */}
             <div className='mb-4'>
-              <label htmlFor="workMode" className='block text-xl text-gray-800'>Work Mode</label>
-              <input id='workMode' type="text" list='workModeList' placeholder='Select work mode'
+              <label className='block text-xl text-gray-800'>Work Mode</label>
+              <select {...register("status")}
               className='px-3 py-2 border border-gray-400 rounded w-full
               focus:bg-white focus:outline-none focus:border-white
-              transform transition-all duration-500 ease-in-out'
-              { ...register('workMode') } />
-              <datalist id='workModeList'>
-                <option value="Onsite"></option>
-                <option value="Remote"></option>
-                <option value="Hybrid"></option>
-                <option value="Unknown"></option>
-              </datalist>
+              transform transition-all duration-500 ease-in-out'>
+                <option value="" disabled selected hidden>Select work mode</option>
+                <option value="Applied">Onsite</option>
+                <option value="Waiting">Remote</option>
+                <option value="Interviewed">Hybrid</option>
+                <option value="Quit">Unknown</option>
+              </select>
               { errors.workMode && <p className='text-sm text-red-600'>{ errors.workMode.message }</p> }
             </div>
             {/* Experiance Level */}
             <div className='mb-4'>
-              <label htmlFor="status" className='block text-xl text-gray-800'>Experiance Level</label>
-              <input id='status' type="text" list='statusList' placeholder='Select experiance level'
+              <label className='block text-xl text-gray-800'>Experiance Level</label>
+              <select {...register("status")}
               className='px-3 py-2 border border-gray-400 rounded w-full
               focus:bg-white focus:outline-none focus:border-white
-              transform transition-all duration-500 ease-in-out'
-              { ...register('status') } />
-              <datalist id='statusList'>
-                <option value="Onsite"></option>
-                <option value="Remote"></option>
-                <option value="Hybrid"></option>
-                <option value="Unknown"></option>
-              </datalist>
+              transform transition-all duration-500 ease-in-out'>
+                <option value="" disabled selected hidden>Select experiance level</option>
+                <option value="Applied">Junior</option>
+                <option value="Waiting">Mid-level</option>
+                <option value="Interviewed">Senior</option>
+                <option value="Hired">Expert</option>
+                <option value="Quit">Unknown</option>
+              </select>
               { errors.status && <p className='text-sm text-red-600'>{ errors.status.message }</p> }
             </div>
           </div>
@@ -188,19 +192,18 @@ const AddNewJob = () => {
             {/* Status */}
             <div className='mb-4'>
               <label htmlFor="status" className='block text-xl text-gray-800'>Status</label>
-              <input id='status' type="text" list='statusList' placeholder='Select the current job status'
+              <select {...register("status")}
               className='px-3 py-2 border border-gray-400 rounded w-full
               focus:bg-white focus:outline-none focus:border-white
-              transform transition-all duration-500 ease-in-out'
-              { ...register('status') } />
-              <datalist id='statusList'>
-                <option value="Applied"></option>
-                <option value="Waiting"></option>
-                <option value="Interviewed"></option>
-                <option value="Hired"></option>
-                <option value="Rejected"></option>
-                <option value="Quit"></option>
-              </datalist>
+              transform transition-all duration-500 ease-in-out'>
+                <option value="" disabled selected hidden>Select the current job status</option>
+                <option value="Applied">Applied</option>
+                <option value="Waiting">Waiting</option>
+                <option value="Interviewed">Interviewed</option>
+                <option value="Hired">Hired</option>
+                <option value="Rejected">Rejected</option>
+                <option value="Quit">Quit</option>
+              </select>
               { errors.status && <p className='text-sm text-red-600'>{ errors.status.message }</p> }
             </div>
           </div>
