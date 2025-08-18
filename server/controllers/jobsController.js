@@ -1,4 +1,5 @@
 import db from "../database/db.js";
+import { v4 as uuidv4 } from "uuid";
 
 export const getAllJobs = (req, res) => {
     const { id } = req.params;
@@ -43,5 +44,45 @@ export const getJobDetails = (req, res) => {
 }
 
 export const addNewJob = (req, res) => {
-    
+    const {
+        user_id,
+        company_name,
+        location,
+        job_title,
+        job_description,
+        required_skills,
+        exp_level,
+        job_type,
+        work_mode,
+        applied_date,
+        deadline,
+        status,
+        favorite,
+        more_info
+    } = req.body;
+
+    const jid = uuidv4();
+
+    const insertQuery = `INSERT INTO jobs (
+    jid, user_id, company_name, location, job_title, job_description,
+    required_skills, exp_level, job_type, work_mode, applied_date, deadline,
+    status, favorite, more_info
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+
+    db.query(
+        insertQuery,
+        [
+            jid, user_id, company_name, location, job_title, job_description,
+            required_skills, exp_level, job_type, work_mode, applied_date, deadline,
+            status, favorite, more_info
+        ],
+        (err) => {
+            if (err) {
+                console.error("DB error", err);
+                return res.status(500).json({ message: "Database error" });
+            }
+
+            return res.status(201).json({ message: 'Job added successfully', jid });
+        }
+    )
 }
