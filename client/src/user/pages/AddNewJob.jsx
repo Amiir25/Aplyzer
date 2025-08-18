@@ -238,9 +238,9 @@ const AddNewJob = () => {
         </section>
 
         {/* Favorite */}
-        <div className='mb-4 text-center'>
+        <div className='mb-4 flex items-center justify-center'>
           <input type="checkbox" id='favorite'
-          className='px-3 py-2 border border-gray-400 rounded mx-2'
+          className='h-5 w-5 mx-2'
           { ...register('favorite') } />
           <label htmlFor="favorite" className='text-xl text-gray-800'>Mark as Favorite</label>
           <FontAwesomeIcon icon={ faHeart } className='mx-2 text-red-500' />
@@ -248,15 +248,17 @@ const AddNewJob = () => {
         </div>
         
         {/* Submit & Cancel Buttons */}
-        <div className='flex items-center gap-4 justify-end'>
+        <div className='flex items-center justify-end gap-6 mt-20'>
           {/* Submit */}
           <input type="submit" value='Add'
-          className='bg-gradient-main text-white px-4 py-1 rounded cursor-pointer
-          hover:scale-102 hover:opacity-90 transform transition-all duration-200 ease-in-out' />
+          className='bg-gradient-to-r from-indigo-500 to-purple-800 text-white text-xl font-medium
+          px-12 py-3 rounded cursor-pointer hover:from-indigo-700 hover:to-purple-800
+          transform transition-all duration-300 ' />
 
           {/* Cancel */}
-          <button className='text-white bg-red-700 px-4 py-1 rounded cursor-pointer
-          hover:scale-102 hover:opacity-85 transform transition-all duration-200 ease-in-out'>
+          <button className='bg-gradient-to-r from-rose-500 to-red-700 text-white text-xl font-medium
+          px-10 py-3 rounded cursor-pointer hover:from-rose-700 hover:to-red-700
+          transform transition-all duration-200 ease-in-out'>
             Cancel
           </button>
         </div>
