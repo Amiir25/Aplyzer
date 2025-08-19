@@ -15,16 +15,16 @@ const AddNewJob = () => {
 
   // Form validation
   const schema = yup.object().shape({
-    company: yup
+    company_name: yup
       .string()
-      .required('Company name is required'),
+      .required('Company name name is required'),
     job_title: yup
       .string()
       .required('Job title is required'),
     applied_date: yup
       .date()
       .transform((value, originalValue) => {
-        return (originalValue === "" ? null : value) // Treat empty string as 'null
+        return (originalValue === "" ? null : value) // Treat empty string as 'null'
       })
       .required('Applied date is required'),
     deadline: yup
@@ -58,8 +58,8 @@ const AddNewJob = () => {
 
     // Optional fields
     location: yup.string(),
-    job_desc: yup.string(),
-    req_skills: yup.string(),
+    job_description: yup.string(),
+    required_skills: yup.string(),
     favorite: yup.boolean(),
     more_info: yup.string(),
     post_link: yup.string().url("Must be a valid URL").nullable()
@@ -74,8 +74,8 @@ const AddNewJob = () => {
     try {
       data.applied_date = dayjs(data.applied_date).format('DD-MM-YYYY');
       data.deadline = dayjs(data.deadline).format('DD-MM-YYYY');
-      // await axios.post(`http://localhost:3000/user/add-new-job/${userId}`, data);
-      console.log('Input data:', data);
+      await axios.post(`http://localhost:3000/user/add-new-job/${userId}`, data);
+      // console.log('Input data:', data);
     } catch (error) {
       const errorMsg = error.response?.data?.message || 'Something went wrong. Please try again.';
     }
@@ -108,15 +108,15 @@ const AddNewJob = () => {
               { ...register('job_title') } />
               { errors.job_title && <p className='text-sm text-red-600'>{ errors.job_title.message }</p> }
             </div>
-            {/* Company */}
+            {/* Company_name */}
             <div className='mb-4'>
-              <label htmlFor="company" className='block text-xl text-gray-800'>Company</label>
-              <input id='company' type="text" placeholder='e.g. Google'
+              <label htmlFor="company_name" className='block text-xl text-gray-800'>Company_name</label>
+              <input id='company_name' type="text" placeholder='e.g. Google'
               className='px-3 py-2 border border-gray-400 rounded w-full
               focus:bg-white focus:outline-none focus:border-white
               transform transition-all duration-500 ease-in-out'
-              { ...register('company') } />
-              { errors.company && <p className='text-sm text-red-600'>{ errors.company.message }</p> }
+              { ...register('company_name') } />
+              { errors.company_name && <p className='text-sm text-red-600'>{ errors.company_name.message }</p> }
             </div>
             {/* Location */}
             <div className='mb-4'>
@@ -236,23 +236,23 @@ const AddNewJob = () => {
           <div className='grid grid-cols-1 md:grid-cols-2 gap-x-20'>
             {/* Job Description */}
             <div className='mb-4'>
-              <label htmlFor="job_desc" className='block text-xl text-gray-800'>Job Description</label>
-              <textarea id="job_desc" rows="6" placeholder="Paste the full job description here..."
+              <label htmlFor="job_description" className='block text-xl text-gray-800'>Job Description</label>
+              <textarea id="job_description" rows="6" placeholder="Paste the full job description here..."
               className='px-3 py-2 border border-gray-400 rounded w-full
               focus:bg-white focus:outline-none focus:border-white
               transform transition-all duration-500 ease-in-out'
-              { ...register('job_desc') }></textarea>
-              { errors.job_desc && <p className='text-sm text-red-600'>{ errors.job_desc.message }</p> }
+              { ...register('job_description') }></textarea>
+              { errors.job_description && <p className='text-sm text-red-600'>{ errors.job_description.message }</p> }
             </div>
             {/* Required Skills */}
             <div className='mb-4'>
-              <label htmlFor="req_skills" className='block text-xl text-gray-800'>Required Skills</label>
-              <textarea id="req_skills" rows="6" placeholder="List skills, one per line or comma-separated"
+              <label htmlFor="required_skills" className='block text-xl text-gray-800'>Required Skills</label>
+              <textarea id="required_skills" rows="6" placeholder="List skills, one per line or comma-separated"
               className='px-3 py-2 border border-gray-400 rounded w-full
               focus:bg-white focus:outline-none focus:border-white
               transform transition-all duration-500 ease-in-out'
-              { ...register('req_skills') }></textarea>
-              { errors.req_skills && <p className='text-sm text-red-600'>{ errors.req_skills.message }</p> }
+              { ...register('required_skills') }></textarea>
+              { errors.required_skills && <p className='text-sm text-red-600'>{ errors.required_skills.message }</p> }
             </div>
             {/* More Information / Notes */}
             <div className='mb-4'>
