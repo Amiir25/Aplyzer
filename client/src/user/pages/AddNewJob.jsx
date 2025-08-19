@@ -72,7 +72,7 @@ const AddNewJob = () => {
   const onSubmit = async (data) => {
     try {
       // await axios.post(`http://localhost:3000/user/add-new-job/${userId}`, data);
-      console.log(data);
+      console.log('Input data:', data);
     } catch (error) {
       const errorMsg = error.response?.data?.message || 'Something went wrong. Please try again.';
     }
@@ -133,11 +133,11 @@ const AddNewJob = () => {
               focus:bg-white focus:outline-none focus:border-white
               transform transition-all duration-500 ease-in-out'>
                 <option value="" disabled hidden className='text-gray-300'>Select work mode</option>
-                <option value="Applied">Full-time</option>
-                <option value="Waiting">Part-time</option>
-                <option value="Interviewed">Internship</option>
-                <option value="Quit">Contractual</option>
-                <option value="Quit">Unknown</option>
+                <option value="Full-time">Full-time</option>
+                <option value="Part-time">Part-time</option>
+                <option value="Internship">Internship</option>
+                <option value="Contractual">Contractual</option>
+                <option value="Unknown">Unknown</option>
               </select>
               { errors.job_type && <p className='text-sm text-red-600'>{ errors.job_type.message }</p> }
             </div>
@@ -149,10 +149,10 @@ const AddNewJob = () => {
               focus:bg-white focus:outline-none focus:border-white
               transform transition-all duration-500 ease-in-out'>
                 <option value="" disabled hidden>Select work mode</option>
-                <option value="Applied">Onsite</option>
-                <option value="Waiting">Remote</option>
-                <option value="Interviewed">Hybrid</option>
-                <option value="Quit">Unknown</option>
+                <option value="Onsite">Onsite</option>
+                <option value="Remote">Remote</option>
+                <option value="Hybrid">Hybrid</option>
+                <option value="Unknown">Unknown</option>
               </select>
               { errors.work_mode && <p className='text-sm text-red-600'>{ errors.work_mode.message }</p> }
             </div>
@@ -164,11 +164,11 @@ const AddNewJob = () => {
               focus:bg-white focus:outline-none focus:border-white
               transform transition-all duration-500 ease-in-out'>
                 <option value="" disabled hidden>Select experiance level</option>
-                <option value="Applied">Junior</option>
-                <option value="Waiting">Mid-level</option>
-                <option value="Interviewed">Senior</option>
-                <option value="Hired">Expert</option>
-                <option value="Quit">Unknown</option>
+                <option value="Junior">Junior</option>
+                <option value="Mid-level">Mid-level</option>
+                <option value="Senior">Senior</option>
+                <option value="Expert">Expert</option>
+                <option value="Unknown">Unknown</option>
               </select>
               { errors.exp_level && <p className='text-sm text-red-600'>{ errors.exp_level.message }</p> }
             </div>
@@ -205,7 +205,7 @@ const AddNewJob = () => {
             </div>
             {/* Status */}
             <div className='mb-4'>
-              <label  className='block text-xl text-gray-800'>Status</label>
+              <label className='block text-xl text-gray-800'>Status</label>
               <select {...register("status")} defaultValue=''
               className='px-3 py-2 border border-gray-400 rounded w-full
               focus:bg-white focus:outline-none focus:border-white
