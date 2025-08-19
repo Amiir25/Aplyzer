@@ -8,6 +8,7 @@ import { faAlignLeft, faCalendarCheck, faSuitcase, faSuitcaseMedical, faSuitcase
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import dayjs from 'dayjs';
 
 const AddNewJob = () => {
   const { userId } = useParams();
@@ -71,6 +72,8 @@ const AddNewJob = () => {
   // Form Submission
   const onSubmit = async (data) => {
     try {
+      data.applied_date = dayjs(data.applied_date).format('DD-MM-YYYY');
+      data.deadline = dayjs(data.deadline).format('DD-MM-YYYY');
       // await axios.post(`http://localhost:3000/user/add-new-job/${userId}`, data);
       console.log('Input data:', data);
     } catch (error) {
