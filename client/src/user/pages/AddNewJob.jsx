@@ -22,24 +22,38 @@ const AddNewJob = () => {
       .required('Job title is required'),
     applied_date: yup
       .date()
+      .transform((value, originalValue) => {
+        return (originalValue === "" ? null : value) // Treat empty string as 'null
+      })
       .required('Applied date is required'),
     deadline: yup
       .date()
+      .transform((value, originalValue) => {
+        return (originalValue === "" ? null : value)
+      })
       .required('Application deadline is required'),
     
     // ENUMs
     job_type: yup
       .string()
-      .oneOf(['Full-time', 'Part-time', 'Internship', 'Contractual', 'Unknown']),
+      .oneOf(['Full-time', 'Part-time', 'Internship', 'Contractual', 'Unknown'],
+        'Select a valid job type'
+      ),
     work_mode: yup
       .string()
-      .oneOf(['Onsite', 'Remote', 'Hybrid', 'Unknown']),
+      .oneOf(['Onsite', 'Remote', 'Hybrid', 'Unknown'],
+        'Select a valid work mode'
+      ),
     exp_level: yup
       .string()
-      .oneOf(['Junior', 'Mid-level', 'Senior', 'Expert', 'Unknown']),
+      .oneOf(['Junior', 'Mid-level', 'Senior', 'Expert', 'Unknown'],
+        'Select a valid experiance level'
+      ),
     status: yup
       .string()
-      .oneOf(['Applied', 'Waiting', 'Interviewed', 'Hired', 'Rejected', 'Quit']),
+      .oneOf(['Applied', 'Waiting', 'Interviewed', 'Hired', 'Rejected', 'Quit'],
+        'Select a valid job status'
+      ),
 
     // Optional fields
     location: yup.string(),
@@ -50,7 +64,7 @@ const AddNewJob = () => {
     post_link: yup.string().url("Must be a valid URL").nullable()
   });
 
-  const { register, handleSubmit, formState: { errors } } = useForm({
+  const { register, handleSubmit, watch, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
   });
 
@@ -114,11 +128,11 @@ const AddNewJob = () => {
             {/* Job type */}
             <div className='mb-4'>
               <label className='block text-xl text-gray-800'>Job Type</label>
-              <select {...register("status")}
+              <select {...register("job_type")} defaultValue=''
               className='px-3 py-2 border border-gray-400 rounded w-full
               focus:bg-white focus:outline-none focus:border-white
               transform transition-all duration-500 ease-in-out'>
-                <option value="" disabled selected hidden>Select work mode</option>
+                <option value="" disabled hidden className='text-gray-300'>Select work mode</option>
                 <option value="Applied">Full-time</option>
                 <option value="Waiting">Part-time</option>
                 <option value="Interviewed">Internship</option>
@@ -130,11 +144,11 @@ const AddNewJob = () => {
             {/* Work Mode */}
             <div className='mb-4'>
               <label className='block text-xl text-gray-800'>Work Mode</label>
-              <select {...register("status")}
+              <select {...register("work_mode")} defaultValue=''
               className='px-3 py-2 border border-gray-400 rounded w-full
               focus:bg-white focus:outline-none focus:border-white
               transform transition-all duration-500 ease-in-out'>
-                <option value="" disabled selected hidden>Select work mode</option>
+                <option value="" disabled hidden>Select work mode</option>
                 <option value="Applied">Onsite</option>
                 <option value="Waiting">Remote</option>
                 <option value="Interviewed">Hybrid</option>
@@ -145,11 +159,11 @@ const AddNewJob = () => {
             {/* Experiance Level */}
             <div className='mb-4'>
               <label className='block text-xl text-gray-800'>Experiance Level</label>
-              <select {...register("status")}
+              <select {...register("exp_level")} defaultValue=''
               className='px-3 py-2 border border-gray-400 rounded w-full
               focus:bg-white focus:outline-none focus:border-white
               transform transition-all duration-500 ease-in-out'>
-                <option value="" disabled selected hidden>Select experiance level</option>
+                <option value="" disabled hidden>Select experiance level</option>
                 <option value="Applied">Junior</option>
                 <option value="Waiting">Mid-level</option>
                 <option value="Interviewed">Senior</option>
@@ -191,12 +205,12 @@ const AddNewJob = () => {
             </div>
             {/* Status */}
             <div className='mb-4'>
-              <label htmlFor="status" className='block text-xl text-gray-800'>Status</label>
-              <select {...register("status")}
+              <label  className='block text-xl text-gray-800'>Status</label>
+              <select {...register("status")} defaultValue=''
               className='px-3 py-2 border border-gray-400 rounded w-full
               focus:bg-white focus:outline-none focus:border-white
               transform transition-all duration-500 ease-in-out'>
-                <option value="" disabled selected hidden>Select the current job status</option>
+                <option value="" disabled hidden>Select the current job status</option>
                 <option value="Applied">Applied</option>
                 <option value="Waiting">Waiting</option>
                 <option value="Interviewed">Interviewed</option>
