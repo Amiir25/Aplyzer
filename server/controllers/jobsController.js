@@ -44,8 +44,9 @@ export const getJobDetails = (req, res) => {
 }
 
 export const addNewJob = (req, res) => {
+    const { id } = req.params; // User Id
+    const jid = uuidv4(); // Job Id
     const {
-        user_id,
         company_name,
         location,
         job_title,
@@ -58,23 +59,22 @@ export const addNewJob = (req, res) => {
         deadline,
         status,
         favorite,
-        more_info
+        more_info,
+        post_link,
     } = req.body;
-
-    const jid = uuidv4();
 
     const insertQuery = `INSERT INTO jobs (
     jid, user_id, company_name, location, job_title, job_description,
     required_skills, exp_level, job_type, work_mode, applied_date, deadline,
-    status, favorite, more_info
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+    status, favorite, more_info, post_link
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
     db.query(
         insertQuery,
         [
-            jid, user_id, company_name, location, job_title, job_description,
+            jid, id, company_name, location, job_title, job_description,
             required_skills, exp_level, job_type, work_mode, applied_date, deadline,
-            status, favorite, more_info
+            status, favorite, more_info, post_link
         ],
         (err) => {
             if (err) {
