@@ -117,7 +117,7 @@ const JobDetails = () => {
             <p>{ job.more_info }</p>
           </div>
 
-          {/* Button */}
+          {/* Original Job Posting Button */}
           <button className='w-full flex justify-center hover:scale-105 transform transition-all duration-200 ease-in-out'>
             <a href={ job.post_link } target='_blank'
             className='text-xl text-white bg-gradient-main p-4 rounded-lg'>
