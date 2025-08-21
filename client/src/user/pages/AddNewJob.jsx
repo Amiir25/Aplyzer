@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import UserNavbar from '../components/UserNavbar';
 import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
@@ -7,11 +7,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAlignLeft, faCalendarCheck, faSuitcase, faSuitcaseMedical, faSuitcaseRolling } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import dayjs from 'dayjs';
 
 const AddNewJob = () => {
+
   const { userId } = useParams();
+  const navigate = useNavigate();
+
+  // Form message
+  const [formMsg, setFormMsg] = useState('');
+  const [showFormMsg, setShowFormMsg] = useState(false);
 
   // Form validation
   const schema = yup.object().shape({
@@ -75,9 +81,21 @@ const AddNewJob = () => {
       data.applied_date = dayjs(data.applied_date).format('YYYY-MM-DD');
       data.deadline = dayjs(data.deadline).format('YYYY-MM-DD');
       await axios.post(`http://localhost:3000/user/add-new-job/${userId}`, data);
-      // console.log('Input data:', data);
+
+      // Show success message for 3 seconds and navogate
+      setShowFormMsg(true);
+      setTimeout(() => {
+        setShowFormMsg(false);
+      }, 3000)
+      !showFormMsg && navigate(`/user/all-jobs/${userId}`);
+
     } catch (error) {
       const errorMsg = error.response?.data?.message || 'Something went wrong. Please try again.';
+
+      // Show error message for 3 seconds
+      setFormMsg(errorMsg);
+      setShowFormMsg(true);
+      setTimeout(() => {setShowFormMsg(false)}, 3000);
     }
   }
 
@@ -304,6 +322,13 @@ const AddNewJob = () => {
           </button> */}
         </div>
       </form>
+
+      {/* Form message */}
+      <div className={`${ showFormMsg ? 'fixed' : 'hidden' } top-10 left-10 right-10`}>
+        <p className={`${ formMsg ? 'bg-red-500' : 'bg-green-500' } text-white px-4 py-2`}>
+          { formMsg || 'Job Added Successfully' }
+        </p>
+      </div>
 
     </div>
     </>
