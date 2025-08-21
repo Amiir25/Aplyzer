@@ -93,7 +93,7 @@ const AllJobs = () => {
                                             {job.location}
                                         </p>
                                     </div>
-                                    <p className='text-xs bg-gray-200 px-2 py-1 text-fuchsia-800 rounded-full'>
+                                    <p className='min-w-fit text-xs bg-gray-200 px-2 py-1 text-fuchsia-800 rounded-full'>
                                         <FontAwesomeIcon icon={faCircleDot} className='me-1' />
                                         {job.job_type} / {job.work_mode}
                                     </p>
