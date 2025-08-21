@@ -56,9 +56,10 @@ const AllJobs = () => {
         <>
             <UserNavbar />
 
-            <div className='px-6 md:px-12 lg:px-24 xl:px-32 my-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
-                {
-                    jobs.map((job, i) => (
+            <div className='px-6 md:px-12 lg:px-24 xl:px-32'>
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-20'>
+                    {
+                        jobs.map((job, i) => (
                             <div key={ i }
                                 className='relative w-80 mt-10 pt-10 pb-2 px-4 shadow-lg rounded border border-gray-200'>
 
@@ -133,7 +134,8 @@ const AllJobs = () => {
                                 </div>
                             </div>
                         ))
-                }
+                    }
+                </div>
 
                 {/* Add new job Button */}
                 <Link to={`/user/add-new-job/${userId}`}
