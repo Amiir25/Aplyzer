@@ -66,7 +66,7 @@ const JobDetails = () => {
           {/* --- */}
           <div className='flex flex-col md:flex-row items-start justify-between mt-6 pb-6 border-b border-gray-300'>
             {/* Type, mode, level & skills */}
-            <div>
+            <div className='flex-1'>
               {/* Job Type */}
               <p className='text-xl text-gray-800 mb-1'>
                 Job Type:
@@ -84,13 +84,15 @@ const JobDetails = () => {
               </p>
               {/* Required Skills */}
               <p className='text-xl text-gray-800 mb-1'>
-                Required Skills:
-                <span className='font-semibold text-black'> { job.required_skills }</span>
+                Required Skills: &nbsp;
+                <span className='font-semibold text-black'> 
+                  { job.required_skills ?  job.required_skills.split(', ') : <span className='text-gray-400'>Not provided</span> }
+                </span>
               </p>
             </div>
 
             {/* Dates */}
-            <div>
+            <div className='flex-1 text-right'>
               {/* Applied Date */}
               <p className='text-xl text-gray-800 mb-1'>
                 Applied Date:
