@@ -72,8 +72,8 @@ const AddNewJob = () => {
   // Form Submission
   const onSubmit = async (data) => {
     try {
-      data.applied_date = dayjs(data.applied_date).format('DD-MM-YYYY');
-      data.deadline = dayjs(data.deadline).format('DD-MM-YYYY');
+      data.applied_date = dayjs(data.applied_date).format('YYYY-MM-DD');
+      data.deadline = dayjs(data.deadline).format('YYYY-MM-DD');
       await axios.post(`http://localhost:3000/user/add-new-job/${userId}`, data);
       // console.log('Input data:', data);
     } catch (error) {
@@ -135,7 +135,7 @@ const AddNewJob = () => {
               className='px-3 py-2 border border-gray-400 rounded w-full
               focus:bg-white focus:outline-none focus:border-white
               transform transition-all duration-500 ease-in-out'>
-                <option value="" disabled hidden className='text-gray-300'>Select work mode</option>
+                <option value="" disabled hidden className='text-gray-300'>Select job type</option>
                 <option value="Full-time">Full-time</option>
                 <option value="Part-time">Part-time</option>
                 <option value="Internship">Internship</option>
