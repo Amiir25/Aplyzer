@@ -8,6 +8,7 @@ import Footer from './components/Footer'
 import Dashboard from './user/pages/Dashboard'
 import AllJobs from './user/pages/AllJobs'
 import JobDetails from './user/pages/JobDetails'
+import AddNewJob from './user/pages/AddNewJob'
 
 const App = () => {
 
@@ -30,6 +31,7 @@ const App = () => {
         <Route path='/user/dashboard/:userId' element={ <Dashboard/> } />
         <Route path='/user/all-jobs/:userId' element={ <AllJobs/> } />
         <Route path='/user/job-details/:jobId' element={ <JobDetails/> } />
+        <Route path='/user/add-new-job/:userId' element={ <AddNewJob/> } />
         
       </Routes>
       
