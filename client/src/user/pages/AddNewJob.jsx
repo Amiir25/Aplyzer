@@ -86,8 +86,8 @@ const AddNewJob = () => {
       setShowFormMsg(true);
       setTimeout(() => {
         setShowFormMsg(false);
+        !showFormMsg && navigate(`/user/all-jobs/${userId}`);
       }, 3000)
-      !showFormMsg && navigate(`/user/all-jobs/${userId}`);
 
     } catch (error) {
       const errorMsg = error.response?.data?.message || 'Something went wrong. Please try again.';
