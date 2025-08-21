@@ -108,13 +108,13 @@ const JobDetails = () => {
           {/* Job Description */}
           <div className='my-4'>
             <h1 className='text-xl text-gray-800 font-bold mb-1'>Job Description</h1>
-            <p>{ job.job_description }</p>
+            <p>{ job.job_description ? job.job_description : <span className='text-gray-400'>Not provided</span> }</p>
           </div>
 
           {/* More Info */}
           <div className='mb-10'>
             <h1 className='text-xl text-gray-800 font-bold mb-1'>More Info.</h1>
-            <p>{ job.more_info }</p>
+            <p>{ job.more_info ? job.more_info : <span className='text-gray-400'>Not provided</span> }</p>
           </div>
 
           {/* Original Job Posting Button */}
