@@ -8,6 +8,7 @@ import UserNavbar from '../components/UserNavbar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAlignLeft, faCalendarCheck, faSuitcase } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
+import dayjs from 'dayjs';
 
 const UpdateJob = () => {
 
@@ -18,20 +19,6 @@ const UpdateJob = () => {
     const [formMsg, setFormMsg] = useState('');
     const [showFormMsg, setShowFormMsg] = useState(false);
 
-    // Fetch Job
-    const [fetchJob, setFetchJob] = useState();
-
-    useEffect(() => {
-        const fetchJob = async () => {
-            try {
-                const response = await axios.get(`http://localhost:3000/user/job-details/${jobId}`);
-                console.log('response: ', response);
-            } catch (error) {
-                console.log(error);
-            }
-        }
-        fetchJob();
-    }, [jobId]);
 
     // Form validation
     const schema = yup.object().shape({
@@ -85,9 +72,29 @@ const UpdateJob = () => {
         post_link: yup.string().url("Must be a valid URL").nullable()
     });
 
-    const { register, handleSubmit, watch, formState: { errors } } = useForm({
+    const { register, handleSubmit, reset, formState: { errors } } = useForm({
         resolver: yupResolver(schema),
     });
+
+    // Fetch job details and pre-fill form
+    const [job, setJob] = useState();
+
+    useEffect(() => {
+        const fetchJob = async () => {
+            try {
+                const response = (await axios.get(`http://localhost:3000/user/job-details/${jobId}`));
+                const jobDetails = response.data.job;
+                reset({
+                    ...jobDetails,
+                    applied_date: dayjs(jobDetails.applied_date).format('YYYY-MM-DD'),
+                    deadline: dayjs(jobDetails.deadline).format('YYYY-MM-DD')
+                });
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        fetchJob();
+    }, [jobId]);
 
     // Form Submission
     const onSubmit = async (data) => {
