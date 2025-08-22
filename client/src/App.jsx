@@ -9,6 +9,7 @@ import Dashboard from './user/pages/Dashboard'
 import AllJobs from './user/pages/AllJobs'
 import JobDetails from './user/pages/JobDetails'
 import AddNewJob from './user/pages/AddNewJob'
+import UpdateJob from './user/pages/UpdateJob'
 
 const App = () => {
 
@@ -32,6 +33,7 @@ const App = () => {
         <Route path='/user/all-jobs/:userId' element={ <AllJobs/> } />
         <Route path='/user/job-details/:jobId' element={ <JobDetails/> } />
         <Route path='/user/add-new-job/:userId' element={ <AddNewJob/> } />
+        <Route path='/user/update-job/:jobId' element={ <UpdateJob/> } />
         
       </Routes>
       
