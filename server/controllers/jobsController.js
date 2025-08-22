@@ -88,5 +88,44 @@ export const addNewJob = (req, res) => {
 }
 
 export const updateJob = (req, res) => {
-    
+    const { id } = req.params; // Job Id
+    const {
+        company_name,
+        location,
+        job_title,
+        job_description,
+        required_skills,
+        exp_level,
+        job_type,
+        work_mode,
+        applied_date,
+        deadline,
+        status,
+        favorite,
+        more_info,
+        post_link,
+    } = req.body;
+
+    const updateQuery = `UPDATE jobs SET (
+    jid, company_name, location, job_title, job_description,
+    required_skills, exp_level, job_type, work_mode, applied_date, deadline,
+    status, favorite, more_info, post_link)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+
+    db.query(
+        updateQuery,
+        [
+            id, company_name, location, job_title, job_description,
+            required_skills, exp_level, job_type, work_mode, applied_date, deadline,
+            status, favorite, more_info, post_link
+        ],
+        (err) => {
+            if (err) {
+                console.error("DB error", err);
+                return res.status(500).json({ message: "Database error" });
+            }
+
+            return res.status(201).json({ message: 'Job updated successfully', id });
+        }
+    )
 }
