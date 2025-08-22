@@ -42,7 +42,7 @@ const JobDetails = () => {
           <div className='flex items-start justify-between pb-6 border-b border-gray-300'>
 
             {/* Title, company & location */}
-            <div>
+            <div className='flex-2'>
               <h1 className='text-5xl font-bold'>{ job.job_title }</h1>
               <h2 className='text-3xl text-gray-700 my-2'>
                 <FontAwesomeIcon icon={ faAt } /> { job.company_name }
@@ -53,7 +53,7 @@ const JobDetails = () => {
             </div>
 
             {/* Favorite & status */}
-            <div className='flex items-center gap-4 mt-2'>
+            <div className='flex-1 flex items-center justify-end gap-4 mt-2'>
               <FontAwesomeIcon icon={ favorite ? solidStar : regularStar }
               onClick={() => setFavorite(!favorite)}
               className={`${favorite && 'text-amber-500'} text-2xl`} />
