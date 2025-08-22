@@ -77,8 +77,6 @@ const UpdateJob = () => {
     });
 
     // Fetch job details and pre-fill form
-    const [job, setJob] = useState();
-
     useEffect(() => {
         const fetchJob = async () => {
             try {
@@ -94,20 +92,20 @@ const UpdateJob = () => {
             }
         }
         fetchJob();
-    }, [jobId]);
+    }, [jobId, reset]);
 
     // Form Submission
     const onSubmit = async (data) => {
         try {
             data.applied_date = dayjs(data.applied_date).format('YYYY-MM-DD');
             data.deadline = dayjs(data.deadline).format('YYYY-MM-DD');
-            await axios.post(`http://localhost:3000/user/add-new-job/${userId}`, data);
+            await axios.put(`http://localhost:3000/user/update-job/${jobId}`, data);
 
             // Show success message for 3 seconds and navogate
             setShowFormMsg(true);
             setTimeout(() => {
-            setShowFormMsg(false);
-            !showFormMsg && navigate(`/user/all-jobs/${userId}`);
+                setShowFormMsg(false);
+                navigate(`/user/all-jobs/${userId}`);
             }, 3000)
 
         } catch (error) {
@@ -329,25 +327,24 @@ const UpdateJob = () => {
         {/* Submit & Cancel Buttons */}
         <div className='flex items-center justify-end gap-6 mt-20'>
           {/* Submit */}
-          <input type="submit" value='Add'
+          <input type="submit" value='Update'
           className='w-40 bg-gradient-to-r from-indigo-500 to-purple-800 text-white text-xl font-medium
           px-12 py-3 rounded cursor-pointer hover:from-indigo-700 hover:to-purple-800
           transform transition-all duration-300 ' />
 
           {/* Cancel */}
-          <input type='reset' value='Cancel'
+          {/* <input type='reset' value='Cancel'
           className='w-40 bg-gradient-to-r from-rose-500 to-red-700 text-white text-xl font-medium
           px-12 py-3 rounded cursor-pointer hover:from-rose-700 hover:to-red-700
-          transform transition-all duration-200 ease-in-out'/>
-            {/* Cancel
-          </button> */}
+          transform transition-all duration-200 ease-in-out'/> */}
+
         </div>
       </form>
 
       {/* Form message */}
       <div className={`${ showFormMsg ? 'fixed' : 'hidden' } top-10 left-10 right-10 w-fit mx-auto
       transform transition-all duration-300`}>
-        <p className={`${ formMsg ? 'bg-red-500' : 'bg-green-500' } 
+        <p className={`${ formMsg ? 'bg-red-600' : 'bg-green-500' } 
         text-white text-2xl font-medium px-8 py-4 rounded-xl`}>
           { formMsg || 'Job Updated Successfully' }
         </p>
