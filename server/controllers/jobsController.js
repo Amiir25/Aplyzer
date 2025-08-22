@@ -86,3 +86,7 @@ export const addNewJob = (req, res) => {
         }
     )
 }
+
+export const updateJob = (req, res) => {
+    
+}
