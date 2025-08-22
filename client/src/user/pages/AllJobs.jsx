@@ -52,6 +52,11 @@ const AllJobs = () => {
         window.open(`/user/job-details/${jid}`, '_blank', 'noopener,noreferrer');
     }
 
+    // Update Job
+    const updateJob = (jid) => {
+        window.open(`/user/update-job/${jid}`, '_blank', 'noopener,noreferrer');
+    }
+
     return (
         <>
             <UserNavbar />
@@ -123,7 +128,9 @@ const AllJobs = () => {
                                     </button>
 
                                     {/* Update button */}
-                                    <button className='px-3 py-1 w-1/3 rounded border border-green-500 hover:text-white hover:bg-green-500'>
+                                    <button
+                                    onClick={() => updateJob(job.jid)}
+                                    className='px-3 py-1 w-1/3 rounded border border-green-500 hover:text-white hover:bg-green-500'>
                                         Update
                                     </button>
 
