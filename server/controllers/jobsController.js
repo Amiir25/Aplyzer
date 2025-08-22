@@ -106,18 +106,18 @@ export const updateJob = (req, res) => {
         post_link,
     } = req.body;
 
-    const updateQuery = `UPDATE jobs SET (
-    jid, company_name, location, job_title, job_description,
-    required_skills, exp_level, job_type, work_mode, applied_date, deadline,
-    status, favorite, more_info, post_link)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+    const updateQuery = `UPDATE jobs SET
+    company_name = ?, location = ?, job_title = ?, job_description = ?,
+    required_skills = ?, exp_level = ?, job_type = ?, work_mode = ?, applied_date = ?,
+    deadline = ?, status = ?, favorite = ?, more_info = ?, post_link = ?
+    WHERE jid = ?`;
 
     db.query(
         updateQuery,
         [
-            id, company_name, location, job_title, job_description,
+            company_name, location, job_title, job_description,
             required_skills, exp_level, job_type, work_mode, applied_date, deadline,
-            status, favorite, more_info, post_link
+            status, favorite, more_info, post_link, id
         ],
         (err) => {
             if (err) {
