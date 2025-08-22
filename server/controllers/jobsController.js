@@ -125,7 +125,7 @@ export const updateJob = (req, res) => {
                 return res.status(500).json({ message: "Database error" });
             }
 
-            return res.status(201).json({ message: 'Job updated successfully', id });
+            return res.status(200).json({ message: 'Job updated successfully', id });
         }
     )
 }
