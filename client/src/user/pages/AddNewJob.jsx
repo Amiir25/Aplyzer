@@ -324,8 +324,10 @@ const AddNewJob = () => {
       </form>
 
       {/* Form message */}
-      <div className={`${ showFormMsg ? 'fixed' : 'hidden' } top-10 left-10 right-10`}>
-        <p className={`${ formMsg ? 'bg-red-500' : 'bg-green-500' } text-white px-4 py-2`}>
+      <div className={`${ showFormMsg ? 'fixed' : 'hidden' } top-10 left-10 right-10 w-fit mx-auto
+      transform transition-all duration-300`}>
+        <p className={`${ formMsg ? 'bg-red-500' : 'bg-green-500' } 
+        text-white text-2xl font-medium px-8 py-4 rounded-xl`}>
           { formMsg || 'Job Added Successfully' }
         </p>
       </div>
