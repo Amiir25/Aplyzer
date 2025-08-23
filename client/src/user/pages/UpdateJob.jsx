@@ -15,6 +15,9 @@ const UpdateJob = () => {
     const { jobId } = useParams();
     const navigate = useNavigate();
 
+    // User Id
+    const [userId, setUserId] = useState('');
+
     // Form message
     const [formMsg, setFormMsg] = useState('');
     const [showFormMsg, setShowFormMsg] = useState(false);
@@ -82,6 +85,7 @@ const UpdateJob = () => {
             try {
                 const response = (await axios.get(`http://localhost:3000/user/job-details/${jobId}`));
                 const jobDetails = response.data.job;
+                setUserId(jobDetails.user_id);
                 reset({
                     ...jobDetails,
                     applied_date: dayjs(jobDetails.applied_date).format('YYYY-MM-DD'),
