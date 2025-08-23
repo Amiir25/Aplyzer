@@ -17,9 +17,6 @@ const App = () => {
 
   return (
     <div className=''>
-
-      {/* Navbar */}
-      { !location.pathname.includes('/user') && <Navbar/> }
       
       <Routes>
 
