@@ -16,8 +16,8 @@ const Navbar = () => {
         text-gray-800 md:text-lg font-medium">
 
             {/* Logo */}
-            <Link to={'/'} className="w-1/4 md:w-1/5">
-                <img src="/logo.PNG" alt="Logo Image" />
+            <Link to={'/'} className="w-1/4 md:w-1/4">
+                <img src="/logo.png" alt="Logo Image" />
             </Link>
 
             {/* Links */}
