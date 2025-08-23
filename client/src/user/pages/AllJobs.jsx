@@ -171,7 +171,8 @@ const AllJobs = () => {
 
                     {
                         selectedJob &&
-                        <DeleteJob 
+                        <DeleteJob
+                            jobId = { selectedJob.jid }
                             job_title={ selectedJob.job_title }
                             company_name={ selectedJob.company_name }
                             onClose = { handlePopupClose }
