@@ -1,6 +1,9 @@
 import logo from './logo.PNG';
 import logoFooter from './logo-footer.PNG';
 
+// Hero background
+import bgHero from './bg-hero.png';
+
 // Tool images
 import coverLetterImage from './tools/cover-letter.png';
 import matchResumeImage from './tools/match-resume.png';
@@ -23,6 +26,7 @@ import clock from './dashboard/clock-icon-3d.png';
 export const assets = {
     logo,
     logoFooter,
+    bgHero,
     coverLetterImage,
     matchResumeImage,
     resumeReviewImage,
