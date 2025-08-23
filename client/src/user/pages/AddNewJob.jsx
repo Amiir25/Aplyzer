@@ -4,7 +4,7 @@ import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAlignLeft, faCalendarCheck, faSuitcase, faSuitcaseMedical, faSuitcaseRolling } from '@fortawesome/free-solid-svg-icons';
+import { faAlignLeft, faCalendarCheck, faSuitcase } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
