@@ -27,7 +27,7 @@ const DeleteJob = ({ jobId, job_title, company_name, onClose, onDelete }) => {
     }
   return (
     <>
-    <div className='fixed top-0 bottom-0 left-0 right-0 bg-gray-700/60'>
+    <div className='fixed top-0 bottom-0 left-0 right-0 bg-gray-700/60 flex items-center justify-center'>
         <div className='w-fit bg-white flex flex-col items-center justify-center p-10 rounded-2xl'>
             <FontAwesomeIcon icon={ faTriangleExclamation } className='text-3xl text-red-600 mb-2' />
             <h1 className='text-4xl font-bold'>Are you sure?</h1>
