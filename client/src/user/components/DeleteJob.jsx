@@ -2,15 +2,27 @@ import { faTrash, faTriangleExclamation } from '@fortawesome/free-solid-svg-icon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios'
 import React from 'react'
+import { useState } from 'react'
 
 const DeleteJob = ({ jobId, job_title, company_name, onClose, onDelete }) => {
 
+    // Delete message
+    const [deleteMsg, setDeleteMsg] = useState('');
+    const [showDeleteMsg, setShowDeleteMsg] = useState(false);
+
     const handleDelete = async () => {
         try {
-            // await axios.delete(`http://localhost:3000/user/delete-job/${jobId}`);
-            onDelete
+            await axios.delete(`http://localhost:3000/user/delete-job/${jobId}`);
+            setShowDeleteMsg(true);
+            setTimeout(() => {
+                setShowDeleteMsg(false);
+                onDelete();
+            }, 2000);
         } catch (error) {
             const errorMsg = error.response?.data?.message || 'Something went wrong. Please try again.'
+            setDeleteMsg(errorMsg);
+            setShowDeleteMsg(true);
+            setTimeout(() => { setShowDeleteMsg(false) }, 3000);
         }
     }
   return (
@@ -40,6 +52,15 @@ const DeleteJob = ({ jobId, job_title, company_name, onClose, onDelete }) => {
                     <span> Delete</span>
                 </button>
             </div>
+        </div>
+
+        {/* Form message */}
+        <div className={`${ showDeleteMsg ? 'fixed' : 'hidden' } top-10 left-10 right-10 w-fit mx-auto
+        transform transition-all duration-300`}>
+            <p className={`${ deleteMsg ? 'bg-red-500' : 'bg-green-500' } 
+            text-white text-2xl font-medium px-8 py-4 rounded-xl`}>
+            { deleteMsg || 'Job Deleted Successfully' }
+            </p>
         </div>
     </div>
     </>
