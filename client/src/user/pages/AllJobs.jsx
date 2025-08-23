@@ -54,7 +54,7 @@ const AllJobs = () => {
 
     // Update Job
     const updateJob = (jid) => {
-        window.open(`/user/update-job/${jid}`, '_blank', 'noopener,noreferrer');
+        navigate(`/user/update-job/${jid}`);
     }
 
     return (
