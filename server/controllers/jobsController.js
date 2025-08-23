@@ -1,6 +1,7 @@
 import db from "../database/db.js";
 import { v4 as uuidv4 } from "uuid";
 
+// Fetch all jobs
 export const getAllJobs = (req, res) => {
     const { id } = req.params;
     try {
@@ -24,6 +25,7 @@ export const getAllJobs = (req, res) => {
 
 }
 
+// Fetch one job
 export const getJobDetails = (req, res) => {
     const { id } = req.params;
 
@@ -43,6 +45,7 @@ export const getJobDetails = (req, res) => {
     }
 }
 
+// Add new job
 export const addNewJob = (req, res) => {
     const { id } = req.params; // User Id
     const jid = uuidv4(); // Job Id
@@ -87,6 +90,7 @@ export const addNewJob = (req, res) => {
     )
 }
 
+// Update Job
 export const updateJob = (req, res) => {
     const { id } = req.params; // Job Id
     const {
@@ -128,4 +132,19 @@ export const updateJob = (req, res) => {
             return res.status(200).json({ message: 'Job updated successfully', id });
         }
     )
+}
+
+// Delete job
+export const deleteJob = (req, res) => {
+    const { id } = req.params; // Job Id
+    const deleteQuery = 'DELETE FROM jobs WHERE jid = ?';
+
+    db.query(deleteQuery, [id], (err) => {
+        if (err) {
+            console.error("DB error", err);
+            return res.status(500).json({ message: "Database error" });
+        }
+
+        return res.status(200).json({ message: 'Job deleted successfully' });
+    })
 }
