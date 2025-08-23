@@ -8,6 +8,7 @@ import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
 import UserNavbar from '../components/UserNavbar';
 import axios from 'axios';
 import dayjs from 'dayjs';
+import DeleteJob from '../components/DeleteJob';
 
 const AllJobs = () => {
 
@@ -56,6 +57,29 @@ const AllJobs = () => {
     const updateJob = (jid) => {
         navigate(`/user/update-job/${jid}`);
     }
+
+    // Handle job deletion
+    const [selectedJob, setSelectedJob] = useState(null);
+
+    const onDelete = (job) => {
+        setSelectedJob(job);
+    }
+
+    const handlePopupClose = () => {
+        setSelectedJob(null);
+    }
+
+    const handleDelete = () => {
+        setSelectedJob(null);
+        window.location.reload();
+    }
+
+    selectedJob &&
+    <DeleteJob 
+        job_title={ selectedJob.job_title }
+        company_name={ selectedJob.company_name }
+        onClose = { handlePopupClose }
+        onDelete = { handleDelete } />
 
     return (
         <>
@@ -135,12 +159,23 @@ const AllJobs = () => {
                                     </button>
 
                                     {/* Delete button */}
-                                    <button className='px-3 py-1 w-1/3 rounded border border-red-500 hover:text-white hover:bg-red-500'>
+                                    <button
+                                    onClick={ () => onDelete(job) }
+                                    className='px-3 py-1 w-1/3 rounded border border-red-500 hover:text-white hover:bg-red-500'>
                                         Delete
                                     </button>
                                 </div>
                             </div>
                         ))
+                    }
+
+                    {
+                        selectedJob &&
+                        <DeleteJob 
+                            job_title={ selectedJob.job_title }
+                            company_name={ selectedJob.company_name }
+                            onClose = { handlePopupClose }
+                            onDelete = { handleDelete } />
                     }
                 </div>
 
