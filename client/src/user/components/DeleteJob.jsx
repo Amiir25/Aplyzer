@@ -1,10 +1,18 @@
 import { faTrash, faTriangleExclamation } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import axios from 'axios'
 import React from 'react'
 
-const DeleteJob = ({ job_title, company_name, onClose, onDelete }) => {
+const DeleteJob = ({ jobId, job_title, company_name, onClose, onDelete }) => {
 
-
+    const handleDelete = async () => {
+        try {
+            // await axios.delete(`http://localhost:3000/user/delete-job/${jobId}`);
+            onDelete
+        } catch (error) {
+            const errorMsg = error.response?.data?.message || 'Something went wrong. Please try again.'
+        }
+    }
   return (
     <>
     <div className='fixed top-0 bottom-0 left-0 right-0 bg-gray-700/60'>
