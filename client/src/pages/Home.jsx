@@ -15,13 +15,10 @@ const Home = () => {
         <div>
             {/* Background image for Navbar and Hero sections */}
             <div style={{ backgroundImage: `url(${assets.bgHero})` }}
-            className='bg-cover bg-center bg-no-repeat'>
-                <div className='bg-gray-50/30 h-screen'>
-                    <Navbar/>
-                    <Hero/>
-                </div>
+            className='bg-cover bg-center bg-no-repeat h-screen'>
+                <Navbar/>
+                <Hero/>
             </div>
-            
             <SmarterTools/>
             <LookInside/>
             <Testimonials/>
