@@ -18,7 +18,7 @@ const Hero = () => {
           />
         </h1>
 
-        <p className='text-xl md:text-3xl font-light my-4 px-30'>
+        <p className='text-xl md:text-3xl my-4 px-30'>
           From first application to final offer —
           <span className='underline decoration-[#02a9eb] mx-2'>Aplyzer</span>
           keeps you organized and ahead with smart career tools.
