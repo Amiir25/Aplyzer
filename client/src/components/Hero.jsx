@@ -8,13 +8,13 @@ const Hero = () => {
         
         <h1 className='text-5xl md:text-7xl font-bold'>
           <Typewriter
-            words={['Track Jobs.', 'Optimize Resumes.', 'Get Hired.']}
+            words={['Apply Smarter.', 'Track Applications.', 'Stay Organized.', 'Perfect Your Resume.', 'Land Your Dream Job.']}
             loop={false}
             cursor
             cursorStyle="|"
             typeSpeed={50}
             deleteSpeed={50}
-            delaySpeed={5000}
+            delaySpeed={3000}
           />
         </h1>
 
