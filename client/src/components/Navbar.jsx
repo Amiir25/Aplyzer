@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 // import { assets } from "../assets/assets.js";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faBars, faChartBar, faCheckDouble, faCircleXmark, faEquals, faPen } from "@fortawesome/free-solid-svg-icons";
 
@@ -8,6 +8,7 @@ import { faAngleDown, faBars, faChartBar, faCheckDouble, faCircleXmark, faEquals
 
 const Navbar = () => {
 
+    const location = useLocation();
     const [smallScreen, setSmallScreen] = useState(false);
 
     return (
@@ -77,13 +78,18 @@ const Navbar = () => {
                 </div> {/* more tools */}
             </div> {/* links */}
 
-            {/* Sign Up */}
-            <Link
-            to='auth/signin'
-            className="hidden md:block border border-[#02A9EB] px-4 py-2 rounded
-            hover:text-white hover:bg-gradient-main ">
-                Sign In
-            </Link>
+            {/* Sign In button */}
+            {
+                // Show Sign In button only in the home page
+
+                !(location.pathname.includes('signin') || !location.pathname.includes('signup')) &&
+                <Link
+                to='auth/signin'
+                className="hidden md:block border border-[#02A9EB] px-4 py-2 rounded
+                hover:text-white hover:bg-gradient-main ">
+                    Sign In
+                </Link>
+            }
 
             {/* Small screen menu */}
             <div className="md:hidden">
