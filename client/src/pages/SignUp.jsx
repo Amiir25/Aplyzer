@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import Navbar from '../components/Navbar';
 
 const SignUp = () => {
     const navigate = useNavigate();
@@ -56,6 +57,7 @@ const SignUp = () => {
     
     return (
         <>
+        <Navbar/>
         <div className='flex items-center justify-center h-screen'>
             <div className='shadow-xl px-8 py-5 border border-[#02A9EB]/30 w-96'>
                 
