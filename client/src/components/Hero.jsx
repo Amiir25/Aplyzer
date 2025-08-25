@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react'
 import { Typewriter } from 'react-simple-typewriter';
 
@@ -28,11 +29,11 @@ const Hero = () => {
         <div className='mt-10 flex gap-12'>
           
           <button className='text-lg md:text-2xl font-medium px-4 py-2 md:px-6 md:py-4 rounded bg-gradient-main text-white hover:opacity-90 '>
-            Get Started Free
+            Start Tracking Jobs
           </button>
 
           <button className='text-lg md:text-2xl font-medium px-4 py-2 md:px-6 md:py-4 rounded border border-[#02A9EB] hover:text-gray-600 '>
-            See How It Works
+            Take a Tour
           </button>
 
         </div>
