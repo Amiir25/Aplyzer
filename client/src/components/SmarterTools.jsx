@@ -17,8 +17,8 @@ const SmarterTools = () => {
             {
                 tools.map((tool, i) => (
                     <div key={ i }
-                    className='text-left mx-auto flex md:flex-col gap-10 md:gap-6 p-4
-                    shadow-2xl rounded hover:shadow-xl'>
+                    className='text-left mx-auto flex md:flex-col gap-10 md:gap-6 p-4 rounded
+                     hover:shadow-black hover:shadow-xl transition-all duration-400 ease-in-out'>
                         
                         <img src={ tool.image } alt={ tool.title } className='flex-1 h-50 max-w-1/2 md:max-w-full md:h-1/2' />
                         
