@@ -6,7 +6,7 @@ const Hero = () => {
     <>
     <div className='max-h-screen flex flex-col items-center px-6 md:px-16 lg:px-24 xl:px-32 pt-40 md:pt-30 text-center'>
         
-        <h1 className='text-5xl md:text-7xl font-bold'>
+        <h1 className='text-5xl text-gray-800 md:text-7xl font-bold'>
           <Typewriter
             words={['Apply Smarter.', 'Track Applications.', 'Stay Organized.', 'Perfect Your Resume.', 'Land Your Dream Job.']}
             loop={false}
@@ -18,7 +18,7 @@ const Hero = () => {
           />
         </h1>
 
-        <p className='text-xl md:text-3xl my-4 px-30'>
+        <p className='text-xl md:text-3xl text-gray-800 my-4 px-30'>
           From first application to final offer —
           <span className='underline decoration-[#02a9eb] mx-2'>Aplyzer</span>
           keeps you organized and ahead with smart career tools.
