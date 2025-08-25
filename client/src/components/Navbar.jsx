@@ -82,7 +82,7 @@ const Navbar = () => {
             {
                 // Show Sign In button only in the home page
 
-                !(location.pathname.includes('signin') || !location.pathname.includes('signup')) &&
+                !(location.pathname.includes('signin') || location.pathname.includes('signup')) &&
                 <Link
                 to='auth/signin'
                 className="hidden md:block border border-[#02A9EB] px-4 py-2 rounded
