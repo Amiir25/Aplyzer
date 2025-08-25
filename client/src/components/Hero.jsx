@@ -1,3 +1,4 @@
+import { faArrowDownLong } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react'
 import { Typewriter } from 'react-simple-typewriter';
@@ -25,18 +26,15 @@ const Hero = () => {
           keeps you organized and ahead with smart career tools.
         </p>
 
-        {/* Hero buttons */}
-        <div className='mt-10 flex gap-12'>
-          
-          <button className='text-lg md:text-2xl font-medium px-4 py-2 md:px-6 md:py-4 rounded bg-gradient-main text-white hover:opacity-90 '>
-            Start Tracking Jobs
-          </button>
+        {/* Hero button */}
+        <button className='my-10 text-lg md:text-2xl font-medium px-4 py-2 md:px-6 md:py-4 rounded bg-gradient-main text-white hover:opacity-90 '>
+          Start Tracking Jobs
+        </button>
 
-          <button className='text-lg md:text-2xl font-medium px-4 py-2 md:px-6 md:py-4 rounded border border-[#02A9EB] hover:text-gray-600 '>
-            Take a Tour
-          </button>
-
-        </div>
+        <button className='text-lg md:text-3xl font-medium px-4 md:py-4 text-blue-600'>
+            <FontAwesomeIcon icon={ faArrowDownLong }
+            className='animate-bounce' />
+        </button>
 
     </div>
     </>
