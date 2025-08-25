@@ -27,7 +27,8 @@ const Hero = () => {
         </p>
 
         {/* Hero button */}
-        <button className='my-10 text-lg md:text-2xl font-medium px-4 py-2 md:px-6 md:py-4 rounded bg-gradient-main text-white hover:opacity-90 '>
+        <button className='my-10 text-lg md:text-2xl font-medium px-4 py-2 md:px-6 md:py-4 rounded text-white
+        bg-gradient-to-r from-blue-900 to-blue-500 hover:opacity-90 cursor-pointer active:opacity-100'>
           Start Tracking Jobs
         </button>
 
