@@ -14,7 +14,8 @@ const FAQs = () => {
         
             <Title
             title="Got Questions? We've Got Answers."
-            subtitle="Everything you need to know about using Aplyzer to upgrade your job search." />
+            subtitle="Everything you need to know about using Aplyzer to upgrade your job search."
+            align={ 'center' } />
 
             {/* FAQS */}
             <div className='overflow-hidden w-[80vw] mx-auto'>
