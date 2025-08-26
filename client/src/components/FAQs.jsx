@@ -44,8 +44,9 @@ const FAQs = () => {
                     })
                 }
 
-                <button className='border w-44 py-2 mt-4 md:text-xl font-medium border border-[#02A9EB]
-                hover:text-gray-200 hover:bg-gradient-main rounded-lg'>
+                <button className='w-44 py-2 mt-4 md:text-xl font-medium border border-blue-500 rounded-lg
+                bg-gradient-to-r hover:from-blue-900 hover:to-blue-500 hover:text-white hover:border-white
+                hover:opacity-90 cursor-pointer active:opacity-100'>
                     Check all FAQs
                 </button>
             </div>
