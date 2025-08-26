@@ -1,10 +1,12 @@
 import React from 'react'
 import Title from './Title'
+import { assets } from '../assets/assets'
 
 const CTA = () => {
   return (
     <>
-    <div className='px-6 md:px-16 lg:px-24 xl:px-32'>
+    <div style={{ backgroundImage: `url(${assets.bgCTA})` }}
+    className='px-6 md:px-16 lg:px-24 xl:px-32 h-screen border border-white bg-cover bg-center bg-no-repeat'>
 
         <Title
         title="Smarter Job Hunting Starts Now"
