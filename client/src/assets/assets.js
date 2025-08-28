@@ -16,6 +16,9 @@ import image2 from './look-inside/image-2.png';
 import image3 from './look-inside/image-3.png';
 import image4 from './look-inside/image-4.png';
 
+// CTA Images
+import bgCTA from './CTA/bg-cta.png';
+
 // Dashboard Images
 import file from './dashboard/file-icon-3d.png';
 import user from './dashboard/user-check-icon-3d.png';
@@ -27,10 +30,15 @@ export const assets = {
     logo,
     logoFooter,
     bgHero,
+
+    // Smarter tools
     coverLetterImage,
     matchResumeImage,
     resumeReviewImage,
     trackApplicationsImage,
+
+    // CTA
+    bgCTA,
 
     // Dashboard
     file,
