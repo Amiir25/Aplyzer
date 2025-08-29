@@ -22,7 +22,8 @@ const CTA = () => {
             Get Started Now
 
             <FontAwesomeIcon icon={ faArrowRight }
-            className='absolute top-1/5 -right-4 w-10 h-10 rounded-full p-2 bg-blue-500' />
+            className='absolute top-1/5 -right-4 w-10 h-10 rounded-full p-2 bg-blue-500
+            shadow-xl shadow-black '/>
           </button>
 
         </div>
