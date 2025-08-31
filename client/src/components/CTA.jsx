@@ -8,7 +8,7 @@ const CTA = () => {
   return (
     <>
     <div style={{ backgroundImage: `url(${assets.bgCTA})` }}
-    className='h-screen bg-cover bg-center bg-no-repeat'>
+    className='h-screen bg-cover bg-center bg-no-repeat mt-20'>
 
         <div className='px-6 md:px-16 lg:px-24 xl:px-32
         flex flex-col items-center justify-center gap-2 h-full w-2/3'>
