@@ -8,7 +8,7 @@ const Footer = () => {
   return (
     <>
     <footer className='flex flex-col items-center justify-between
-    mt-40 bg-black text-gray-200 p-20'>
+     bg-black text-gray-200 p-20'>
 
         {/* Logo */}
         <img src='/logo-header.png' alt="Logo Image" className='flex-1 w-full md:w-1/3' />
