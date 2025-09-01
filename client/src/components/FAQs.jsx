@@ -28,16 +28,16 @@ const FAQs = () => {
                             <div key={ faq.id } className='my-4'>
                                 <button 
                                 onClick={ () => setOpenFaqId(isOpen ? null : faq.id) }
-                                className='md:text-xl font-medium border border-gray-500 px-3 py-4 rounded-2xl w-full text-left'>
+                                className={`md:text-xl font-medium border border-gray-500 px-3 py-4 w-full text-left
+                                ${ isOpen ? 'rounded-t-2xl' : 'rounded-2xl' } transition-all duration-300`}>
                                     { faq.question }
                                     <FontAwesomeIcon icon={ faChevronDown }
                                     className={`float-right text-sm transition-transform duration-200
                                     ${ isOpen ? 'rotate-180' : 'rotate-0' } `} />
                                 </button>
                                 <div 
-                                className={
-                                    `overflow-hidden max-h-0 ${isOpen && 'max-h-40 px-2 py-4 border-b-2 border-[#02A9EB] rounded-3xl'} transition-all duration-200 shadow-lg`
-                                    }>
+                                className={`overflow-hidden max-h-0 ${isOpen && 'max-h-40 px-2 py-4 bg-blue-950 text-white rounded-b-3xl'}
+                                transition-all duration-300 shadow-lg`}>
                                     <p>{ faq.answer }</p>
                                 </div>
                             </div>
