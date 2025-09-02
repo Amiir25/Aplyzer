@@ -36,7 +36,7 @@ const FAQs = () => {
                                     ${ isOpen ? 'rotate-180' : 'rotate-0' } `} />
                                 </button>
                                 <div 
-                                className={`overflow-hidden max-h-0 ${isOpen && 'max-h-40 px-2 py-4 bg-blue-950 text-white rounded-b-3xl'}
+                                className={`overflow-hidden max-h-0 ${isOpen && 'max-h-44 px-2 py-4 bg-blue-950 text-white rounded-b-3xl'}
                                 transition-all duration-300 shadow-lg`}>
                                     <p>{ faq.answer }</p>
                                 </div>
