@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import Navbar from '../components/Navbar';
+import { assets } from '../assets/assets';
 
 const SignUp = () => {
     const navigate = useNavigate();
@@ -45,7 +46,7 @@ const SignUp = () => {
             // 3 seconds delay before navigation
             setTimeout(() => {
                 setShowSignupMsg(false)
-                navigate('/');
+                navigate('/auth/signin');
             },3000);
         } catch (error) {
             const errorMsg = error.response?.data?.message || 'Somthing went wrong. Please try again.';
@@ -56,83 +57,86 @@ const SignUp = () => {
     }
     
     return (
-        <>
-        <Navbar/>
-        <div className='flex items-center justify-center h-screen'>
-            <div className='shadow-xl px-8 py-5 border border-[#02A9EB]/30 w-96'>
-                
-                <h2 className='text-xl font-bold mb-4'>
-                    Create Your Aplyzer Account
-                    <span className='block text-sm font-light'>Track smarter. Apply better.</span>
-                </h2>
-                
-                <form onSubmit={handleSubmit(onSubmit)} className=''>
+        <div>
+            {/* Navbar */}
+            <Navbar/>
+
+            <div style={{ backgroundImage: `url(${assets.bgSignUp})` }}
+            className='flex items-center justify-center h-screen bg-cover bg-center bg-no-repeat'>
+                <div className='shadow-xl px-8 py-5 border border-[#02A9EB]/30 w-96'>
                     
-                    <div className='mb-4'>
-                        <label htmlFor="username" className='block text-gray-700' >Name</label>
-                        <input id="username" type="text" placeholder='Enter a username'
-                        className='w-full px-3 py-2 border border-gray-400'
-                        { ...register('username') } />
-                        { 
-                            errors.username &&
-                            <p className='text-sm text-red-600'>{ errors.username.message }</p> 
-                        }
-                    </div>
-
-                    <div className='mb-4'>
-                        <label htmlFor="email" className='block text-gray-700' >Email</label>
-                        <input id="email" type="email" placeholder='Enter your Email'
-                        className='w-full px-3 py-2 border border-gray-400'
-                        { ...register('email') } />
-                        { 
-                            errors.email &&
-                            <p className='text-sm text-red-600'>{ errors.email.message }</p> 
-                        }
-                    </div>
+                    <h2 className='text-xl font-bold mb-4'>
+                        Create Your Aplyzer Account
+                        <span className='block text-sm font-light'>Track smarter. Apply better.</span>
+                    </h2>
                     
-                    <div className='mb-4'>
-                        <label htmlFor="password" className='block text-gray-700' >Password</label>
-                        <input id="password" type="password" placeholder='Create a password'
-                        className='w-full px-3 py-2 border border-gray-400'
-                        { ...register('password') } />
-                        { 
-                            errors.password &&
-                            <p className='text-sm text-red-600'>{ errors.password.message }</p> 
-                        }
+                    <form onSubmit={handleSubmit(onSubmit)} className=''>
+                        
+                        <div className='mb-4'>
+                            <label htmlFor="username" className='block text-gray-700' >Name</label>
+                            <input id="username" type="text" placeholder='Enter a username'
+                            className='w-full px-3 py-2 border border-gray-400'
+                            { ...register('username') } />
+                            { 
+                                errors.username &&
+                                <p className='text-sm text-red-600'>{ errors.username.message }</p> 
+                            }
+                        </div>
+
+                        <div className='mb-4'>
+                            <label htmlFor="email" className='block text-gray-700' >Email</label>
+                            <input id="email" type="email" placeholder='Enter your Email'
+                            className='w-full px-3 py-2 border border-gray-400'
+                            { ...register('email') } />
+                            { 
+                                errors.email &&
+                                <p className='text-sm text-red-600'>{ errors.email.message }</p> 
+                            }
+                        </div>
+                        
+                        <div className='mb-4'>
+                            <label htmlFor="password" className='block text-gray-700' >Password</label>
+                            <input id="password" type="password" placeholder='Create a password'
+                            className='w-full px-3 py-2 border border-gray-400'
+                            { ...register('password') } />
+                            { 
+                                errors.password &&
+                                <p className='text-sm text-red-600'>{ errors.password.message }</p> 
+                            }
+                        </div>
+
+                        <div className='mb-4'>
+                            <label htmlFor="confirmPassword" className='block text-gray-700' >Confirm Password</label>
+                            <input id="confirmPassword" type="password" placeholder='Confirm your password'
+                            className='w-full px-3 py-2 border border-gray-400'
+                            { ...register('confirmPassword') } />
+                            { 
+                                errors.confirmPassword &&
+                                <p className='text-sm text-red-600'>{ errors.confirmPassword.message }</p> 
+                            }
+                        </div>
+
+                        {/* Submit button */}
+                        <input
+                        type='submit'
+                        value='Create Account'
+                        className='w-full bg-gradient-main text-white py-2 rounded cursor-pointer' />
+                    </form>
+
+                    <div className='text-center text-sm mt-2'>
+                        <span>Already have an account? </span>
+                        <Link to='/auth/signin' className='text-[#02A9EB]'>Sign in</Link>
                     </div>
 
-                    <div className='mb-4'>
-                        <label htmlFor="confirmPassword" className='block text-gray-700' >Confirm Password</label>
-                        <input id="confirmPassword" type="password" placeholder='Confirm your password'
-                        className='w-full px-3 py-2 border border-gray-400'
-                        { ...register('confirmPassword') } />
-                        { 
-                            errors.confirmPassword &&
-                            <p className='text-sm text-red-600'>{ errors.confirmPassword.message }</p> 
-                        }
+                    {/* Sign up message */}
+                    <div className={`${ showSignupMsg ? 'fixed' : 'hidden' } top-20 w-80 text-center`}>
+                        <p className={`text-lg text-white p-2 rounded ${ signupError ? 'bg-red-500' : 'bg-green-500' }`}>
+                        { signupError || 'Registration Successful' }  
+                        </p>
                     </div>
-
-                    {/* Submit button */}
-                    <input
-                    type='submit'
-                    value='Create Account'
-                    className='w-full bg-gradient-main text-white py-2 rounded cursor-pointer' />
-                </form>
-
-                <div className='text-center text-sm mt-2'>
-                    <span>Already have an account? </span>
-                    <Link to='/auth/signin' className='text-[#02A9EB]'>Sign in</Link>
-                </div>
-
-                {/* Sign up message */}
-                <div className={`${ showSignupMsg ? 'fixed' : 'hidden' } top-20 w-80 text-center`}>
-                    <p className={`text-lg text-white p-2 rounded ${ signupError ? 'bg-red-500' : 'bg-green-500' }`}>
-                      { signupError || 'Registration Successful' }  
-                    </p>
                 </div>
             </div>
         </div>
-        </>
     )
 }
 
