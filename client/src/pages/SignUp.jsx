@@ -44,10 +44,10 @@ const SignUp = () => {
             setShowSignupMsg(true);
             
             // 3 seconds delay before navigation
-            setTimeout(() => {
-                setShowSignupMsg(false)
-                navigate('/auth/signin');
-            },3000);
+            setTimeout(() => { navigate('/auth/signin') },3000);
+
+            // 5 seconds delay before removing the message
+            setTimeout(() => { setShowSignupMsg(false) }, 5000);
         } catch (error) {
             const errorMsg = error.response?.data?.message || 'Somthing went wrong. Please try again.';
             setSignupError(errorMsg);
