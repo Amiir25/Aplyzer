@@ -14,10 +14,10 @@ const Testimonials = () => {
         subtitle="Hear from early users who’ve boosted their job search with Aplyzer." />
 
         {/* Testimonials */}
-        <div className="flex flex-col md:flex-row flex-wrap items-center justify-center gap-6 mb-10">
+        <div className="flex flex-wrap items-center justify-center gap-6 mb-10">
             {
                 happyClients.map((client) => (
-                    <div key={client.id} className="flex-1 flex gap-6 items-center md:block bg-white p-6 rounded-xl shadow ">
+                    <div key={client.id} className="lg:flex-1 sm:flex items-center gap-8 lg:block bg-white p-6 rounded-xl shadow md:w-160 ">
                         <div>
                             <div className="flex-1 flex items-center gap-3">
                                 <img className="w-12 h-12 rounded-full" src={client.image} alt={client.name} />
