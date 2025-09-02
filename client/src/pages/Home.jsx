@@ -13,12 +13,13 @@ import CTA from '../components/CTA';
 const Home = () => {
     return (
         <div>
-            {/* Background image for Navbar and Hero sections */}
+            {/* Navbar and Hero sections */}
             <div style={{ backgroundImage: `url(${assets.bgHero})` }}
             className='bg-cover bg-center bg-no-repeat h-screen'>
                 <Navbar/>
                 <Hero/>
             </div>
+
             <SmarterTools/>
             <LookInside/>
             <Testimonials/>
