@@ -64,7 +64,7 @@ const SignUp = () => {
 
             <div style={{ backgroundImage: `url(${assets.bgSignUp})` }}
             className='flex items-center justify-center h-screen bg-cover bg-center bg-no-repeat'>
-                <div className='shadow-xl px-8 py-5 border border-[#02A9EB]/30 w-96'>
+                <div className='shadow-xl px-8 py-5 bg-white/50 border border-[#02A9EB]/30 w-80 md:w-96'>
                     
                     <h2 className='text-xl font-bold mb-4'>
                         Create Your Aplyzer Account
