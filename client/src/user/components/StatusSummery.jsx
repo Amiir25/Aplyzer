@@ -36,16 +36,20 @@ const StatusSummery = ({ jobs }) => {
                 {
                     statusSummery.map((summery, i) => (
                         <div key={i}
-                        className={`min-h-68 w-fit py-2 shadow-xl border-t-6 border-${summeryColor[summery.title]}`}>
-                            <img src={ summery.image } alt={`${summery.title} Image`} className='w-full h-[100px] mx-auto m-2'/>
-                            <div className='px-4'>
-                                <h1 className='text-2xl font-bold'>{ summery.title }</h1>
-                                <p className='text-gray-700 text-sm'>{ summery.desc }</p>
-                            </div>
-                            <p className={`mt-8 text-xl font-black bg-${summeryColor[summery.title]}/20 w-fit 
+                        className={`min-h-68 w-fit px-4 py-2 shadow-xl border-t-6 border-${summeryColor[summery.title]}`}>
+                            
+                            <p className={`w-fit text-7xl mx-auto my-8 font-black bg-${summeryColor[summery.title]}/20
                             px-2 text-${summeryColor[summery.title]}`}>
                                 { summeryData[summery.title].length }
                             </p>
+                            {/* <img src={ summery.image } alt={`${summery.title} Image`} className='w-full h-[100px] mx-auto m-2'/> */}
+                            <div>
+                                <h1 className='text-2xl font-bold'>{ summery.title }</h1>
+                                <p className='text-gray-700 text-sm'>{ summery.desc }</p>
+                            </div>
+                            <button>
+                                See More
+                            </button>
                         </div>
                     ))
                 }
