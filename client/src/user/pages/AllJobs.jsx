@@ -30,13 +30,7 @@ const AllJobs = () => {
     }, [userId])
 
     // Favorite Jobs
-    const [favourite, setFavourite] = useState({});
-    const toogleFavorite = (id) => {
-        setFavourite((prev) => ({
-            ...prev,
-            [id]: !prev[id]
-        }))
-    }
+    const [favorite, setFavorite] = useState(false);
 
     // Colors for job status
     const statusClasses = {
@@ -100,11 +94,12 @@ const AllJobs = () => {
                                 </p>
 
                                 {/* Star */}
+                                {/* { setFavorite(job.favorite) } */}
                                 <button
                                     onClick={() => toogleFavorite(job.jid)}
                                     className={`absolute top-1 right-1 text-lg text-gray-800 font-medium`}>
-                                    <FontAwesomeIcon icon={favourite[job.jid] ? solidStar : regularStar}
-                                        className={`${favourite[job.jid] && 'text-amber-500'}`} />
+                                    <FontAwesomeIcon icon={favorite ? solidStar : regularStar}
+                                        className={`${favorite && 'text-amber-500'}`} />
                                 </button>
 
                                 {/* Title & Experiance level */}
