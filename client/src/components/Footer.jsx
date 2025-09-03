@@ -79,26 +79,44 @@ const Footer = () => {
     </p> */}
 
     <footer className="px-6 md:px-16 lg:px-24 xl:px-32 pt-8 w-full text-gray-300 bg-black">
-        <div className="flex flex-col md:flex-row justify-between w-full gap-10 border-b border-gray-500/30 pb-6">
-            <div className="w-1/3">
-                <img src='/logo.png' alt="Logo Image" className='w-full' />
-                <div className="flex items-start gap-6 mt-3">
+        <div className="flex flex-col md:flex-row w-full gap-10 border-b border-gray-500/30 pb-6">
+            <div className="flex-1">
+                <img src='/logo.png' alt="Logo Image" className='w-1/2 md:w-full mx-auto' />
+                <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 md:gap-6 mt-6 w-2/3 md:w-full mx-auto">
                     <a href="#">
-                        <FontAwesomeIcon icon={ faGithub } className='md:text-xl text-white hover:text-gray-400 active:text-white' />
+                        <FontAwesomeIcon icon={ faLinkedinIn }
+                        className='text-xl md:text-lg lg:text-xl text-white hover:text-gray-400 active:text-white' />
                     </a>
                     <a href="#">
-                        <FontAwesomeIcon icon={ faXTwitter } className='md:text-xl text-white hover:text-gray-400 active:text-white' />
+                        <FontAwesomeIcon icon={ faFacebook }
+                        className='text-xl md:text-lg lg:text-xl text-white hover:text-gray-400 active:text-white' />
                     </a>
                     <a href="#">
-                        <FontAwesomeIcon icon={ faLinkedinIn } className='md:text-xl text-white hover:text-gray-400 active:text-white' />
+                        <FontAwesomeIcon icon={ faXTwitter }
+                        className='text-xl md:text-lg lg:text-xl text-white hover:text-gray-400 active:text-white' />
                     </a>
                     <a href="#">
-                        <FontAwesomeIcon icon={ faTelegram } className='md:text-xl text-white hover:text-gray-400 active:text-white' />
+                        <FontAwesomeIcon icon={ faWhatsapp }
+                        className='text-xl md:text-lg lg:text-xl text-white hover:text-gray-400 active:text-white' />
+                    </a>
+                    <a href="#">
+                        <FontAwesomeIcon icon={ faTelegram }
+                        className='text-xl md:text-lg lg:text-xl text-white hover:text-gray-400 active:text-white' />
+                    </a>
+                    <a href="#">
+                        <FontAwesomeIcon icon={ faTiktok }
+                        className='text-xl md:text-lg lg:text-xl text-white hover:text-gray-400 active:text-white' />
+                    </a>
+                    <a href="#">
+                        <FontAwesomeIcon icon={ faInstagram }
+                        className='text-xl md:text-lg lg:text-xl text-white hover:text-gray-400 active:text-white' />
                     </a>
                 </div>
             </div>
-            <div className="flex items-start md:justify-evenly gap-20 w-1/2">
-                <div>
+
+            {/*  */}
+            <div className='flex-1 w-1/2 mx-auto'>
+                <div className='w-fit md:mx-auto'>
                     <h2 className="font-semibold mb-5 text-gray-500">Company</h2>
                     <ul className="text-sm space-y-2">
                         <li><a href="#">Home</a></li>
@@ -107,7 +125,11 @@ const Footer = () => {
                         <li><a href="#">Privacy policy</a></li>
                     </ul>
                 </div>
-                <div>
+            </div>
+                
+            {/*  */}
+            <div className='flex-1 w-1/2 mx-auto'>
+                <div className='w-fit md:mx-auto'>
                     <h2 className="font-semibold mb-5 text-gray-500">Get in touch</h2>
                     <div className="text-sm space-y-2">
                         <p>+251 944 081 246</p>
