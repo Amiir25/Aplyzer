@@ -17,7 +17,7 @@ const SmarterTools = () => {
             {
                 tools.map((tool, i) => (
                     <div key={ i }
-                    className='text-left mx-auto rounded py-2 w-120 md:w-160 lg:w-120
+                    className='text-left mx-auto rounded py-2 md:w-[80%] lg:w-120
                      hover:shadow-[0_0_50px_rgb(30,58,138,0.8)]  transition-all duration-400 ease-in-out'>
                         
                         <div className='px-6 mb-4'>
