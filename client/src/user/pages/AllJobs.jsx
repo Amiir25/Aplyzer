@@ -86,11 +86,11 @@ const AllJobs = () => {
             <UserNavbar />
 
             <div className='px-6 md:px-12 lg:px-24 xl:px-32'>
-                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-20'>
+                <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 my-20'>
                     {
                         jobs.map((job, i) => (
                             <div key={ i }
-                                className='relative w-80 mt-10 pt-10 pb-2 px-4 shadow-lg rounded border border-gray-200'>
+                                className='relative m-2 pt-10 pb-2 px-4 shadow shadow-gray-900 rounded'>
 
                                 {/* Status */}
                                 <p className={`absolute top-0 left-0 text-lg text-gray-100 font-medium px-2 py-1
