@@ -48,8 +48,8 @@ const Dashboard = () => {
                 {/* <LastWeek jobs={jobs} /> */}
                 {/* <GetReady jobs={jobs} /> */}
                 <RecentApplications recentJobs={recentJobs} />
-                {/*<StatusBreakdown jobs={jobs} />
-                <QuickActions jobs={jobs} /> */}
+                <StatusBreakdown jobs={jobs} />
+                <QuickActions jobs={jobs} />
 
             </div>
         </>
