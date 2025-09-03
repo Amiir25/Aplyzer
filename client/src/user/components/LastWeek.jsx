@@ -10,6 +10,7 @@ function getLastWeekRange() {
   const lastMonday = new Date(today);
   lastMonday.setDate(today.getDate() - dayOfWeek - 6);
   
+  // Go to last week's Sunday
   const lastSunday = new Date(lastMonday);
   lastSunday.setDate(lastMonday.getDate() + 6);
   
