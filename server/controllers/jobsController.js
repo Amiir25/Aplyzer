@@ -148,3 +148,19 @@ export const deleteJob = (req, res) => {
         return res.status(200).json({ message: 'Job deleted successfully' });
     })
 }
+
+// Favorite Toggle
+export const favorite = (req, res) => {
+    const { id } = req.params;
+    const { favorite } = req.body;
+
+    const toggleQuery = 'UPDATE jobs SET favorite = ? WHERE jid = ?';
+    db.query(toggleQuery, [favorite, id], (err) => {
+        if (err) {
+            console.error("DB error", err);
+            return res.status(500).json({ message: "Database error" });
+        }
+
+        res.status(201).json({ message: 'Favorite updated: ', favorite })
+    })
+}
