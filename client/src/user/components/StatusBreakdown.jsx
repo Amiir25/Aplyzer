@@ -1,23 +1,30 @@
 import React from 'react';
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 
-const data = [
-  { name: 'Appied', value: 12 },
-  { name: 'Interviwed', value: 3 },
-  { name: 'Rejected', value: 4 },
-  { name: 'Pending', value: 5 },
-];
+const StatusBreakdown = ({ jobs }) => {
 
-const COLORS = ['#0088FE', '#00C49F', '#FF8042', '#FFBB28'];
+    const total = jobs;
+    const interviewed = jobs.filter(job => job.status === 'Interviewed');
+    const rejected = jobs.filter(job => job.status === 'Rejected');
+    const waiting = jobs.filter(job => job.status === 'Waiting' || job.status === 'Applied');
 
-const StatusBreakdown = () => {
+    const data = [
+        { name: 'Appied', value: total.length },
+        { name: 'Interviwed', value: interviewed.length },
+        { name: 'Rejected', value: rejected.length },
+        { name: 'Waiting', value: waiting.length },
+    ];
+
+    // const COLORS = ['#0088FE', '#00C49F', '#FF8042', '#FFBB28'];
+    const COLORS = ['#87CEEB', '#4caf50', '#F44336', '#FFBF00'];
+
     return (
         <>
-        <div className="px-6 md:px-12 lg:px-24 xl:px-32 my-20 w-full h-120 mt-20">
+        <div className="px-6 md:px-12 lg:px-24 xl:px-32 my-20 w-full h-160 mt-20 ">
 
             <h1 className='text-2xl md:text-4xl font-semibold mb-10'>Status Breakdown</h1>
 
-            <ResponsiveContainer>
+            <ResponsiveContainer className='md:text-xl'>
                 <PieChart>
                 <Pie
                     data={data}
@@ -25,7 +32,7 @@ const StatusBreakdown = () => {
                     nameKey="name"
                     cx="50%"
                     cy="50%"
-                    outerRadius={'180'}
+                    outerRadius={'240'}
                     fill="#8884d8"
                     label
                 >
