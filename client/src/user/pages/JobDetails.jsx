@@ -36,29 +36,29 @@ const JobDetails = () => {
         <UserNavbar/>
 
         {/* Job Details */}
-        <div className='px-6 md:px-24 lg:px-48 xl:px-60 my-20'>
+        <div className='px-6 md:px-12 lg:px-32 xl:px-60 my-20'>
 
           {/* --- */}
           <div className='flex items-start justify-between pb-6 border-b border-gray-300'>
 
             {/* Title, company & location */}
             <div className='flex-2'>
-              <h1 className='text-5xl font-bold'>{ job.job_title }</h1>
-              <h2 className='text-3xl text-gray-700 my-2'>
+              <h1 className='text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold'>{ job.job_title }</h1>
+              <h2 className='text-xl sm:text-2xl md:text-3xl text-gray-700 my-2'>
                 <FontAwesomeIcon icon={ faAt } /> { job.company_name }
               </h2>
-              <h3 className='text-xl text-gray-600'>
+              <h3 className='sm:text-xl text-gray-600'>
                 <FontAwesomeIcon icon={ faLocationDot } /> { job.location}
               </h3>
             </div>
 
             {/* Favorite & status */}
-            <div className='flex-1 flex items-center justify-end gap-4 mt-2'>
+            <div className='flex-1 flex items-center justify-end gap-1 sm:gap-2 md:gap-4 mt-2'>
               <FontAwesomeIcon icon={ favorite ? solidStar : regularStar }
               onClick={() => setFavorite(!favorite)}
-              className={`${favorite && 'text-amber-500'} text-2xl`} />
+              className={`${favorite && 'text-amber-500'} text-lg sm:text-xl md:text-2xl`} />
 
-              <h2 className='text-2xl'>{ job.status }</h2>
+              <h2 className='text-lg sm:text-xl md:text-2xl'>{ job.status }</h2>
             </div>
 
           </div>
@@ -68,22 +68,22 @@ const JobDetails = () => {
             {/* Type, mode, level & skills */}
             <div className='flex-1'>
               {/* Job Type */}
-              <p className='text-xl text-gray-800 mb-1'>
+              <p className='text-lg sm:text-xl md:text-2xl text-gray-800 mb-1'>
                 Job Type:
                 <span className='font-semibold text-black'> { job.job_type }</span>
               </p>
               {/* Work Mode */}
-              <p className='text-xl text-gray-800 mb-1'>
+              <p className='text-lg sm:text-xl md:text-2xl text-gray-800 mb-1'>
                 Work Mode:
                 <span className='font-semibold text-black'> { job.work_mode }</span>
               </p>
               {/* Experiance Level */}
-              <p className='text-xl text-gray-800 mb-1'>
+              <p className='text-lg sm:text-xl md:text-2xl text-gray-800 mb-1'>
                 Experiance Level:
                 <span className='font-semibold text-black'> { job.exp_level }</span>
               </p>
               {/* Required Skills */}
-              <p className='text-xl text-gray-800 mb-1'>
+              <p className='text-lg sm:text-xl md:text-2xl text-gray-800 mb-1'>
                 Required Skills: &nbsp;
                 <span className='font-semibold text-black'> 
                   { job.required_skills ?  job.required_skills.split(', ') : <span className='text-gray-400'>Not provided</span> }
@@ -92,14 +92,14 @@ const JobDetails = () => {
             </div>
 
             {/* Dates */}
-            <div className='flex-1 text-right'>
+            <div className='flex-1 md:text-right'>
               {/* Applied Date */}
-              <p className='text-xl text-gray-800 mb-1'>
+              <p className='text-lg sm:text-xl md:text-2xl text-gray-800 mb-1'>
                 Applied Date:
                 <span className='font-semibold text-black'> { dayjs(job.applied_date).format('DD-MM-YYYY') }</span>
               </p>
               {/* Application Deadline */}
-              <p className='text-xl text-gray-800 mb-1'>
+              <p className='text-lg sm:text-xl md:text-2xl text-gray-800 mb-1'>
                 Application Deadline:
                 <span className='font-semibold text-red-700'> { dayjs(job.deadline).format('DD-MM-YYYY') }</span>
               </p>
@@ -109,20 +109,25 @@ const JobDetails = () => {
 
           {/* Job Description */}
           <div className='my-4'>
-            <h1 className='text-xl text-gray-800 font-bold mb-1'>Job Description</h1>
-            <p>{ job.job_description ? job.job_description : <span className='text-gray-400'>Not provided</span> }</p>
+            <h1 className='text-xl md:text-2xl xl:text-3xl text-gray-800 font-bold mt-20 my-8'>Job Description</h1>
+            <p className='whitespace-pre-wrap'>
+              { job.job_description ? job.job_description : <span className='text-gray-400'>Not provided</span> }
+            </p>
           </div>
 
           {/* More Info */}
           <div className='mb-10'>
-            <h1 className='text-xl text-gray-800 font-bold mb-1'>More Info.</h1>
-            <p>{ job.more_info ? job.more_info : <span className='text-gray-400'>Not provided</span> }</p>
+            <h1 className='text-xl md:text-2xl xl:text-3xl text-gray-800 font-bold mt-20 my-8'>More Info.</h1>
+            <p className='whitespace-pre-wrap'>
+              { job.more_info ? job.more_info : <span className='text-gray-400'>Not provided</span> }
+            </p>
           </div>
 
           {/* Original Job Posting Button */}
-          <button className='w-full flex justify-center hover:scale-105 transform transition-all duration-200 ease-in-out'>
+          <button className='w-full flex justify-center mt-20'>
             <a href={ job.post_link } target='_blank'
-            className='text-xl text-white bg-gradient-main p-4 rounded-lg'>
+            className='text-xl text-white p-4 rounded-lg bg-gradient-to-r from-blue-900 to-blue-500 hover
+                hover:opacity-90 cursor-pointer active:opacity-100'>
               View Original Job Posting
             </a>
           </button>
