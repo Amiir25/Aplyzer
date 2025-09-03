@@ -169,6 +169,7 @@ const AllJobs = () => {
                         ))
                     }
 
+                    {/* Delete Job */}
                     {
                         selectedJob &&
                         <DeleteJob
@@ -181,11 +182,12 @@ const AllJobs = () => {
                 </div>
 
                 {/* Add new job Button */}
-                <Link to={`/user/add-new-job/${userId}`}
-                className='w-fit mt-20 text-xl text-white bg-gradient-main px-8 py-4 rounded-lg
-                hover:scale-105 transform transition-all duration-200 ease-in-out'>
-                    Add new job
-                </Link>
+                <button className='my-10 text-xl text-white px-8 py-4 rounded-lg bg-gradient-to-r from-blue-900 to-blue-500 hover
+                hover:opacity-90 cursor-pointer active:opacity-100'>
+                    <Link to={`/user/add-new-job/${userId}`}>
+                        Add new job
+                    </Link>
+                </button>
             </div>
         </>
     )
