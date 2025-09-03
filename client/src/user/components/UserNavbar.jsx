@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useLocation, useParams } from 'react-router-dom';
 
 const UserNavbar = ({ username }) => {
@@ -17,36 +17,28 @@ const UserNavbar = ({ username }) => {
         </Link>
 
         {/* Links */}
-        <div className="relative gap-8 hidden md:flex">
-            
+        {
+          // Hide jobs link in job details page
+          !location.pathname.includes('job-details') &&
+          
+          <div className="relative gap-8 hidden md:flex">
             <Link to={`/user/dashboard/${userId}`}
               className={`${ location.pathname.includes('/dashboard') && 'border-b-3 border-[#02A9EB]' }
                 text-sm hover:text-gray-600`}>
               Dashboard
             </Link>
-            
-            {/* Hide jobs link in job detailes page */}
-            {
-              !location.pathname.includes('job-details') &&
-              <Link to={`/user/all-jobs/${userId}`}
+
+            <Link to={`/user/all-jobs/${userId}`}
               className={`${ location.pathname.includes('/all-jobs') && 'border-b-3 border-[#02A9EB]' }
                 text-sm hover:text-gray-600`}>
                 Jobs
-              </Link>
-            }
-
-            {/* Show Job Details link only in Job Details page */}
-            {
-              location.pathname.includes('job-details') &&
-              <button className='border-b-3 border-[#02A9EB] text-sm hover:text-gray-600'>
-                Job Details
-              </button>
-            }
+            </Link>
 
             <Link to='/' className="text-sm hover:text-gray-600">Resume Cheker</Link>
             <Link to='/' className="text-sm hover:text-gray-600">Job Matching</Link>
             <Link to='/' className="text-sm hover:text-gray-600">Cover Letter</Link>
-        </div>
+          </div>
+        }
 
         {/* Profile */}
         <div>
