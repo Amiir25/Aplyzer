@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { userDashboard, userProfile } from "../controllers/userController.js";
-import { addNewJob, deleteJob, getAllJobs, getJobDetails, updateJob } from "../controllers/jobsController.js";
+import { addNewJob, deleteJob, favorite, getAllJobs, getJobDetails, updateJob } from "../controllers/jobsController.js";
 
 const userRouter = Router();
 
@@ -11,5 +11,6 @@ userRouter.get('/job-details/:id', getJobDetails);
 userRouter.post('/add-new-job/:id', addNewJob);
 userRouter.put('/update-job/:id', updateJob);
 userRouter.delete('/delete-job/:id', deleteJob);
+userRouter.patch('/favorite/:id', favorite);
 
 export default userRouter;
