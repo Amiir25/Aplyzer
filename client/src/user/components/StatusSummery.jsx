@@ -20,7 +20,7 @@ const StatusSummery = ({ jobs }) => {
 
     // Data for Summeries
     const summeryData = {
-        Total: jobs,
+        Total: total,
         Interviewed: interviewed,
         Rejected: rejected,
         Waiting: waiting,
@@ -36,7 +36,7 @@ const StatusSummery = ({ jobs }) => {
                 {
                     statusSummery.map((summery, i) => (
                         <div key={i}
-                        className={`relative min-h-68 w-fit px-4 py-2 shadow-xs shadow-black rounded`}>
+                        className={`relative min-h-68 px-4 py-2 shadow-xs shadow-black rounded`}>
                             
                             <div className={`-mt-4 bg-gray-800 w-5 h-5 rounded-full mx-auto flex items-center justify-center`}>
                                 <div className={`w-1 h-1 bg-white rounded-full`}></div>
