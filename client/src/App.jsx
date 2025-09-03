@@ -65,6 +65,9 @@ const App = () => {
            <Route path='/user/update-job/:jobId' element={ <UpdateJob/> } />
           
          </Routes>
+
+          {/* Footer */}
+          <Footer/>
     </motion.div>
   )
 }
