@@ -18,12 +18,20 @@ import image4 from './look-inside/image-4.png';
 
 // CTA Images
 import bgCTA from './CTA/bg-cta.png';
+import bgFAQAndCTA from './CTA/bg-faq&cta.png';
 
 // Dashboard Images
 import file from './dashboard/file-icon-3d.png';
 import user from './dashboard/user-check-icon-3d.png';
 import x from './dashboard/x-icon-3d.png';
 import clock from './dashboard/clock-icon-3d.png';
+import total from './dashboard/total.png';
+import interviewed from './dashboard/interviewed.png';
+import rejected from './dashboard/rejected.png';
+import waiting from './dashboard/waiting.png';
+
+// Sign Up Images
+import bgSignUp from './signup/bg-signup.png';
 
 // Images
 export const assets = {
@@ -39,6 +47,8 @@ export const assets = {
 
     // CTA
     bgCTA,
+    bgFAQAndCTA,
+    bgSignUp,
 
     // Dashboard
     file,
@@ -202,4 +212,28 @@ export const faqs = [
         `
     },
     
+];
+
+// Dashboard : Status Summery
+export const statusSummery = [
+    {
+        image: total,
+        title: "Total",
+        desc: "All applications you've submitted so far."
+    },
+    {
+        image: interviewed,
+        title: "Interviewed",
+        desc: "Applications that successfully secured interview opportunities."
+    },
+    {
+        image: rejected,
+        title: "Rejected",
+        desc: "Applications that were declined or marked unsuccessful."
+    },
+    {
+        image: waiting,
+        title: "Waiting",
+        desc: "Applications with no response yet or still in progress."
+    },
 ];
