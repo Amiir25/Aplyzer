@@ -14,7 +14,8 @@ const QuickActions = () => {
                 {
                     buttons.map((button, i) => (
                         <button className='py-2 mt-8 text-sm md:text-xl font-medium border border-blue-500 rounded
-                        hover:text-white hover:bg-gradient-to-r hover:from-blue-900 hover:to-blue-500'>
+                        hover:text-white hover:bg-gradient-to-r hover:from-blue-900 hover:to-blue-500
+                        hover:opacity-90 active:opacity-100 cursor-pointer'>
                             { button }
                         </button>
                     ))
