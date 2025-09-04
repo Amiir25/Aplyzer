@@ -19,7 +19,7 @@ const FavoriteJobs = ({ jobs }) => {
     }
   return (
     <>
-    <div className='px-6 md:px-12 lg:px-24 xl:px-32 my-20'>
+    <div className='px-6 md:px-12 lg:px-24 xl:px-32 pt-20'>
 
         <h1 className='text-2xl md:text-4xl font-semibold'>Favorite Jobs</h1>
 
