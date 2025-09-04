@@ -5,7 +5,7 @@ import UserNavbar from '../components/UserNavbar';
 import StatusSummery from '../components/StatusSummery';
 import StatusBreakdown from '../components/StatusBreakdown';
 import LastWeek from '../components/LastWeek';
-import GetReady from '../components/GetReady';
+import FavoriteJobs from '../components/FavoriteJobs';
 import RecentApplications from '../components/RecentApplications';
 import QuickActions from '../components/QuickActions';
 
@@ -46,7 +46,7 @@ const Dashboard = () => {
 
                 <StatusSummery jobs={jobs} />
                 {/* <LastWeek jobs={jobs} /> */}
-                {/* <GetReady jobs={jobs} /> */}
+                <FavoriteJobs jobs={jobs} />
                 <RecentApplications recentJobs={recentJobs} />
                 <StatusBreakdown jobs={jobs} />
                 <QuickActions jobs={jobs} />
