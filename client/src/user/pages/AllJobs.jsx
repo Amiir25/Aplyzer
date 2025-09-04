@@ -12,16 +12,27 @@ import DeleteJob from '../components/DeleteJob';
 
 const AllJobs = () => {
 
-    const { userId } = useParams();
-    const [jobs, setJobs] = useState([]);
     const navigate = useNavigate();
+    const { userId } = useParams();
+
+    const [allJobs, setAllJobs] = useState([]);
+    const [favorite, setFavorite] = useState({});
 
     // Fech jobs
     useEffect(() => {
         const fetchAllJobs = async () => {
             try {
                 const response = await axios.get(`http://localhost:3000/user/all-jobs/${userId}`);
-                setJobs(response.data.jobs);
+                const jobs = response.data.jobs;
+                setAllJobs(jobs);
+
+                // Initial favorite state
+                const favoriteState = {};
+                jobs.forEach((job) => {
+                    favoriteState[job.jid] = job.favorite;
+                })
+                setFavorite(favoriteState);
+
             } catch (error) {
                 const errorMsg = error.response?.data?.message;
             }
@@ -29,8 +40,27 @@ const AllJobs = () => {
         fetchAllJobs();
     }, [userId])
 
-    // Favorite Jobs
-    const [favorite, setFavorite] = useState(false);
+    
+    // Update Favorite Job
+    const toggleFavorite = async (id) => {
+        // Update UI
+        setFavorite((prev) => ({
+            ...prev,
+            [id]: !prev[id],
+        }))
+
+        // Update DB
+        await axios.patch(`http://localhost:3000/user/favorite/${id}`, {
+            favorite: !favorite[id],
+        })
+        .catch(() => {
+            // rollback UI if request fails
+            setFavorite((prev) => ({
+                ...prev,
+                [id]: prev[id],
+            }))
+        })
+    }
 
     // Colors for job status
     const statusClasses = {
@@ -82,7 +112,7 @@ const AllJobs = () => {
             <div className='px-6 md:px-12 lg:px-24 xl:px-32'>
                 <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 my-20'>
                     {
-                        jobs.map((job, i) => (
+                        allJobs.map((job, i) => (
                             <div key={ i }
                                 className='relative m-2 pt-10 pb-2 px-4 shadow shadow-gray-900 rounded'>
 
@@ -94,12 +124,11 @@ const AllJobs = () => {
                                 </p>
 
                                 {/* Star */}
-                                {/* { setFavorite(job.favorite) } */}
                                 <button
-                                    onClick={() => toogleFavorite(job.jid)}
+                                    onClick={() => toggleFavorite(job.jid)}
                                     className={`absolute top-1 right-1 text-lg text-gray-800 font-medium`}>
-                                    <FontAwesomeIcon icon={favorite ? solidStar : regularStar}
-                                        className={`${favorite && 'text-amber-500'}`} />
+                                    <FontAwesomeIcon icon={favorite[job.jid] ? solidStar : regularStar}
+                                        className={`${favorite[job.jid] && 'text-orange-500'}`} />
                                 </button>
 
                                 {/* Title & Experiance level */}
