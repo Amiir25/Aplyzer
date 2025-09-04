@@ -63,13 +63,13 @@ const AllJobs = () => {
     }
 
     // Colors for job status
-    const statusClasses = {
-        Applied: 'bg-blue',
-        Waiting: 'bg-yellow',
-        Interviewed: 'bg-purple',
-        Hired: 'bg-green',
-        Rejected: 'bg-red',
-        Quit: 'bg-gray',
+    const statusColor = {
+        Applied: 'from-sky-800 to-sky-500',
+        Waiting: 'from-yellow-800 to-yellow-500',
+        Interviewed: 'from-purple-800 to-purple-500',
+        Hired: 'from-green-800 to-green-500',
+        Rejected: 'from-red-800 to-red-500',
+        Quit: 'from-gray-800 to-gray-500',
     }
 
     // Open job details page
@@ -117,8 +117,8 @@ const AllJobs = () => {
                                 className='relative m-2 pt-10 pb-2 px-4 shadow shadow-gray-900 rounded'>
 
                                 {/* Status */}
-                                <p className={`absolute top-0 left-0 text-lg text-gray-100 font-medium px-2 py-1
-                                ${ statusClasses[job.status] }`
+                                <p className={`absolute top-0 left-0 text-lg text-gray-100 font-medium px-2 py-1 bg-ora
+                                bg-gradient-to-r ${ statusColor[job.status] }`
                                 }>
                                     {job.status}
                                 </p>
