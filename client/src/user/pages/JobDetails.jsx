@@ -11,23 +11,42 @@ import dayjs from 'dayjs';
 const JobDetails = () => {
 
   const { jobId } = useParams();
+
   const [job, setJob] = useState({});
+  const [favorite, setFavorite] = useState({});
+
 
   // Fetch job details
   useEffect(() => {
     const fetchJobDetails = async () => {
       try {
         const response = await axios.get(`http://localhost:3000/user/job-details/${jobId}`);
-        setJob(response.data.job);
+        const jobDetail = response.data.job;
+        setJob(jobDetail);
+        setFavorite(jobDetail.favorite);
       } catch (error) {
         const errorMsg = error.response?.data?.message;
+        console.log('Error while fetching job details:', errorMsg);
       }
     }
     fetchJobDetails();
   }, [jobId]);
 
   // Favorite job
-  const [favorite, setFavorite] = useState(0);
+  const toggleFavorite = async () => {
+    // Update UI
+    setFavorite(!favorite);
+
+    // Update DB
+    await axios.patch(`http://localhost:3000/user/favorite/${jobId}`, {
+      favorite: !favorite,
+    })
+    .catch(() => {
+      // rollback UI if request fails
+      setFavorite(!favorite)
+    })
+  }
+
 
   return (
     <>
@@ -55,7 +74,7 @@ const JobDetails = () => {
             {/* Favorite & status */}
             <div className='flex-1 flex items-center justify-end gap-1 sm:gap-2 md:gap-4 mt-2'>
               <FontAwesomeIcon icon={ favorite ? solidStar : regularStar }
-              onClick={() => setFavorite(!favorite)}
+              onClick={toggleFavorite}
               className={`${favorite && 'text-amber-500'} text-lg sm:text-xl md:text-2xl`} />
 
               <h2 className='text-lg sm:text-xl md:text-2xl'>{ job.status }</h2>
