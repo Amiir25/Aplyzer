@@ -1,11 +1,28 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link, useLocation, useParams } from 'react-router-dom';
 
-const UserNavbar = ({ username }) => {
+const UserNavbar = () => {
 
   const location = useLocation();
   const { userId } = useParams();
 
+  const [user, setUser] = useState();
+
+  // Fetch user data
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3000/user/profile/${userId}`);
+        setUser(response.data.user);
+      } catch (error) {
+        const errorMsg = error.response?.data?.message;
+        console.log('Error while fetching user data in user navbar:'. errorMsg);
+      }
+    }
+  })
+
+  console.log('User in user navbar:', user);
   return (
     <>
     <nav className="relative px-6 md:px-16 lg:px-24 xl:px-32 py-4 flex items-center justify-between
@@ -13,7 +30,7 @@ const UserNavbar = ({ username }) => {
 
         {/* Logo */}
         <img src="/logo-2.PNG" alt="Logo Image" className="w-1/6 md:w-1/7" />
-        
+
         {/* Links */}
         {
           // Hide jobs link in job details page
