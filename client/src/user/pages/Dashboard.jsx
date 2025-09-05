@@ -34,8 +34,6 @@ const Dashboard = () => {
     return (
         <>
             <div>
-                <UserNavbar username={username}/>
-
                 <div className='px-6 md:px-12 lg:px-24 xl:px-32 mt-20 mb-40'>
 
                     <h1 className='text-2xl md:text-3xl'>
