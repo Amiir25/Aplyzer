@@ -11,6 +11,7 @@ import JobDetails from './user/pages/JobDetails'
 import AddNewJob from './user/pages/AddNewJob'
 import UpdateJob from './user/pages/UpdateJob'
 import { AnimatePresence, motion } from "framer-motion";
+import UserNavbar from './user/components/UserNavbar'
 
 const App = () => {
 
@@ -50,24 +51,27 @@ const App = () => {
       transition={{ duration: 0.4, ease: "easeInOut" }}
       className="min-h-screen"
     >
-         <Routes>
+      {/* Navbars */}
+      {location.pathname.includes('/') ? <Navbar/> : <UserNavbar/>}
 
-           {/* Home routes */}
-           <Route path='/' element={ <Home/> } />
-           <Route path='/auth/signup' element={ <SignUp/> } />
-           <Route path='/auth/signin' element={ <SignIn/> } />
+      <Routes>
 
-           {/* User routes */}
-           <Route path='/user/dashboard/:userId' element={ <Dashboard/> } />
-           <Route path='/user/all-jobs/:userId' element={ <AllJobs/> } />
-           <Route path='/user/job-details/:jobId' element={ <JobDetails/> } />
-           <Route path='/user/add-new-job/:userId' element={ <AddNewJob/> } />
-           <Route path='/user/update-job/:jobId' element={ <UpdateJob/> } />
-          
-         </Routes>
+        {/* Home routes */}
+        <Route path='/' element={ <Home/> } />
+        <Route path='/auth/signup' element={ <SignUp/> } />
+        <Route path='/auth/signin' element={ <SignIn/> } />
 
-          {/* Footer */}
-          <Footer/>
+        {/* User routes */}
+        <Route path='/user/dashboard/:userId' element={ <Dashboard/> } />
+        <Route path='/user/all-jobs/:userId' element={ <AllJobs/> } />
+        <Route path='/user/job-details/:jobId' element={ <JobDetails/> } />
+        <Route path='/user/add-new-job/:userId' element={ <AddNewJob/> } />
+        <Route path='/user/update-job/:jobId' element={ <UpdateJob/> } />
+      
+      </Routes>
+
+      {/* Footer */}
+      <Footer/>
     </motion.div>
   )
 }
