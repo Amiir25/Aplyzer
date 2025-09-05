@@ -12,10 +12,8 @@ const UserNavbar = ({ username }) => {
       text-gray-800 md:text-lg font-medium">
 
         {/* Logo */}
-        <Link to={'/'} className="w-1/6 md:w-1/7">
-            <img src="/logo-2.PNG" alt="Logo Image" />
-        </Link>
-
+        <img src="/logo-2.PNG" alt="Logo Image" className="w-1/6 md:w-1/7" />
+        
         {/* Links */}
         {
           // Hide jobs link in job details page
