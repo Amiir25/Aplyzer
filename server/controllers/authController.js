@@ -1,6 +1,7 @@
 import db from "../database/db.js";
 import bcrypt from 'bcryptjs';
 import { v4 as uuidv4 } from 'uuid';
+import jwt from 'jsonwebtoken';
 
 export const signUp = (req, res, next) => {
     const { username, email, password } = req.body;
@@ -60,13 +61,15 @@ export const signIn = (req, res, next) => {
         const isPasswordMatch = await bcrypt.compare(password, user.password);
         if (!isPasswordMatch) return res.status(401).json({ message: 'Incorrect password' });
 
-        return res.status(200).json({ 
-            message: 'Login successful',
-            user: {
-                id: user.uid,
-                username: user.username,
-                email: user.email,
-            }
-         });
+        // jwt payload
+        const payload = {
+            id: user.uid,
+            email: user.email,
+        }
+
+        // sign jwt
+        const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '10m' });
+
+        return res.status(200).json({ token });
     })
 }
