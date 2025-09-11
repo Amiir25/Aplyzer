@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import Navbar from '../components/Navbar';
+import { AuthContext } from '../context/AuthContext';
 
 const SignIn = () => {
     const navigate = useNavigate();
     const [signinError, setSigninError] = useState('');
     const [signinMsg, setSigninMsg] = useState(false);
+
+    const { login } = useContext(AuthContext);
 
     const schema = yup.object().shape({
         email: yup
@@ -28,11 +31,16 @@ const SignIn = () => {
     const onSubmit = async (data) => {
         try {
             const response = await axios.post('http://localhost:3000/auth/sign-in', data);
-            setSigninMsg(true);
-            setTimeout(() => setSigninMsg(false), 3000);
-
+            login(response.data.token);
             const user = response.data.user;
-            navigate(`/user/dashboard/${user.id}`);
+
+            setSigninMsg(true);
+            setTimeout(() => {
+                setSigninMsg(false),
+                navigate(`/user/dashboard/${user.id}`);
+            }, 3000);
+
+            console.log(response)
         } catch (error) {
             const errorMsg = error.response?.data?.message || 'Something went wrong. Please try again.';
             setSigninError(errorMsg);
@@ -43,7 +51,6 @@ const SignIn = () => {
     
     return (
         <>
-        <Navbar/>
         <div className='flex items-center justify-center h-screen'>
             <div className='shadow-xl px-8 py-5 border border-[#02A9EB]/30 w-96'>
                 
