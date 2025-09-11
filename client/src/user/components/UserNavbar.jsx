@@ -6,6 +6,7 @@ const UserNavbar = () => {
 
   const location = useLocation();
   const { userId } = useParams();
+  console.log('userId in userNavbar', userId)
 
   const [user, setUser] = useState();
 
@@ -14,12 +15,14 @@ const UserNavbar = () => {
     const fetchUserData = async () => {
       try {
         const response = await axios.get(`http://localhost:3000/user/profile/${userId}`);
+        console.log('response:', response);
         setUser(response.data.user);
       } catch (error) {
         const errorMsg = error.response?.data?.message;
-        console.log('Error while fetching user data in user navbar:'. errorMsg);
+        console.log('Error while fetching user data in user navbar:', errorMsg);
       }
     }
+    fetchUserData();
   })
 
   console.log('User in user navbar:', user);
