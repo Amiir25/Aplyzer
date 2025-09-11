@@ -59,9 +59,6 @@ const SignUp = () => {
     
     return (
         <div>
-            {/* Navbar */}
-            <Navbar/>
-
             <div style={{ backgroundImage: `url(${assets.bgSignUp})` }}
             className='flex items-center justify-center h-screen bg-cover bg-center bg-no-repeat'>
                 <div className='shadow-xl px-8 py-5 bg-white/50 border border-[#02A9EB]/30 w-80 md:w-96'>
