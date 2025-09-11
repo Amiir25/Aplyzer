@@ -3,7 +3,7 @@ import bcrypt from 'bcryptjs';
 import { v4 as uuidv4 } from 'uuid';
 import jwt from 'jsonwebtoken';
 
-export const signUp = (req, res, next) => {
+export const signUp = (req, res) => {
     const { username, email, password } = req.body;
     try {
 
@@ -42,7 +42,7 @@ export const signUp = (req, res, next) => {
 }
 
 // Sign In
-export const signIn = (req, res, next) => {
+export const signIn = (req, res) => {
     const { email, password } = req.body;
     
     // Check if the user exists
@@ -70,6 +70,6 @@ export const signIn = (req, res, next) => {
         // sign jwt
         const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '10m' });
 
-        return res.status(200).json({ token });
+        return res.status(200).json({ user, token });
     })
 }
