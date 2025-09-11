@@ -52,7 +52,7 @@ const App = () => {
       className="min-h-screen"
     >
       {/* Navbars */}
-      {location.pathname.includes('/user') ? <UserNavbar/> : <Navbar/>}
+      { !(window.location.pathname === '/' || window.location.pathname === 'index.html') && <Navbar/>}
 
       <Routes>
 
