@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useContext, useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios';
 import UserNavbar from '../components/UserNavbar';
 import StatusSummery from '../components/StatusSummery';
@@ -8,28 +8,40 @@ import LastWeek from '../components/LastWeek';
 import FavoriteJobs from '../components/FavoriteJobs';
 import RecentApplications from '../components/RecentApplications';
 import QuickActions from '../components/QuickActions';
+import { AuthContext } from '../../context/AuthContext';
 
 const Dashboard = () => {
     const { userId } = useParams();
+    const navigate = useNavigate();
+    const {user, logout} = useContext(AuthContext);
+    // console.log(user);
 
     const [username, setUsername] = useState('');
     const [jobs, setJobs] = useState([]);
     const [recentJobs, setRecentJobs] = useState([]);
 
     useEffect(() => {
+        if (!user) {
+            navigate('/auth/signin');
+            return;
+        }
+
         const fetchUserData = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/user/dashboard/${userId}`);
+                const response = await axios.get(`http://localhost:3000/user/dashboard/${user.id}`);
                 setUsername(response.data.username);
                 setJobs(response.data.jobs);
                 setRecentJobs(response.data.recentJobs);
-                // console.log('Dashboard response', response.data.jobs);
+                console.log('Dashboard response', response);
             } catch (error) {
                 const errorMsg = error.response?.data?.message;
+                console.log('Error while fetching user data in the dashboard:', errorMsg);
+                logout();
+                navigate('/auth/signin');
             }
         }
         fetchUserData();
-    }, [userId]);
+    }, [userId, user, logout, navigate]);
 
     return (
         <>
