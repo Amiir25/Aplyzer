@@ -12,6 +12,7 @@ import AddNewJob from './user/pages/AddNewJob'
 import UpdateJob from './user/pages/UpdateJob'
 import { AnimatePresence, motion } from "framer-motion";
 import UserNavbar from './user/components/UserNavbar'
+import ProtectedRoute from './components/ProtectedRoute'
 
 const App = () => {
 
@@ -52,7 +53,9 @@ const App = () => {
       className="min-h-screen"
     >
       {/* Navbars */}
-      { !(window.location.pathname === '/' || window.location.pathname === 'index.html') && <Navbar/>}
+      {/* { !(window.location.pathname === '/' || window.location.pathname === 'index.html') && <Navbar/>} */}
+      {/* { (location.pathname.includes('auth') || location.pathname.includes('user')) && <Navbar/>} */}
+      { (location.pathname.includes('user')) && <Navbar/>}
 
       <Routes>
 
@@ -62,11 +65,31 @@ const App = () => {
         <Route path='/auth/signin' element={ <SignIn/> } />
 
         {/* User routes */}
-        <Route path='/user/dashboard/:userId' element={ <Dashboard/> } />
-        <Route path='/user/all-jobs/:userId' element={ <AllJobs/> } />
-        <Route path='/user/job-details/:jobId' element={ <JobDetails/> } />
-        <Route path='/user/add-new-job/:userId' element={ <AddNewJob/> } />
-        <Route path='/user/update-job/:jobId' element={ <UpdateJob/> } />
+        <Route path='/user/dashboard/:userId' element={
+          <ProtectedRoute>
+            <Dashboard/>
+          </ProtectedRoute>
+           } />
+        <Route path='/user/all-jobs/:userId' element={
+          <ProtectedRoute>
+            <AllJobs/>
+          </ProtectedRoute>
+           } />
+        <Route path='/user/job-details/:jobId' element={
+          <ProtectedRoute>
+            <JobDetails/>
+          </ProtectedRoute>
+           } />
+        <Route path='/user/add-new-job/:userId' element={
+          <ProtectedRoute>
+            <AddNewJob/>
+          </ProtectedRoute>
+           } />
+        <Route path='/user/update-job/:jobId' element={
+          <ProtectedRoute>
+            <UpdateJob/>
+          </ProtectedRoute>
+           } />
       
       </Routes>
 
