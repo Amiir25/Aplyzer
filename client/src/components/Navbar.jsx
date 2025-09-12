@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 // import { assets } from "../assets/assets.js";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faBars, faChartBar, faCheckDouble, faCircleXmark, faEquals, faPen } from "@fortawesome/free-solid-svg-icons";
 import { AuthContext } from "../context/AuthContext";
@@ -11,6 +11,8 @@ const Navbar = () => {
 
     const { user, logout } = useContext(AuthContext);
     const location = useLocation();
+    const navigate = useNavigate();
+
     const [smallScreen, setSmallScreen] = useState(false);
     const [showProfile, setShowProfile] = useState(false);
     const [showLogoutPopup, setShowLogoutPopup] = useState(false);
@@ -22,7 +24,8 @@ const Navbar = () => {
         setTimeout(() => {
             logout();
             setShowLogoutPopup(false);
-        }, 9000);
+            navigate('/');
+        }, 2000);
     }
 
     return (
