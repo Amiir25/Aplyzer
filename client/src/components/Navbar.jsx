@@ -9,9 +9,21 @@ import { AuthContext } from "../context/AuthContext";
 
 const Navbar = () => {
 
-    const { user } = useContext(AuthContext);
+    const { user, logout } = useContext(AuthContext);
     const location = useLocation();
     const [smallScreen, setSmallScreen] = useState(false);
+    const [showProfile, setShowProfile] = useState(false);
+    const [showLogoutPopup, setShowLogoutPopup] = useState(false);
+
+    // Handle Logout
+    const handleLogout = () => {
+        setShowLogoutPopup(true);
+
+        setTimeout(() => {
+            logout();
+            setShowLogoutPopup(false);
+        }, 9000);
+    }
 
     return (
         <>
@@ -76,13 +88,46 @@ const Navbar = () => {
                         <Link to='/' className="text-sm hover:text-gray-600">Cover Letter Generator</Link>
                     </div>
                 }
-
                 
-                {/* Profile */}
-                <p className='flex items-center justify-center text-xl md:text-3xl text-white w-12 h-12
-                    rounded-full bg-gradient-to-r from-blue-900 to-blue-500'>
-                    { user.username[0] }
-                </p>
+                <div className="">
+                    {/* Avatar circle */}
+                    <p 
+                    onClick={ () => setShowProfile(!showProfile) }
+                    className='flex items-center justify-center text-xl md:text-3xl text-white w-12 h-12
+                        rounded-full bg-gradient-to-r from-blue-900 to-blue-500 cursor-pointer'>
+                        { user.username[0].toUpperCase() }
+                    </p>
+
+                    {/* Profile */}
+                    {
+                        showProfile &&
+                        <div className="fixed flex flex-col justify-center items-center gap-4 bg-gray-900
+                        right-5 mt-2 w-70 rounded-xl shadow-lg p-4 text-gray-800 z-50">
+                            <p className="text-sm text-white font-mono">{ user.email }</p>
+                            <p className='flex items-center justify-center text-2xl md:text-4xl text-white w-28 h-28
+                            rounded-full bg-gradient-to-r from-blue-900 to-blue-500'>
+                                { user.username }
+                            </p>
+                            <button
+                            onClick={ handleLogout }
+                            className="w-fit text-white border border-blue-500 py-1 px-6 rounded bg-gradient-to-r
+                            hover:from-blue-800 hover:to-blue-500 transition-colors cursor-pointer">
+                                Logout
+                            </button>
+                        </div>
+                    }
+
+                    {/* Logout Popup */}
+                    {
+                        showLogoutPopup &&
+                        <div className="fixed inset-0 flex items-center justify-center bg-black/40 z-[60]">
+                            <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center gap-2">
+                                <div className="w-10 h-10 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+                                <p className="text-2xl text-gray-800 font-medium mt-2">Logging out...</p>
+                            </div>
+                        </div>
+                    }
+                </div>
                 </>
             }
 
