@@ -31,7 +31,7 @@ const Navbar = () => {
                 
                 <Link to={'/'}>
                     <img src="/logo.png" alt="Logo Image"
-                    className="w-24" />
+                    className="w-20" />
                 </Link>
             }
 
@@ -61,13 +61,13 @@ const Navbar = () => {
                     !location.pathname.includes('job-details') &&
                     <div className="relative gap-8 hidden md:flex">
                         <Link to={`/user/dashboard/${user.id}`}
-                            className={`${ location.pathname.includes('/dashboard') && 'border-b-3 border-[#02A9EB]' }
+                            className={`${ location.pathname.includes('/dashboard') && 'border-b-3 border-blue-500 text-blue-500 font-bold' }
                             text-sm hover:text-gray-600`}>
                             Dashboard
                         </Link>
             
                         <Link to={`/user/all-jobs/${user.id}`}
-                            className={`${ location.pathname.includes('/all-jobs') && 'border-b-3 border-[#02A9EB]' }
+                            className={`${ location.pathname.includes('/all-jobs') && 'border-b-3 border-blue-500 text-blue-500 font-bold' }
                             text-sm hover:text-gray-600`}>
                             Jobs
                         </Link>
