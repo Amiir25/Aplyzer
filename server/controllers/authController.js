@@ -65,6 +65,7 @@ export const signIn = (req, res) => {
         const payload = {
             id: user.uid,
             email: user.email,
+            username: user.username,
         }
 
         // sign jwt
