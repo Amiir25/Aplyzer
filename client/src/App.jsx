@@ -65,31 +65,41 @@ const App = () => {
         <Route path='/auth/signin' element={ <SignIn/> } />
 
         {/* User routes */}
-        <Route path='/user/dashboard/:userId' element={
+        <Route 
+        path='/user/dashboard/:userId'
+        element={
           <ProtectedRoute>
             <Dashboard/>
           </ProtectedRoute>
-           } />
-        <Route path='/user/all-jobs/:userId' element={
+        } />
+        <Route
+        path='/user/all-jobs/:userId'
+        element={
           <ProtectedRoute>
             <AllJobs/>
           </ProtectedRoute>
-           } />
-        <Route path='/user/job-details/:jobId' element={
+        } />
+        <Route
+        path='/user/job-details/:jobId'
+        element={
           <ProtectedRoute>
             <JobDetails/>
           </ProtectedRoute>
-           } />
-        <Route path='/user/add-new-job/:userId' element={
+        } />
+        <Route
+        path='/user/add-new-job/:userId'
+        element={
           <ProtectedRoute>
             <AddNewJob/>
           </ProtectedRoute>
-           } />
-        <Route path='/user/update-job/:jobId' element={
+        } />
+        <Route
+        path='/user/update-job/:jobId'
+        element={
           <ProtectedRoute>
             <UpdateJob/>
           </ProtectedRoute>
-           } />
+        } />
       
       </Routes>
 
