@@ -5,7 +5,10 @@ import authenticateToken from "../middleware/authMiddleware.js";
 
 const userRouter = Router();
 
-userRouter.get('/dashboard/:id', authenticateToken, userDashboard);
+// Middleware
+userRouter.use(authenticateToken);
+
+userRouter.get('/dashboard/:id', userDashboard);
 userRouter.get('/profile/:id', userProfile);
 userRouter.get('/all-jobs/:id', getAllJobs);
 userRouter.get('/job-details/:id', getJobDetails);
