@@ -124,8 +124,6 @@ const UpdateJob = () => {
     
     return (
     <>
-    <UserNavbar/>
-
     <div className='px-6 md:px-12 lg:px-24 xl:px-32 my-20'>
       <h1 className='text-2xl md:text-5xl text-center font-bold mb-10'>Capture New Job Opportunity</h1>
 
