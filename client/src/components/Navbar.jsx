@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 // import { assets } from "../assets/assets.js";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown, faBars, faChartBar, faCheckDouble, faCircleXmark, faEquals, faPen } from "@fortawesome/free-solid-svg-icons";
+import { faAngleDown, faBars, faChartBar, faCheckDouble, faCircleXmark, faEquals, faPen, faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { AuthContext } from "../context/AuthContext";
 
 
@@ -105,17 +105,27 @@ const Navbar = () => {
                     {/* Profile */}
                     {
                         showProfile &&
-                        <div className="fixed flex flex-col justify-center items-center gap-4 bg-gray-900
-                        right-5 mt-2 w-70 rounded-xl shadow-lg p-4 text-gray-800 z-50">
-                            <p className="text-sm text-white font-mono">{ user.email }</p>
-                            <p className='flex items-center justify-center text-2xl md:text-4xl text-white w-28 h-28
-                            rounded-full bg-gradient-to-r from-blue-900 to-blue-500'>
-                                { user.username }
-                            </p>
+                        <div className="fixed bg-gray-900 right-5 mt-2 w-70 rounded-xl shadow-lg p-4 z-50">
+                            <div className="flex items-center gap-2">
+                                <p className='flex items-center justify-center text-white w-12 h-12
+                                rounded-full bg-gradient-to-r from-blue-900 to-blue-500'>
+                                    { user.username[0].toUpperCase() }
+                                </p>
+                                <div className="flex flex-col">
+                                    <p className="text-white text-sm">{ user.username.charAt(0).toUpperCase() + user.username.slice(1) }</p>
+                                    <p className="text-xs text-white font-mono">{ user.email }</p>
+                                </div>
+                            </div>
+
+                            <div className="text-gray-300 text-sm flex flex-col gap-4 my-4 py-4
+                            border-t border-b border-gray-500">
+                                <p className="hover:text-white cursor-pointer">Your profile</p>
+                                <p className="hover:text-white cursor-pointer">Settings</p>
+                            </div>
+
                             <button
                             onClick={ handleLogout }
-                            className="w-fit text-white border border-blue-500 py-1 px-6 rounded bg-gradient-to-r
-                            hover:from-blue-800 hover:to-blue-500 transition-colors cursor-pointer">
+                            className="flex items-center gap-2  text-red-500 hover:text-red-400 cursor-pointer">
                                 Logout
                             </button>
                         </div>
