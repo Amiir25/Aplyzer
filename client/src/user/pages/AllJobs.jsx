@@ -74,7 +74,7 @@ const AllJobs = () => {
 
     // Open job details page
     const openJobDetail = (jid) => {
-        window.open(`/user/job-details/${jid}`, '_blank', 'noopener,noreferrer');
+        navigate(`/user/job-details/${jid}`);
     }
 
     // Update Job
