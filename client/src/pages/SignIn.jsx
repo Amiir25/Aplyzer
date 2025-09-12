@@ -37,7 +37,7 @@ const SignIn = () => {
             setSigninMsg(true);
             setTimeout(() => {
                 setSigninMsg(false),
-                navigate(`/user/dashboard/${user.id}`);
+                navigate(`/`);
             }, 3000);
 
             console.log(response)
