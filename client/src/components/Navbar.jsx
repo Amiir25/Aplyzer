@@ -19,24 +19,38 @@ const Navbar = () => {
         text-gray-800 md:text-lg font-medium">
 
             {/* Logo */}
-            <Link to={'/'} className="w-1/4 md:w-1/4">
-                <img src="/logo.png" alt="Logo Image" />
-            </Link>
+            {
+                !user ?
+                
+                <Link to={'/'}>
+                    <img src="/aplyzer.png" alt="Logo Image"
+                    className="w-80"/>
+                </Link>
+                
+                :
+                
+                <Link to={'/'}>
+                    <img src="/logo.png" alt="Logo Image"
+                    className="w-24" />
+                </Link>
+            }
 
             {/* Sign In button */}
             {
                 !user ?
 
-                <button className="hidden md:block border border-[#02A9EB] px-4 py-2 rounded
-                hover:text-white hover:bg-gradient-main ">
+                <div>
                     {
                         // Hide Sign In button from signin and signup pages
                         !(location.pathname.includes('signin') || location.pathname.includes('signup')) &&
-                        <Link to='auth/signin'>
-                            Sign In
-                        </Link>
+                        <button className="hidden md:block border border-[#02A9EB] px-4 py-2 rounded
+                        hover:text-white hover:bg-gradient-main cursor-pointer ">
+                            <Link to='auth/signin'>
+                                Sign In
+                            </Link>
+                        </button>
                     }
-                </button>
+                </div>
 
                 :
                 
@@ -102,7 +116,7 @@ const Navbar = () => {
                 {/* Profile */}
                 <p className='flex items-center justify-center text-2xl md:text-4xl text-white w-12 h-12
                     rounded-full bg-[#02A9EB]'>
-                    { user.username }
+                    { user.username[0] }
                 </p>
                 </>
             }
