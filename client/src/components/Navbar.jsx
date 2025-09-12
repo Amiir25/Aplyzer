@@ -39,7 +39,7 @@ const Navbar = () => {
                 
                 <Link to={'/'}>
                     <img src="/aplyzer.png" alt="Logo Image"
-                    className="w-80"/>
+                    className="w-50"/>
                 </Link>
                 
                 :
