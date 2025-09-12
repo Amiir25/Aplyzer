@@ -58,8 +58,9 @@ const Navbar = () => {
                     {
                         // Hide Sign In button from signin and signup pages
                         !(location.pathname.includes('signin') || location.pathname.includes('signup')) &&
-                        <button className="hidden md:block border border-[#02A9EB] px-4 py-2 rounded
-                        hover:text-white hover:bg-gradient-main cursor-pointer ">
+                        <button className="hidden md:block border border-blue-500 px-2 py-1 rounded bg-gradient-to-r
+                        hover:text-white hover:border-white hover:from-blue-800 hover:to-blue-500
+                        hover:opacity-90 active:opacity-100 cursor-pointer ">
                             <Link to='auth/signin'>
                                 Sign In
                             </Link>
