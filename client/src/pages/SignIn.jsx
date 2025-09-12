@@ -51,6 +51,14 @@ const SignIn = () => {
     
     return (
         <>
+        {/* Logo */}
+        <button className='px-6 md:px-12 lg:px-24 xl:px-32 py-2'>
+            <Link to={'/'}>
+                <img src="/aplyzer.png" alt="Logo Image"
+                className="w-80"/>
+            </Link>
+        </button>
+
         <div className='flex items-center justify-center h-screen'>
             <div className='shadow-xl px-8 py-5 border border-[#02A9EB]/30 w-96'>
                 
