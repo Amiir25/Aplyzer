@@ -81,8 +81,14 @@ const Footer = () => {
     <footer className="px-6 md:px-16 lg:px-24 xl:px-32 pt-8 w-full text-gray-300 bg-black">
         <div className="flex flex-col md:flex-row w-full gap-10 border-b border-gray-500/30 pb-6">
             <div className="flex-1">
-                <img src='/logo.png' alt="Logo Image" className='w-1/2 md:w-full mx-auto' />
-                <div className="flex flex-wrap items-center justify-start gap-x-10 gap-y-4 md:gap-6 mt-6 w-2/3 md:w-full mx-auto">
+                
+                {/* Logo */}
+
+                <img src='/logo.png' alt="Logo Image"
+                className='w-40 mx-auto' />
+                
+                <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 md:gap-6
+                mt-6 w-2/3 md:w-full mx-auto">
                     <a href="#">
                         <FontAwesomeIcon icon={ faLinkedinIn }
                         className='text-xl md:text-lg lg:text-xl text-white hover:text-gray-400 active:text-white' />
