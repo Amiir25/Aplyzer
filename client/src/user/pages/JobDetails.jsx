@@ -51,9 +51,6 @@ const JobDetails = () => {
   return (
     <>
     <div>
-        
-        <UserNavbar/>
-
         {/* Job Details */}
         <div className='px-6 md:px-12 lg:px-32 xl:px-60 my-20'>
 
