@@ -1,10 +1,11 @@
 import { Router } from "express";
 import { userDashboard, userProfile } from "../controllers/userController.js";
 import { addNewJob, deleteJob, favorite, getAllJobs, getJobDetails, updateJob } from "../controllers/jobsController.js";
+import authenticateToken from "../middleware/authMiddleware.js";
 
 const userRouter = Router();
 
-userRouter.get('/dashboard/:id', userDashboard);
+userRouter.get('/dashboard/:id', authenticateToken, userDashboard);
 userRouter.get('/profile/:id', userProfile);
 userRouter.get('/all-jobs/:id', getAllJobs);
 userRouter.get('/job-details/:id', getJobDetails);
