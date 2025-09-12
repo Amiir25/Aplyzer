@@ -38,7 +38,7 @@ const SignIn = () => {
             setTimeout(() => {
                 setSigninMsg(false),
                 navigate(`/`);
-            }, 3000);
+            }, 2000);
 
             console.log(response)
         } catch (error) {
