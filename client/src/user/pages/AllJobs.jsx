@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { faCircleDot, faLocationDot } from '@fortawesome/free-solid-svg-icons';
@@ -9,11 +9,12 @@ import UserNavbar from '../components/UserNavbar';
 import axios from 'axios';
 import dayjs from 'dayjs';
 import DeleteJob from '../components/DeleteJob';
+import { AuthContext } from '../../context/AuthContext';
 
 const AllJobs = () => {
 
     const navigate = useNavigate();
-    const { userId } = useParams();
+    const { user } = useContext(AuthContext);
 
     const [allJobs, setAllJobs] = useState([]);
     const [favorite, setFavorite] = useState({});
@@ -22,7 +23,7 @@ const AllJobs = () => {
     useEffect(() => {
         const fetchAllJobs = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/user/all-jobs/${userId}`);
+                const response = await axios.get(`http://localhost:3000/user/all-jobs/${user.id}`);
                 const jobs = response.data.jobs;
                 setAllJobs(jobs);
 
@@ -38,7 +39,7 @@ const AllJobs = () => {
             }
         }
         fetchAllJobs();
-    }, [userId])
+    }, [user.id])
 
     
     // Update Favorite Job
@@ -206,7 +207,7 @@ const AllJobs = () => {
             {/* Add new job Button */}
             <button className='my-10 text-xl text-white px-8 py-4 rounded-lg bg-gradient-to-r from-blue-900 to-blue-500 hover
             hover:opacity-90 cursor-pointer active:opacity-100'>
-                <Link to={`/user/add-new-job/${userId}`}>
+                <Link to={`/user/add-new-job/${user.id}`}>
                     Add new job
                 </Link>
             </button>
