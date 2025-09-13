@@ -91,3 +91,32 @@ export const signIn = (req, res) => {
         return res.status(200).json({ user, accessToken });
     })
 }
+
+// Refresh token
+export const refreshToken = (req, res) => {
+    const refreshToken = req.cookies.refreshToken;
+    if (!refreshToken) return res.status(401).json({ message: 'No refresh token' });
+
+    // Verify refresh token
+    jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
+        if (err) return res.status(403).json({ message: 'Invalid refresh token' });
+
+        // Check in DB that refresh token matches
+        const checkTokenQuery = 'SELECT * FROM refresh_tokens WHERE uid = ? AND token = ?';
+        db.query(checkTokenQuery, [user.id, refreshToken], (err, users) => {
+            if (err || !users.length) {
+                return res.status(403).json({ message: 'Invalid refresh token in DB' })
+            }
+
+            // Issue new access token
+            const newAccessToken = jwt.sign(
+                { id: user.id, email: user.email, username: user.username },
+                process.env.ACCESS_TOKEN_SECRET,
+                { expiresIn: '10m' }
+            );
+
+            return res.json({ accessToken: newAccessToken });
+            
+        })
+    })
+}
