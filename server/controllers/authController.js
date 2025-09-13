@@ -102,7 +102,7 @@ export const refreshToken = (req, res) => {
         if (err) return res.status(403).json({ message: 'Invalid refresh token' });
 
         // Check in DB that refresh token matches
-        const checkTokenQuery = 'SELECT * FROM refresh_tokens WHERE uid = ? AND token = ?';
+        const checkTokenQuery = 'SELECT * FROM refresh_tokens WHERE user_id = ? AND token = ?';
         db.query(checkTokenQuery, [user.id, refreshToken], (err, users) => {
             if (err || !users.length) {
                 return res.status(403).json({ message: 'Invalid refresh token in DB' })
