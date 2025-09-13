@@ -11,12 +11,11 @@ import QuickActions from '../components/QuickActions';
 import { AuthContext } from '../../context/AuthContext';
 
 const Dashboard = () => {
-    const { userId } = useParams();
     const navigate = useNavigate();
     const {user, logout} = useContext(AuthContext);
     // console.log(user);
 
-    const [username, setUsername] = useState('');
+    // const [username, setUsername] = useState('');
     const [jobs, setJobs] = useState([]);
     const [recentJobs, setRecentJobs] = useState([]);
 
@@ -29,7 +28,7 @@ const Dashboard = () => {
         const fetchUserData = async () => {
             try {
                 const response = await axios.get(`http://localhost:3000/user/dashboard/${user.id}`);
-                setUsername(response.data.username);
+                // setUsername(response.data.username);
                 setJobs(response.data.jobs);
                 setRecentJobs(response.data.recentJobs);
                 console.log('Dashboard response', response);
@@ -41,7 +40,7 @@ const Dashboard = () => {
             }
         }
         fetchUserData();
-    }, [userId, user, logout, navigate]);
+    }, [ user, logout, navigate]);
 
     return (
         <>
@@ -49,7 +48,7 @@ const Dashboard = () => {
                 <div className='px-6 md:px-12 lg:px-24 xl:px-32 mt-20 mb-40'>
 
                     <h1 className='text-2xl md:text-3xl'>
-                        Hi <span className='font-mono font-bold text-shadow-lg'>{ username }</span>
+                        Hi <span className='font-mono font-bold text-shadow-lg'>{ user.username }</span>
                     </h1>
                     <p className='text-lg md:text-xl text-gray-600'>Here's a quick look at your job applications </p>
                 </div>
