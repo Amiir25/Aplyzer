@@ -68,9 +68,26 @@ export const signIn = (req, res) => {
             username: user.username,
         }
 
-        // sign jwt
-        const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '10m' });
+        // jwt access & refresh tokens
+        const accessToken = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '10m' });
+        const refreshToken = jwt.sign(payload, process.env.REFRESH_TOKEN_SECRET, { expiresIn: '7d' });
 
-        return res.status(200).json({ user, token });
+        // Store refresh token in DB
+        const tokenQuery = `
+            INSERT INTO refresh_tokens (user_id, token) VALUES (?, ?)
+            ON DUPLICATE KEY UPDATE token = VALUES(token)
+        `;
+        db.query(tokenQuery, [user.uid, refreshToken]);
+
+        // Send refresh token as HTTP-only cookie
+        res.cookie('refreshToken', refreshToken, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict',
+            path: '/auth/refresh',
+            maxAge: 7 * 24 * 60 * 60 * 1000,
+        });
+
+        return res.status(200).json({ user, accessToken });
     })
 }
