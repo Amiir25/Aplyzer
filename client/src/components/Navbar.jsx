@@ -1,8 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 // import { assets } from "../assets/assets.js";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown, faBars, faChartBar, faCheckDouble, faCircleXmark, faEquals, faPen, faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faChartBar, faCheckDouble, faCircleXmark, faEquals, faPen } from "@fortawesome/free-solid-svg-icons";
 import { AuthContext } from "../context/AuthContext";
 
 
@@ -12,6 +12,7 @@ const Navbar = () => {
     const { user, logout } = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
+    const profileRef = useRef();
 
     const [smallScreen, setSmallScreen] = useState(false);
     const [showProfile, setShowProfile] = useState(false);
@@ -28,9 +29,23 @@ const Navbar = () => {
         }, 2000);
     }
 
+    useEffect(() => {
+        // Close profile on outside click
+        const handleOutsideClick = (e) => {
+            if (profileRef.current && !profileRef.current.contains(e.target)) {
+                setShowProfile(false);
+            }
+        }
+
+        document.addEventListener('mousedown', handleOutsideClick);
+        return () => document.removeEventListener('mousedown', handleOutsideClick);
+    }, []);
+
     return (
         <>
-        <nav className="relative px-6 md:px-16 lg:px-24 xl:px-32 py-4 flex items-center justify-between
+        <nav
+        ref={ profileRef }
+        className="relative px-6 md:px-16 lg:px-24 xl:px-32 py-4 flex items-center justify-between
         text-gray-800 md:text-lg font-medium">
 
             {/* Logo */}
@@ -58,13 +73,13 @@ const Navbar = () => {
                     {
                         // Hide Sign In button from signin and signup pages
                         !(location.pathname.includes('signin') || location.pathname.includes('signup')) &&
-                        <button className="hidden md:block border border-blue-500 px-2 py-1 rounded bg-gradient-to-r
-                        hover:text-white hover:border-white hover:from-blue-800 hover:to-blue-500
-                        hover:opacity-90 active:opacity-100 cursor-pointer ">
-                            <Link to='auth/signin'>
+                        <Link to='auth/signin'>
+                            <button className="hidden md:block border border-blue-500 px-2 py-1 rounded bg-gradient-to-r
+                            hover:text-white hover:border-white hover:from-blue-800 hover:to-blue-500
+                            hover:opacity-90 active:opacity-100 cursor-pointer ">
                                 Sign In
-                            </Link>
-                        </button>
+                            </button>
+                        </Link>
                     }
                 </div>
 
@@ -93,7 +108,7 @@ const Navbar = () => {
                     </div>
                 }
                 
-                <div className="">
+                <div>
                     {/* Avatar circle */}
                     <p 
                     onClick={ () => setShowProfile(!showProfile) }
