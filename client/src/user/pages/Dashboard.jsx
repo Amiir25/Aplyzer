@@ -13,9 +13,7 @@ import { AuthContext } from '../../context/AuthContext';
 const Dashboard = () => {
     const navigate = useNavigate();
     const {user, logout} = useContext(AuthContext);
-    // console.log(user);
 
-    // const [username, setUsername] = useState('');
     const [jobs, setJobs] = useState([]);
     const [recentJobs, setRecentJobs] = useState([]);
 
@@ -28,7 +26,6 @@ const Dashboard = () => {
         const fetchUserData = async () => {
             try {
                 const response = await axios.get(`http://localhost:3000/user/dashboard/${user.id}`);
-                // setUsername(response.data.username);
                 setJobs(response.data.jobs);
                 setRecentJobs(response.data.recentJobs);
                 console.log('Dashboard response', response);
