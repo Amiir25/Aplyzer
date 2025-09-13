@@ -17,7 +17,6 @@ export const userDashboard = async (req, res) => {
 
         return res.status(200).json({
             user: req.user,
-            username: user[0].username,
             jobs,
             recentJobs
         });
