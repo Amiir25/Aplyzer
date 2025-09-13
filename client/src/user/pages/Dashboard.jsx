@@ -28,7 +28,6 @@ const Dashboard = () => {
                 const response = await axios.get(`http://localhost:3000/user/dashboard/${user.id}`);
                 setJobs(response.data.jobs);
                 setRecentJobs(response.data.recentJobs);
-                console.log('Dashboard response', response);
             } catch (error) {
                 const errorMsg = error.response?.data?.message;
                 console.log('Error while fetching user data in the dashboard:', errorMsg);
