@@ -31,8 +31,7 @@ const SignIn = () => {
     const onSubmit = async (data) => {
         try {
             const response = await axios.post('http://localhost:3000/auth/sign-in', data);
-            login(response.data.token);
-            const user = response.data.user;
+            login(response.data.accessToken);
 
             setSigninMsg(true);
             setTimeout(() => {
@@ -40,7 +39,6 @@ const SignIn = () => {
                 navigate(`/`);
             }, 2000);
 
-            console.log(response)
         } catch (error) {
             const errorMsg = error.response?.data?.message || 'Something went wrong. Please try again.';
             setSigninError(errorMsg);
