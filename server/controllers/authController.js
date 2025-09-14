@@ -69,7 +69,7 @@ export const signIn = (req, res) => {
         }
 
         // jwt access token
-        const accessToken = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1m' });
+        const accessToken = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1d' });
 
         return res.status(200).json({ user, accessToken });
     })
