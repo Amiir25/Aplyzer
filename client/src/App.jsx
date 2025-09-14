@@ -10,37 +10,12 @@ import AllJobs from './user/pages/AllJobs'
 import JobDetails from './user/pages/JobDetails'
 import AddNewJob from './user/pages/AddNewJob'
 import UpdateJob from './user/pages/UpdateJob'
-import { AnimatePresence, motion } from "framer-motion";
-import UserNavbar from './user/components/UserNavbar'
+import { motion } from "framer-motion";
 import ProtectedRoute from './components/ProtectedRoute'
 
 const App = () => {
 
   const location = useLocation();
-
-  // return (
-  //   <div className=''>
-
-  //       <Routes>
-
-  //         Home routes
-  //         <Route path='/' element={ <Home/> } />
-  //         <Route path='/auth/signup' element={ <SignUp/> } />
-  //         <Route path='/auth/signin' element={ <SignIn/> } />
-
-  //         User routes
-  //         <Route path='/user/dashboard/:userId' element={ <Dashboard/> } />
-  //         <Route path='/user/all-jobs/:userId' element={ <AllJobs/> } />
-  //         <Route path='/user/job-details/:jobId' element={ <JobDetails/> } />
-  //         <Route path='/user/add-new-job/:userId' element={ <AddNewJob/> } />
-  //         <Route path='/user/update-job/:jobId' element={ <UpdateJob/> } />
-          
-  //       </Routes>
-      
-  //     {/* Footer */}
-  //     <Footer/>
-  //   </div>
-  // )
 
   return (
     // Framer motion for animation on page change
@@ -53,8 +28,6 @@ const App = () => {
       className="min-h-screen"
     >
       {/* Navbars */}
-      {/* { !(window.location.pathname === '/' || window.location.pathname === 'index.html') && <Navbar/>} */}
-      {/* { (location.pathname.includes('auth') || location.pathname.includes('user')) && <Navbar/>} */}
       { (location.pathname.includes('user')) && <Navbar/>}
 
       <Routes>
@@ -65,41 +38,11 @@ const App = () => {
         <Route path='/auth/signin' element={ <SignIn/> } />
 
         {/* User routes */}
-        <Route 
-        path='/user/dashboard/:userId'
-        element={
-          <ProtectedRoute>
-            <Dashboard/>
-          </ProtectedRoute>
-        } />
-        <Route
-        path='/user/all-jobs/:userId'
-        element={
-          <ProtectedRoute>
-            <AllJobs/>
-          </ProtectedRoute>
-        } />
-        <Route
-        path='/user/job-details/:jobId'
-        element={
-          <ProtectedRoute>
-            <JobDetails/>
-          </ProtectedRoute>
-        } />
-        <Route
-        path='/user/add-new-job/:userId'
-        element={
-          <ProtectedRoute>
-            <AddNewJob/>
-          </ProtectedRoute>
-        } />
-        <Route
-        path='/user/update-job/:jobId'
-        element={
-          <ProtectedRoute>
-            <UpdateJob/>
-          </ProtectedRoute>
-        } />
+        <Route path='/user/dashboard/:userId' element={ <ProtectedRoute> <Dashboard/> </ProtectedRoute> } />
+        <Route path='/user/all-jobs/:userId' element={ <ProtectedRoute> <AllJobs/> </ProtectedRoute> } />
+        <Route path='/user/job-details/:jobId' element={ <ProtectedRoute> <JobDetails/> </ProtectedRoute> } />
+        <Route path='/user/add-new-job/:userId' element={ <ProtectedRoute> <AddNewJob/> </ProtectedRoute> } />
+        <Route path='/user/update-job/:jobId' element={ <ProtectedRoute> <UpdateJob/> </ProtectedRoute> } />
       
       </Routes>
 
