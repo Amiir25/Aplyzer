@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-// import { assets } from "../assets/assets.js";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { assets, navbarLinks } from "../assets/assets.js";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faChartBar, faCheckDouble, faCircleXmark, faEquals, faPen } from "@fortawesome/free-solid-svg-icons";
 import { AuthContext } from "../context/AuthContext";
@@ -88,26 +88,55 @@ const Navbar = () => {
                 <>
                 {/* Links */}
                 {
-                    // Hide navbar links from job details page
-                    !location.pathname.includes('job-details') &&
                     <div className="relative gap-8 hidden md:flex">
+                        {/* Dashbaord */}
                         <Link to={`/user/dashboard/${user.id}`}
                             className={`${ location.pathname.includes('/dashboard') && 'border-b-3 border-blue-500 text-blue-500 font-bold' }
-                            text-sm hover:text-gray-600`}>
+                            text-[15px] hover:text-gray-600`}>
                             Dashboard
                         </Link>
-            
+                        {/* Jobs */}
                         <Link to={`/user/all-jobs/${user.id}`}
                             className={`${ location.pathname.includes('/all-jobs') && 'border-b-3 border-blue-500 text-blue-500 font-bold' }
-                            text-sm hover:text-gray-600`}>
+                            text-[15px] hover:text-gray-600`}>
                             Jobs
                         </Link>
-                        <Link to='/' className="text-sm hover:text-gray-600">Resume Builder</Link>
-                        <Link to='/' className="text-sm hover:text-gray-600">Resume Job Matching</Link>
-                        <Link to='/' className="text-sm hover:text-gray-600">Cover Letter Generator</Link>
+                        {/* Job Details */}
+                        {
+                            location.pathname.includes('job-details') &&
+                            <Link
+                                className='border-b-3 border-blue-500 text-blue-500 font-bold text-[15px] hover:text-gray-600'>
+                                Job Details
+                            </Link>
+                        }
+                        {/* Add new job */}
+                        {
+                            location.pathname.includes('add-new-job') &&
+                            <Link
+                                className='border-b-3 border-blue-500 text-blue-500 font-bold text-[15px] hover:text-gray-600'>
+                                Add New Job
+                            </Link>
+                        }
+                        {/* Update Job */}
+                        {
+                            location.pathname.includes('update-job') &&
+                            <Link
+                                className='border-b-3 border-blue-500 text-blue-500 font-bold text-[15px] hover:text-gray-600'>
+                                Update Job
+                            </Link>
+                        }
+
+                        {
+                            !(location.pathname.includes('job-details') || location.pathname.includes('add-new-job') || location.pathname.includes('update-job')) &&
+                            <>
+                            <Link to='/' className="text-[15px] hover:text-gray-600">Resume Builder</Link>
+                            <Link to='/' className="text-[15px] hover:text-gray-600">Resume Job Matching</Link>
+                            <Link to='/' className="text-[15px] hover:text-gray-600">Cover Letter Generator</Link>
+                            </>
+                        }
                     </div>
                 }
-                
+
                 <div>
                     {/* Avatar circle */}
                     <p 
