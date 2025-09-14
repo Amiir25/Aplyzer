@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import UserNavbar from '../components/UserNavbar';
 import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
@@ -9,11 +9,12 @@ import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import dayjs from 'dayjs';
+import { AuthContext } from '../../context/AuthContext';
 
 const AddNewJob = () => {
 
-  const { userId } = useParams();
   const navigate = useNavigate();
+  const { user, logout } = useContext(AuthContext);
 
   // Form message
   const [formMsg, setFormMsg] = useState('');
@@ -80,13 +81,13 @@ const AddNewJob = () => {
     try {
       data.applied_date = dayjs(data.applied_date).format('YYYY-MM-DD');
       data.deadline = dayjs(data.deadline).format('YYYY-MM-DD');
-      await axios.post(`http://localhost:3000/user/add-new-job/${userId}`, data);
+      await axios.post(`http://localhost:3000/user/add-new-job/${user.id}`, data);
 
       // Show success message for 3 seconds and navogate
       setShowFormMsg(true);
       setTimeout(() => {
         setShowFormMsg(false);
-        !showFormMsg && navigate(`/user/all-jobs/${userId}`);
+        !showFormMsg && navigate(`/user/all-jobs/${user.id}`);
       }, 3000)
 
     } catch (error) {
@@ -96,6 +97,7 @@ const AddNewJob = () => {
       setFormMsg(errorMsg);
       setShowFormMsg(true);
       setTimeout(() => {setShowFormMsg(false)}, 3000);
+      logout();
     }
   }
 
