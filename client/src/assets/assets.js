@@ -165,42 +165,48 @@ export const faqs = [
         id: 7,
         question: "Is my data safe?",
         answer: `
-            Absolutely. Aplyzer doesn't share your data with third parties. Uploaded resumes and job data are stored securely and only used to provide feedback — not for training AI or any external use.
+            Absolutely. Aplyzer doesn't share your data with third parties. Uploaded resumes and job data are stored 
+            securely and only used to provide feedback — notfor training AI or any external use.
         `
     },
     {
         id: 8,
         question: "Will my resume or job data be saved securely?",
         answer: `
-            Yes. We care about your privacy. Your data stays private and secure, and we don’t share or sell it. You can delete your resume and applications at any time.
+            Yes. We care about your privacy. Your data stays private and secure, and we don’t share or sell it. 
+            You can delete your resume and applications at any time.
         `
     },
     {
         id: 9,
         question: "Can I customize the cover letters Aplyzer generates?",
         answer: `
-            Absolutely. Aplyzer gives you a strong AI-generated draft, but you can fully edit and personalize it before using it in your application.
+            Absolutely. Aplyzer gives you a strong AI-generated draft, but you can fully edit and personalize it before 
+            using it in your application.
         `
     },
     {
         id: 10,
         question: "Do I need to install anything?",
         answer: `
-            Nope! Aplyzer is completely web-based. Just open your browser, log in, and start using it — no downloads or installations required.
+            Nope! Aplyzer is completely web-based. Just open your browser, log in, and start using it — no downloads 
+            or installations required.
         `
     },
     {
         id: 11,
         question: "Can I track multiple applications at once?",
         answer: `
-            Yes! Aplyzer is built to manage your entire job hunt. You can add and track as many job applications as you want, each with its own status, notes, deadlines, and reminders.
+            Yes! Aplyzer is built to manage your entire job hunt. You can add and track as many job applications as you want, 
+            each with its own status, notes, deadlines, and reminders.
         `
     },
     {
         id: 12,
         question: "How accurate is the job description matching?",
         answer: `
-            Aplyzer uses advanced AI to compare your resume with job descriptions and highlight alignment gaps. While it’s not a human recruiter, it gives valuable insights into how well your resume matches and what to improve.
+            Aplyzer uses advanced AI to compare your resume with job descriptions and highlight alignment gaps. While it’s not a human recruiter, 
+            it gives valuable insights into how well your resume matches and what to improve.
 
         `
     },
@@ -208,7 +214,8 @@ export const faqs = [
         id: 12,
         question: "Can I use Aplyzer even if I’m not actively applying right now?",
         answer: `
-            Definitely. You can use Aplyzer to prepare your resume, experiment with job matching, or build a database of saved opportunities for later. It's your personal job search workspace, whether you're applying today or planning ahead.
+            Definitely. You can use Aplyzer to prepare your resume, experiment with job matching, or build a database of saved opportunities for later. 
+            It's your personal job search workspace, whether you're applying today or planning ahead.
         `
     },
     
