@@ -18,11 +18,6 @@ const Dashboard = () => {
     const [recentJobs, setRecentJobs] = useState([]);
 
     useEffect(() => {
-        if (!user) {
-            navigate('/auth/signin');
-            return;
-        }
-
         const fetchUserData = async () => {
             try {
                 const response = await axios.get(`http://localhost:3000/user/dashboard/${user.id}`);
