@@ -12,6 +12,7 @@ import AddNewJob from './user/pages/AddNewJob'
 import UpdateJob from './user/pages/UpdateJob'
 import { motion } from "framer-motion";
 import ProtectedRoute from './components/ProtectedRoute'
+import ScrollToTop from './components/ScrollToTop'
 
 const App = () => {
 
@@ -27,6 +28,9 @@ const App = () => {
       transition={{ duration: 0.4, ease: "easeInOut" }}
       className="min-h-screen"
     >
+      {/* Scroll to top */}
+      <ScrollToTop/>
+
       {/* Navbars */}
       { (location.pathname.includes('user')) && <Navbar/>}
 
