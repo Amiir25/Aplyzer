@@ -14,7 +14,7 @@ import { AuthContext } from '../../context/AuthContext';
 const AllJobs = () => {
 
     const navigate = useNavigate();
-    const { user } = useContext(AuthContext);
+    const { user, logout } = useContext(AuthContext);
 
     const [allJobs, setAllJobs] = useState([]);
     const [favorite, setFavorite] = useState({});
@@ -36,6 +36,7 @@ const AllJobs = () => {
 
             } catch (error) {
                 const errorMsg = error.response?.data?.message;
+                logout();
             }
         }
         fetchAllJobs();
