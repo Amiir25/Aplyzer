@@ -18,12 +18,18 @@ const SummerizeJobDesc = () => {
             return;
         }
 
+        setPopup('Job description summarized successfully!');
+        setShowPopup(true);
+        setTimeout(() => { setShowPopup(false) }, 3000);
+
         try {
             const res = await axios.post('http://localhost:3000/ai-tools/summarize-job-description', {
                 description: desc
             });
-            setSummary(res.data.summary);
+            // setSummary(res.data.summary);
+            console.log(res.data.summary);
         } catch (error) {
+            console.error(error);
         }
     }
 
@@ -64,21 +70,26 @@ const SummerizeJobDesc = () => {
                 <div className='flex-2'>
                     <h2 className='text-lg md:text-xl mb-4 font-medium text-gray-700'>Summary</h2>
                     <div className='border border-gray-400 rounded p-1 whitespace-pre-wrap'>
-                        {
+                        {/* {
                             summary ?
                             <pre>{ summary }</pre>
                             :
                             <p>
                                 Your summarized job description will appear here.
                             </p>
-                        }
+                        } */}
                     </div>
                 </div>
             </div>
 
             {/* Popup message */}
-            <p className='fixed top-40 w-fit py-1 px-2 mx-auto'>
-
+            <p className={`
+            ${ showPopup ?
+                'fixed top-10 left-1/2 -translate-x-1/2 w-fit py-2 px-4 mx-auto text-white md:text-xl font-medium rounded'
+                :
+                'hidden' }
+            ${ popup.includes('not') ? 'bg-red-600' : 'bg-green-600' }`}>
+                { popup }
             </p>
         </div>
         </>
