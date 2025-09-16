@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faChartBar, faCheckDouble, faCircleXmark, faEquals, faPen } from "@fortawesome/free-solid-svg-icons";
+import { faAngleDown, faBars, faChartBar, faCheckDouble, faCircleXmark, faEquals, faPen } from "@fortawesome/free-solid-svg-icons";
 import { AuthContext } from "../context/AuthContext";
 
 
@@ -16,6 +16,7 @@ const Navbar = () => {
     const [smallScreen, setSmallScreen] = useState(false);
     const [showProfile, setShowProfile] = useState(false);
     const [showLogoutPopup, setShowLogoutPopup] = useState(false);
+    const [showAiTools, setShowAiTools] = useState(false);
 
     // Handle Logout
     const handleLogout = () => {
@@ -124,15 +125,53 @@ const Navbar = () => {
                                 Update Job
                             </Link>
                         }
+                        {/* AI tools */}
+                        <div
+                        onClick={ () => setShowAiTools(!showAiTools) }
+                        className="group">
+                            <button className=" flex items-center gap-2 hover:text-gray-600 cursor-pointer">
+                                AI Tools 
+                                <FontAwesomeIcon icon={ faAngleDown } />
+                            </button>
 
-                        {
-                            !(location.pathname.includes('job-details') || location.pathname.includes('add-new-job') || location.pathname.includes('update-job')) &&
-                            <>
-                            <Link to='/' className="text-[15px] hover:text-gray-600">Resume Builder</Link>
-                            <Link to='/' className="text-[15px] hover:text-gray-600">Resume Job Matching</Link>
-                            <Link to='/' className="text-[15px] hover:text-gray-600">Cover Letter Generator</Link>
-                            </>
-                        }
+                            <div
+                            className={`absolute top-full left-0 right-0 px-2 pt-6 z-10 overflow-hidden transition-all ease-in-out duration-200
+                            ${ showAiTools ? 'max-h-100 opacity-100' : 'max-h-0 opacity-0' } bg-gray-800 text-white`}>
+                                
+                                <Link to='/' className="flex items-center gap-4 mb-6 hover:text-gray-300">
+                                    <FontAwesomeIcon icon={ faChartBar } className="w-8 p-2 bg-white/20 rounded text-2xl" />
+                                    <div>
+                                        <h2 className="text-sm font-bold">Job Description Summarizer</h2>
+                                        {/* <p className="text-xs">Lorem ipsum dolor sit amet consectetur.</p> */}
+                                    </div>
+                                </Link>
+
+                                <Link to='/' className="flex items-center gap-4 mb-6 hover:text-gray-600">
+                                    <FontAwesomeIcon icon={ faCheckDouble } className="w-8 p-2 bg-white/20 rounded text-2xl" />
+                                    <div>
+                                        <h2 className="text-sm font-bold">AI Resume Cheker</h2>
+                                        {/* <p className="text-xs">Lorem ipsum dolor sit amet consectetur.</p> */}
+                                    </div>
+                                </Link>
+
+                                <Link to='/' className="flex items-center gap-4 mb-6 hover:text-gray-600">
+                                    <FontAwesomeIcon icon={ faEquals } className="w-8 p-2 bg-white/20 rounded text-2xl" />
+                                    <div>
+                                        <h2 className="text-sm font-bold">Job Description Matching</h2>
+                                        {/* <p className="text-xs">Lorem ipsum dolor sit amet consectetur.</p> */}
+                                    </div>
+                                </Link>
+
+                                <Link to='/' className="flex items-center gap-4 mb-6 hover:text-gray-600">
+                                    <FontAwesomeIcon icon={ faPen } className="w-8 p-2 bg-white/20 rounded text-2xl" />
+                                    <div>
+                                        <h2 className="text-sm font-bold">Cover Letter Generator</h2>
+                                        {/* <p className="text-xs">Lorem ipsum dolor sit amet consectetur.</p> */}
+                                    </div>
+                                </Link>
+                            </div>
+                        </div> {/* more tools */}
+                        
                     </div>
                 }
 
@@ -270,54 +309,22 @@ export default Navbar;
 
 
 /**
-More tools
-<div className="group">
-    <button className=" flex items-center gap-2 hover:text-[#F51D28]">
-        More
-        <FontAwesomeIcon icon={ faAngleDown } />
-    </button>
 
-    <div className="absolute top-full left-0 right-0 px-2 pt-6 opacity-0 max-h-0 z-10
-    transform translate-y-full overflow-hidden transition-all ease-in-out duration-200
-    group-hover:max-h-82 group-hover:translate-y-0 group-hover:border-b border-gray-400
-    group-hover:opacity-100">
-        
-        <Link to='/' className="flex items-center gap-4 mb-6 hover:text-gray-600">
-            <FontAwesomeIcon icon={ faChartBar } className="w-8 p-2 bg-rose-400/50 text-rose-700
-            rounded text-2xl" />
-            <div>
-                <h2 className="text-sm font-bold">Job Application Tracker</h2>
-                <p className="text-xs">Lorem ipsum dolor sit amet consectetur.</p>
-            </div>
-        </Link>
+<div className="absolute top-full left-0 right-0 px-2 pt-6 opacity-0 max-h-0 z-10
+transform translate-y-full overflow-hidden transition-all ease-in-out duration-200
+group-hover:max-h-82 group-hover:translate-y-0 group-hover:border-b border-gray-400
+group-hover:opacity-100">
 
-        <Link to='/' className="flex items-center gap-4 mb-6 hover:text-gray-600">
-            <FontAwesomeIcon icon={ faCheckDouble } className="w-8 p-2 bg-yellow-400/50 text-yellow-700
-            rounded text-2xl" />
-            <div>
-                <h2 className="text-sm font-bold">AI Resume Cheker</h2>
-                <p className="text-xs">Lorem ipsum dolor sit amet consectetur.</p>
-            </div>
-        </Link>
 
-        <Link to='/' className="flex items-center gap-4 mb-6 hover:text-gray-600">
-            <FontAwesomeIcon icon={ faEquals } className="w-8 p-2 bg-lime-400/50 text-lime-700
-            rounded text-2xl" />
-            <div>
-                <h2 className="text-sm font-bold">Job Description Matching</h2>
-                <p className="text-xs">Lorem ipsum dolor sit amet consectetur.</p>
-            </div>
-        </Link>
+{
+    !(location.pathname.includes('job-details') || location.pathname.includes('add-new-job') || location.pathname.includes('update-job')) &&
+    <>
+    <Link to='/' className="text-[15px] hover:text-gray-600">Resume Builder</Link>
+    <Link to='/' className="text-[15px] hover:text-gray-600">Resume Job Matching</Link>
+    <Link to='/' className="text-[15px] hover:text-gray-600">Cover Letter Generator</Link>
+    </>
+}
 
-        <Link to='/' className="flex items-center gap-4 mb-6 hover:text-gray-600">
-            <FontAwesomeIcon icon={ faPen } className="w-8 p-2 bg-sky-400/50 text-sky-700
-            rounded text-2xl" />
-            <div>
-                <h2 className="text-sm font-bold">Cover Letter Generator</h2>
-                <p className="text-xs">Lorem ipsum dolor sit amet consectetur.</p>
-            </div>
-        </Link>
-    </div>
-</div> more tools
+
 
  */
