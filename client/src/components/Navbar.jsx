@@ -157,7 +157,15 @@ const Navbar = () => {
                                 <Link to='/' className="flex items-center gap-4 mb-6 hover:text-gray-300">
                                     <FontAwesomeIcon icon={ faCheckDouble } className="w-8 p-2 bg-white/20 rounded text-2xl" />
                                     <div>
-                                        <h2 className="text-sm font-bold">AI Resume Cheker</h2>
+                                        <h2 className="text-sm font-bold">Resume analyzer</h2>
+                                        {/* <p className="text-xs">Lorem ipsum dolor sit amet consectetur.</p> */}
+                                    </div>
+                                </Link>
+                                
+                                <Link to='/' className="flex items-center gap-4 mb-6 hover:text-gray-300">
+                                    <FontAwesomeIcon icon={ faCheckDouble } className="w-8 p-2 bg-white/20 rounded text-2xl" />
+                                    <div>
+                                        <h2 className="text-sm font-bold">Interview question generator</h2>
                                         {/* <p className="text-xs">Lorem ipsum dolor sit amet consectetur.</p> */}
                                     </div>
                                 </Link>
@@ -165,7 +173,7 @@ const Navbar = () => {
                                 <Link to='/' className="flex items-center gap-4 mb-6 hover:text-gray-300">
                                     <FontAwesomeIcon icon={ faEquals } className="w-8 p-2 bg-white/20 rounded text-2xl" />
                                     <div>
-                                        <h2 className="text-sm font-bold">Job Description Matching</h2>
+                                        <h2 className="text-sm font-bold">Resume With Job Description Matching</h2>
                                         {/* <p className="text-xs">Lorem ipsum dolor sit amet consectetur.</p> */}
                                     </div>
                                 </Link>
@@ -174,6 +182,14 @@ const Navbar = () => {
                                     <FontAwesomeIcon icon={ faPen } className="w-8 p-2 bg-white/20 rounded text-2xl" />
                                     <div>
                                         <h2 className="text-sm font-bold">Cover Letter Generator</h2>
+                                        {/* <p className="text-xs">Lorem ipsum dolor sit amet consectetur.</p> */}
+                                    </div>
+                                </Link>
+                                
+                                <Link to='/' className="flex items-center gap-4 mb-6 hover:text-gray-300">
+                                    <FontAwesomeIcon icon={ faPen } className="w-8 p-2 bg-white/20 rounded text-2xl" />
+                                    <div>
+                                        <h2 className="text-sm font-bold">Skill gap analysis</h2>
                                         {/* <p className="text-xs">Lorem ipsum dolor sit amet consectetur.</p> */}
                                     </div>
                                 </Link>
