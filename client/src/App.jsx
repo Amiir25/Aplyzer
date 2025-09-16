@@ -13,6 +13,7 @@ import UpdateJob from './user/pages/UpdateJob'
 import { motion } from "framer-motion";
 import ProtectedRoute from './components/ProtectedRoute'
 import ScrollToTop from './components/ScrollToTop'
+import SummerizeJobDesc from './AITools/SummerizeJobDesc'
 
 const App = () => {
 
@@ -47,6 +48,9 @@ const App = () => {
         <Route path='/user/job-details/:jobId' element={ <ProtectedRoute> <JobDetails/> </ProtectedRoute> } />
         <Route path='/user/add-new-job/:userId' element={ <ProtectedRoute> <AddNewJob/> </ProtectedRoute> } />
         <Route path='/user/update-job/:jobId' element={ <ProtectedRoute> <UpdateJob/> </ProtectedRoute> } />
+
+        {/* AI routes */}
+        <Route path='/ai-tools/summarize-job-description' element={ <SummerizeJobDesc/> } />
       
       </Routes>
 
