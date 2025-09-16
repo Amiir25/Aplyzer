@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 
 import authRouter from './routes/authRouter.js';
 import userRouter from './routes/userRouter.js';
+import aiRouter from './routes/aiRouter.js';
 
 dotenv.config();
 const app = express();
@@ -13,6 +14,7 @@ app.use(cors({}));
 // Routes
 app.use('/auth', authRouter);
 app.use('/user', userRouter);
+app.use('/ai-tools', aiRouter);
 
 const port = process.env.PORT;
 app.listen(port, () => {
