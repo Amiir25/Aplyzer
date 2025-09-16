@@ -30,16 +30,22 @@ const Navbar = () => {
     }
 
     useEffect(() => {
-        // Close profile on outside click
+        // Close profile & AI tolls on outside click
         const handleOutsideClick = (e) => {
             if (profileRef.current && !profileRef.current.contains(e.target)) {
                 setShowProfile(false);
+                setShowAiTools(false);
             }
         }
 
         document.addEventListener('mousedown', handleOutsideClick);
         return () => document.removeEventListener('mousedown', handleOutsideClick);
     }, []);
+
+    // Open job description summarizer page
+    const openAiToolsPage = (link) => {
+        window.open(link, '_blank', 'noopener,noreferrer');
+    }
 
     return (
         <>
@@ -92,20 +98,20 @@ const Navbar = () => {
                         {/* Dashbaord */}
                         <Link to={`/user/dashboard/${user.id}`}
                             className={`${ location.pathname.includes('/dashboard') && 'border-b-3 border-blue-500 text-blue-500 font-bold' }
-                            text-[15px] hover:text-gray-600`}>
+                         hover:text-gray-600`}>
                             Dashboard
                         </Link>
                         {/* Jobs */}
                         <Link to={`/user/all-jobs/${user.id}`}
                             className={`${ location.pathname.includes('/all-jobs') && 'border-b-3 border-blue-500 text-blue-500 font-bold' }
-                            text-[15px] hover:text-gray-600`}>
+                         hover:text-gray-600`}>
                             Jobs
                         </Link>
                         {/* Job Details */}
                         {
                             location.pathname.includes('job-details') &&
                             <Link
-                                className='border-b-3 border-blue-500 text-blue-500 font-bold text-[15px] hover:text-gray-600'>
+                                className='border-b-3 border-blue-500 text-blue-500 font-bold hover:text-gray-600'>
                                 Job Details
                             </Link>
                         }
@@ -113,7 +119,7 @@ const Navbar = () => {
                         {
                             location.pathname.includes('add-new-job') &&
                             <Link
-                                className='border-b-3 border-blue-500 text-blue-500 font-bold text-[15px] hover:text-gray-600'>
+                                className='border-b-3 border-blue-500 text-blue-500 font-bold hover:text-gray-600'>
                                 Add New Job
                             </Link>
                         }
@@ -121,7 +127,7 @@ const Navbar = () => {
                         {
                             location.pathname.includes('update-job') &&
                             <Link
-                                className='border-b-3 border-blue-500 text-blue-500 font-bold text-[15px] hover:text-gray-600'>
+                                className='border-b-3 border-blue-500 text-blue-500 font-bold hover:text-gray-600'>
                                 Update Job
                             </Link>
                         }
@@ -138,7 +144,9 @@ const Navbar = () => {
                             className={`absolute top-full left-0 right-0 px-2 pt-6 z-10 overflow-hidden transition-all ease-in-out duration-200
                             ${ showAiTools ? 'max-h-100 opacity-100' : 'max-h-0 opacity-0' } bg-gray-800 text-white`}>
                                 
-                                <Link to='/' className="flex items-center gap-4 mb-6 hover:text-gray-300">
+                                <Link
+                                onClick={ () => openAiToolsPage('/ai-tools/summarize-job-description') }
+                                className="flex items-center gap-4 mb-6 hover:text-gray-300">
                                     <FontAwesomeIcon icon={ faChartBar } className="w-8 p-2 bg-white/20 rounded text-2xl" />
                                     <div>
                                         <h2 className="text-sm font-bold">Job Description Summarizer</h2>
@@ -146,7 +154,7 @@ const Navbar = () => {
                                     </div>
                                 </Link>
 
-                                <Link to='/' className="flex items-center gap-4 mb-6 hover:text-gray-600">
+                                <Link to='/' className="flex items-center gap-4 mb-6 hover:text-gray-300">
                                     <FontAwesomeIcon icon={ faCheckDouble } className="w-8 p-2 bg-white/20 rounded text-2xl" />
                                     <div>
                                         <h2 className="text-sm font-bold">AI Resume Cheker</h2>
@@ -154,7 +162,7 @@ const Navbar = () => {
                                     </div>
                                 </Link>
 
-                                <Link to='/' className="flex items-center gap-4 mb-6 hover:text-gray-600">
+                                <Link to='/' className="flex items-center gap-4 mb-6 hover:text-gray-300">
                                     <FontAwesomeIcon icon={ faEquals } className="w-8 p-2 bg-white/20 rounded text-2xl" />
                                     <div>
                                         <h2 className="text-sm font-bold">Job Description Matching</h2>
@@ -162,7 +170,7 @@ const Navbar = () => {
                                     </div>
                                 </Link>
 
-                                <Link to='/' className="flex items-center gap-4 mb-6 hover:text-gray-600">
+                                <Link to='/' className="flex items-center gap-4 mb-6 hover:text-gray-300">
                                     <FontAwesomeIcon icon={ faPen } className="w-8 p-2 bg-white/20 rounded text-2xl" />
                                     <div>
                                         <h2 className="text-sm font-bold">Cover Letter Generator</h2>
