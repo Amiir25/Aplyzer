@@ -7,8 +7,8 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 const CTA = () => {
   return (
     <>
-    <div style={{ backgroundImage: `url(${assets.bgFAQAndCTA})` }}
-    className='h-[70%] md:h-screen bg-cover bg-center bg-no-repeat mt-20 py-10'>
+    <div style={{ backgroundImage: `url(${assets.bgCTA})` }}
+    className='h-[70%] md:h-screen bg-contain bg-right bg-no-repeat mt-20 py-10'>
 
         <div className='px-6 md:px-16 lg:px-24 xl:px-32
         flex flex-col items-center md:items-left justify-center gap-2 h-full w-full sm:w-2/3'>
