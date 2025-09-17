@@ -50,7 +50,7 @@ const SignIn = () => {
     return (
         <>
         {/* Logo */}
-        <button className='px-6 md:px-12 lg:px-24 xl:px-32 py-2'>
+        <button className='px-6 md:px-12 lg:px-24 xl:px-32 py-4 md:py-2'>
             <Link to={'/'}>
                 <img src="/aplyzer.png" alt="Logo Image"
                 className="w-80"/>
@@ -58,7 +58,7 @@ const SignIn = () => {
         </button>
 
         <div className='flex items-center justify-center h-screen'>
-            <div className='shadow-xl px-8 py-5 border border-[#02A9EB]/30 w-96'>
+            <div className='shadow-xl px-8 py-5 border border-[#02A9EB]/30 w-80 md:w-96'>
                 
                 <h2 className='text-xl font-bold mb-4'>
                     Welcome Back to Aplyzer
@@ -100,7 +100,7 @@ const SignIn = () => {
                 </div>
 
                 {/* Sign in message */}
-                <div className={ `${ signinMsg ? 'fixed' : 'hidden' } top-40 w-80 text-center` }>
+                <div className={ `${ signinMsg ? 'fixed' : 'hidden' } top-40 left-1/2 -translate-x-1/2 w-80 text-center` }>
                     <p className={`text-lg text-white p-2 rounded ${ signinError ? 'bg-red-600' : 'bg-green-600' }`}>
                         { signinError || 'Login Successfull' }
                     </p>
