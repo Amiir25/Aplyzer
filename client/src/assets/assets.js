@@ -5,10 +5,10 @@ import logoFooter from './logo-footer.PNG';
 import bgHero from './bg-hero.png';
 
 // Tool images
-import coverLetterImage from './tools/cover-letter.png';
-import matchResumeImage from './tools/match-resume.png';
-import resumeReviewImage from './tools/resume-review.png';
-import trackApplicationsImage from './tools/track-applications.png';
+import trackApplications from './tools/track-applications.png';
+import favorites from './tools/favorites.png';
+import reminders from './tools/reminders.png';
+import applicationDetails from './tools/application-details.png';
 
 // Look Inside images
 import image1 from './look-inside/image-1.png';
@@ -40,10 +40,10 @@ export const assets = {
     bgHero,
 
     // Smarter tools
-    coverLetterImage,
-    matchResumeImage,
-    resumeReviewImage,
-    trackApplicationsImage,
+    trackApplications,
+    favorites,
+    reminders,
+    applicationDetails,
 
     // CTA
     bgCTA,
@@ -61,23 +61,23 @@ export const assets = {
 export const tools = [
     {
         title: "Track Your Applications",
-        desc: "Keep all your job applications organized with real-time status updates and reminders.",
-        image: trackApplicationsImage,
+        desc: "Store all applications and statuses in one dashboard.",
+        image: trackApplications,
     },
     {
-        title: "Upload Your Resume",
-        desc: "Let Aplyzer analyze your resume with AI and suggest personalized improvements.",
-        image: resumeReviewImage,
+        title: "Favorites",
+        desc: "Mark important opportunities for quick access later.",
+        image: favorites,
     },
     {
-        title: "Match to Job Descriptions",
-        desc: "Paste any job posting and see how well your resume matches — and how to improve it.",
-        image: matchResumeImage,
+        title: "Reminders",
+        desc: "Remind yourself of deadlines and follow-up dates.",
+        image: reminders,
     },
     {
-        title: "Generate Cover Letters",
-        desc: "Let Aplyzer craft personalized, job-specific cover letters in seconds.",
-        image: coverLetterImage,
+        title: "Application Details",
+        desc: "Save company info, job description, and notes in one place.",
+        image: applicationDetails,
     },
 ];
 
