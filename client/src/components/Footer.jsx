@@ -87,7 +87,7 @@ const Footer = () => {
                 <img src='/logo.png' alt="Logo Image"
                 className='w-40 mx-auto' />
                 
-                <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 md:gap-6
+                <div className="flex flex-wrap items-center justify-start md:justify-center gap-x-10 gap-y-4 md:gap-6
                 mt-6 w-2/3 md:w-full mx-auto">
                     <a href="#">
                         <FontAwesomeIcon icon={ faLinkedinIn }
@@ -120,30 +120,33 @@ const Footer = () => {
                 </div>
             </div>
 
-            {/*  */}
-            <div className='flex-1 w-1/2 mx-auto'>
-                <div className='w-fit md:mx-auto'>
-                    <h2 className="font-semibold mb-5 text-gray-500">Company</h2>
-                    <ul className="text-sm space-y-2">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About us</a></li>
-                        <li><a href="#">Contact us</a></li>
-                        <li><a href="#">Privacy policy</a></li>
-                    </ul>
+            <div className='flex flex-2 items-start justify-between mt-10 md:mt-0'>
+                {/*  */}
+                <div className='flex-1 w-1/2 md:mx-auto inline'>
+                    <div className='w-fit md:mx-auto'>
+                        <h2 className="font-semibold mb-5 text-gray-500">Company</h2>
+                        <ul className="text-sm space-y-2">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">About us</a></li>
+                            <li><a href="#">Contact us</a></li>
+                            <li><a href="#">Privacy policy</a></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-                
-            {/*  */}
-            <div className='flex-1 w-1/2 mx-auto'>
-                <div className='w-fit md:mx-auto'>
-                    <h2 className="font-semibold mb-5 text-gray-500">Get in touch</h2>
-                    <div className="text-sm space-y-2">
-                        <p>+251 944 081 246</p>
-                        <p>amirsadik636@gmail.com</p>
+                    
+                {/*  */}
+                <div className='flex-1 w-1/2 md:mx-auto text-right md:text-left'>
+                    <div className='w-fit md:mx-auto'>
+                        <h2 className="font-semibold mb-5 text-gray-500">Get in touch</h2>
+                        <div className="text-sm space-y-2">
+                            <p>+251 944 081 246</p>
+                            <p>amirsadik636@gmail.com</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
         <p className="pt-4 text-center text-xs md:text-sm pb-5">
             Copyright 2025 © <a href="#">Aplyzer</a>. All Right Reserved.
         </p>
