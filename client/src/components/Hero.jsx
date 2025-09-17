@@ -9,9 +9,9 @@ const Hero = () => {
     <>
     <div className='h-80vh md:h-screen flex flex-col items-center px-2 md:px-16 lg:px-24 xl:px-32 pt-40 md:pt-30 text-center'>
         
-        <h1 className='text-4xl sm:text-6xl md:text-7xl text-gray-800 font-bold'>
+        <h1 className='text-[30px] sm:text-[50px] md:text-[60px] lg:text-[70px] text-gray-800 font-bold'>
           <Typewriter
-            words={['Apply Smarter.', 'Track Applications.', 'Stay Organized.', 'Perfect Your Resume.', 'Land Your Dream Job.']}
+            words={[ 'Apply Smarter.', 'Track Applications.', 'Stay Organized.', 'Perfect Your Resume.', 'Land Your Dream Job.']}
             loop={false}
             cursor
             cursorStyle="|"
