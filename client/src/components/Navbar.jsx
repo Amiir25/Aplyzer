@@ -60,14 +60,14 @@ const Navbar = () => {
                 
                 <Link to={'/'}>
                     <img src="/aplyzer.png" alt="Logo Image"
-                    className="w-50"/>
+                    className="w-32 md:w-50"/>
                 </Link>
                 
                 :
                 
                 <Link to={'/'}>
                     <img src="/logo.png" alt="Logo Image"
-                    className="w-20" />
+                    className="w-16 md:w-20" />
                 </Link>
             }
 
@@ -80,7 +80,7 @@ const Navbar = () => {
                         // Hide Sign In button from signin and signup pages
                         !(location.pathname.includes('signin') || location.pathname.includes('signup')) &&
                         <Link to='auth/signin'>
-                            <button className="hidden md:block border border-blue-500 px-2 py-1 rounded bg-gradient-to-r
+                            <button className="text-sm md:text-xl border border-blue-500 px-1 md:px-2 py-0.5 md:py-1 rounded bg-gradient-to-r
                             hover:text-white hover:border-white hover:from-blue-800 hover:to-blue-500
                             hover:opacity-90 active:opacity-100 cursor-pointer ">
                                 Sign In
@@ -97,15 +97,17 @@ const Navbar = () => {
                     <div className="relative gap-8 hidden md:flex">
                         {/* Dashbaord */}
                         <Link to={`/user/dashboard/${user.id}`}
-                            className={`${ location.pathname.includes('/dashboard') && 'border-b-3 border-blue-500 text-blue-500 font-bold' }
-                         hover:text-gray-600`}>
+                        className={`${ location.pathname.includes('/dashboard') &&
+                        'border-b-3 border-blue-500 text-blue-500 font-bold' }
+                        hover:text-gray-600`}>
                             Dashboard
                         </Link>
                         {/* Jobs */}
                         <Link to={`/user/all-jobs/${user.id}`}
-                            className={`${ location.pathname.includes('/all-jobs') && 'border-b-3 border-blue-500 text-blue-500 font-bold' }
-                         hover:text-gray-600`}>
-                            Jobs
+                        className={`${ location.pathname.includes('/all-jobs') &&
+                        'border-b-3 border-blue-500 text-blue-500 font-bold' }
+                        hover:text-gray-600`}>
+                            My Jobs
                         </Link>
                         {/* Job Details */}
                         {
@@ -117,9 +119,10 @@ const Navbar = () => {
                         }
                         {/* Add new job */}
                         {
-                            location.pathname.includes('add-new-job') &&
-                            <Link
-                                className='border-b-3 border-blue-500 text-blue-500 font-bold hover:text-gray-600'>
+                            <Link to={`/user/add-new-job/${user.id}`}
+                            className={`${ location.pathname.includes('/add-new-job') && 
+                            'border-b-3 border-blue-500 text-blue-500 font-bold' }
+                            hover:text-gray-600`}>
                                 Add New Job
                             </Link>
                         }
@@ -131,8 +134,9 @@ const Navbar = () => {
                                 Update Job
                             </Link>
                         }
+
                         {/* AI tools */}
-                        <div
+                        {/*<div
                         onClick={ () => setShowAiTools(!showAiTools) }
                         className="group">
                             <button className=" flex items-center gap-2 hover:text-gray-600 cursor-pointer">
@@ -150,7 +154,7 @@ const Navbar = () => {
                                     <FontAwesomeIcon icon={ faChartBar } className="w-8 p-2 bg-white/20 rounded text-2xl" />
                                     <div>
                                         <h2 className="text-sm font-bold">Job Description Summarizer</h2>
-                                        {/* <p className="text-xs">Lorem ipsum dolor sit amet consectetur.</p> */}
+                                        <p className="text-xs">Lorem ipsum dolor sit amet consectetur.</p>
                                     </div>
                                 </Link>
 
@@ -158,7 +162,7 @@ const Navbar = () => {
                                     <FontAwesomeIcon icon={ faCheckDouble } className="w-8 p-2 bg-white/20 rounded text-2xl" />
                                     <div>
                                         <h2 className="text-sm font-bold">Resume analyzer</h2>
-                                        {/* <p className="text-xs">Lorem ipsum dolor sit amet consectetur.</p> */}
+                                        <p className="text-xs">Lorem ipsum dolor sit amet consectetur.</p>
                                     </div>
                                 </Link>
                                 
@@ -166,7 +170,7 @@ const Navbar = () => {
                                     <FontAwesomeIcon icon={ faCheckDouble } className="w-8 p-2 bg-white/20 rounded text-2xl" />
                                     <div>
                                         <h2 className="text-sm font-bold">Interview question generator</h2>
-                                        {/* <p className="text-xs">Lorem ipsum dolor sit amet consectetur.</p> */}
+                                        <p className="text-xs">Lorem ipsum dolor sit amet consectetur.</p>
                                     </div>
                                 </Link>
 
@@ -174,7 +178,7 @@ const Navbar = () => {
                                     <FontAwesomeIcon icon={ faEquals } className="w-8 p-2 bg-white/20 rounded text-2xl" />
                                     <div>
                                         <h2 className="text-sm font-bold">Resume With Job Description Matching</h2>
-                                        {/* <p className="text-xs">Lorem ipsum dolor sit amet consectetur.</p> */}
+                                        <p className="text-xs">Lorem ipsum dolor sit amet consectetur.</p>
                                     </div>
                                 </Link>
 
@@ -182,7 +186,7 @@ const Navbar = () => {
                                     <FontAwesomeIcon icon={ faPen } className="w-8 p-2 bg-white/20 rounded text-2xl" />
                                     <div>
                                         <h2 className="text-sm font-bold">Cover Letter Generator</h2>
-                                        {/* <p className="text-xs">Lorem ipsum dolor sit amet consectetur.</p> */}
+                                        <p className="text-xs">Lorem ipsum dolor sit amet consectetur.</p>
                                     </div>
                                 </Link>
                                 
@@ -190,52 +194,61 @@ const Navbar = () => {
                                     <FontAwesomeIcon icon={ faPen } className="w-8 p-2 bg-white/20 rounded text-2xl" />
                                     <div>
                                         <h2 className="text-sm font-bold">Skill gap analysis</h2>
-                                        {/* <p className="text-xs">Lorem ipsum dolor sit amet consectetur.</p> */}
+                                        <p className="text-xs">Lorem ipsum dolor sit amet consectetur.</p>
                                     </div>
                                 </Link>
                             </div>
-                        </div> {/* more tools */}
+                        </div> more tools
+                        */}
                         
                     </div>
                 }
 
-                <div>
-                    {/* Avatar circle */}
-                    <p 
-                    onClick={ () => setShowProfile(!showProfile) }
-                    className='flex items-center justify-center text-xl md:text-3xl text-white w-12 h-12
-                        rounded-full bg-gradient-to-r from-blue-900 to-blue-500 cursor-pointer'>
-                        { user.username[0].toUpperCase() }
-                    </p>
+                <div className="flex items-center gap-2">
+                    {/* Humberger menu icon */}
+                    <div className="md:hidden">
+                        <FontAwesomeIcon icon={ faBars } className="text-2xl hover:text-gray-600 cursor-pointer"
+                        onClick={() => setSmallScreen(true)} />
+                    </div>
 
-                    {/* Profile */}
-                    {
-                        showProfile &&
-                        <div className="fixed bg-gray-900 right-5 mt-2 w-70 rounded-xl shadow-lg p-4 z-50">
-                            <div className="flex items-center gap-2">
-                                <p className='flex items-center justify-center text-white w-12 h-12
-                                rounded-full bg-gradient-to-r from-blue-900 to-blue-500'>
-                                    { user.username[0].toUpperCase() }
-                                </p>
-                                <div className="flex flex-col">
-                                    <p className="text-white text-sm">{ user.username.charAt(0).toUpperCase() + user.username.slice(1) }</p>
-                                    <p className="text-xs text-white font-mono">{ user.email }</p>
+                    <div>
+                        {/* Avatar circle */}
+                        <p 
+                        onClick={ () => setShowProfile(!showProfile) }
+                        className='flex items-center justify-center text-xl md:text-3xl text-white w-8 h-8 md:w-12 md:h-12
+                            rounded-full bg-gradient-to-r from-blue-900 to-blue-500 cursor-pointer'>
+                            { user.username[0].toUpperCase() }
+                        </p>
+
+                        {/* Profile */}
+                        {
+                            showProfile &&
+                            <div className="fixed bg-gray-900 right-5 mt-2 w-70 rounded-xl shadow-lg p-4 z-50">
+                                <div className="flex items-center gap-2">
+                                    <p className='flex items-center justify-center text-white w-12 h-12
+                                    rounded-full bg-gradient-to-r from-blue-900 to-blue-500'>
+                                        { user.username[0].toUpperCase() }
+                                    </p>
+                                    <div className="flex flex-col">
+                                        <p className="text-white text-sm">{ user.username.charAt(0).toUpperCase() + user.username.slice(1) }</p>
+                                        <p className="text-xs text-white font-mono">{ user.email }</p>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div className="text-gray-300 text-sm flex flex-col gap-4 my-4 py-4
-                            border-t border-b border-gray-500">
-                                <p className="hover:text-white cursor-pointer">Your profile</p>
-                                <p className="hover:text-white cursor-pointer">Settings</p>
-                            </div>
+                                <div className="text-gray-300 text-sm flex flex-col gap-4 my-4 py-4
+                                border-t border-b border-gray-500">
+                                    <p className="hover:text-white cursor-pointer">Your profile</p>
+                                    <p className="hover:text-white cursor-pointer">Settings</p>
+                                </div>
 
-                            <button
-                            onClick={ handleLogout }
-                            className="flex items-center gap-2  text-red-500 hover:text-red-400 cursor-pointer">
-                                Logout
-                            </button>
-                        </div>
-                    }
+                                <button
+                                onClick={ handleLogout }
+                                className="flex items-center gap-2  text-red-500 hover:text-red-400 cursor-pointer">
+                                    Logout
+                                </button>
+                            </div>
+                        }
+                    </div>
 
                     {/* Logout Popup */}
                     {
@@ -251,77 +264,66 @@ const Navbar = () => {
                 </>
             }
 
-            {/* Small screen menu icon */}
-            <div className="md:hidden">
-                <FontAwesomeIcon icon={ faBars } className="text-2xl hover:text-gray-600 cursor-pointer"
-                onClick={() => setSmallScreen(true)} />
-            </div>
-
-            {/* Small screen links */}
-            <div className={`absolute md:hidden top-0 -left-10 w-screen h-screen bg-black/95 text-gray-200
-                transform -translate-x-200 overflow-y-scroll
-             ${ smallScreen && 'translate-x-0' } transition-all duration-300`}>
+            {/* Small screen */}
+            <div className={`flex items-center justify-center absolute md:hidden top-0 -left-10 w-screen h-screen
+            bg-white/95 text-gray-900 transform -translate-x-200 overflow-y-scroll z-10
+             ${ smallScreen && 'translate-x-10' } transition-all duration-300`}>
                 
                 {/* Logo */}
-                <img src="/logo-header.png" alt="Logo Image"
-                className="mx-auto mt-6" />
+                <img src="/aplyzer.png" alt="Logo Image"
+                className="absolute bottom-10 left-1/2 -translate-x-1/2 w-70" />
                 
 
                 {/* Close icon */}
                 <FontAwesomeIcon icon={ faCircleXmark }
-                className="fixed top-0 right-0 text-3xl p-4 hover:text-gray-400 cursor-pointer"
+                className="fixed top-0 right-0 text-3xl p-4 text-blue-900 cursor-pointer
+                hover:text-blue-800 hover:opacity-90 active:opacity-100"
                 onClick={ () => setSmallScreen(false) } />
 
-                <div className="flex flex-col items-center gap-4 mt-20 h-screen">
-                    <Link to='/' className="text-2xl hover:text-gray-400">About</Link>
-                    <Link to='/' className="text-2xl hover:text-gray-400">Tips</Link>
-                    <Link to='/' className="text-2xl hover:text-gray-400">Contact</Link>
-
-                    {/* More tools */}
-                    <div className="group mt-4">
-                        <button className="flex items-center gap-2 text-2xl mb-4 font-bold underline">
-                            More Tools
-                        </button>
-
-                        <div>
-                            <Link to='/' className="flex items-center gap-4 mb-6 hover:text-gray-400">
-                                <FontAwesomeIcon icon={ faChartBar } className="w-8 p-2 bg-rose-400/50 text-rose-700
-                                rounded text-2xl" />
-                                <div>
-                                    <h2 className="text-lg font-bold">Job Application Tracker</h2>
-                                    <p className="text-sm">Lorem ipsum dolor sit amet consectetur.</p>
-                                </div>
+                {
+                    user &&
+                    <div className="flex flex-col gap-4 w-40 text-left text-xl">
+                        {/* Dashbaord */}
+                        <Link to={`/user/dashboard/${user.id}`}
+                        className={`${ location.pathname.includes('/dashboard') &&
+                        'border-b-3 border-blue-500 text-blue-500 font-bold' }
+                        hover:text-gray-600 w-fit`}>
+                            Dashboard
+                        </Link>
+                        {/* Jobs */}
+                        <Link to={`/user/all-jobs/${user.id}`}
+                        className={`${ location.pathname.includes('/all-jobs') &&
+                        'border-b-3 border-blue-500 text-blue-500 font-bold' }
+                        hover:text-gray-600 w-fit`}>
+                            My Jobs
+                        </Link>
+                        {/* Job Details */}
+                        {
+                            location.pathname.includes('job-details') &&
+                            <Link
+                                className='border-b-3 border-blue-500 text-blue-500 font-bold hover:text-gray-600 w-fit'>
+                                Job Details
                             </Link>
-
-                            <Link to='/' className="flex items-center gap-4 mb-6 hover:text-gray-400">
-                                <FontAwesomeIcon icon={ faCheckDouble } className="w-8 p-2 bg-yellow-400/50 text-yellow-700
-                                rounded text-2xl" />
-                                <div>
-                                    <h2 className="text-lg font-bold">AI Resume Cheker</h2>
-                                    <p className="text-sm">Lorem ipsum dolor sit amet consectetur.</p>
-                                </div>
+                        }
+                        {/* Add new job */}
+                        {
+                            <Link to={`/user/add-new-job/${user.id}`}
+                            className={`${ location.pathname.includes('/add-new-job') && 
+                            'border-b-3 border-blue-500 text-blue-500 font-bold' }
+                            hover:text-gray-600 w-fit`}>
+                                Add New Job
                             </Link>
-
-                            <Link to='/' className="flex items-center gap-4 mb-6 hover:text-gray-400">
-                                <FontAwesomeIcon icon={ faEquals } className="w-8 p-2 bg-lime-400/50 text-lime-700
-                                rounded text-2xl" />
-                                <div>
-                                    <h2 className="text-lg font-bold">Job Description Matching</h2>
-                                    <p className="text-sm">Lorem ipsum dolor sit amet consectetur.</p>
-                                </div>
+                        }
+                        {/* Update Job */}
+                        {
+                            location.pathname.includes('update-job') &&
+                            <Link
+                                className='border-b-3 border-blue-500 text-blue-500 font-bold hover:text-gray-600 w-fit'>
+                                Update Job
                             </Link>
-
-                            <Link to='/' className="flex items-center gap-4 mb-6 hover:text-gray-400">
-                                <FontAwesomeIcon icon={ faPen } className="w-8 p-2 bg-sky-400/50 text-sky-700
-                                rounded text-2xl" />
-                                <div>
-                                    <h2 className="text-lg font-bold">Cover Letter Generator</h2>
-                                    <p className="text-sm">Lorem ipsum dolor sit amet consectetur.</p>
-                                </div>
-                            </Link>
-                        </div>
-                    </div> {/* More tools */}
-                </div>
+                        }
+                    </div>
+                }
             </div> {/* Small screen links */}
 
         </nav>
