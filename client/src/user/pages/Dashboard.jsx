@@ -49,7 +49,7 @@ const Dashboard = () => {
                 <RecentApplications recentJobs={recentJobs} />
                 <StatusBreakdown jobs={jobs} />
                 <FavoriteJobs jobs={jobs} />
-                <QuickActions jobs={jobs} />
+                <QuickActions user={user} />
 
             </div>
         </>
