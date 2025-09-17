@@ -25,7 +25,7 @@ const SmarterTools = () => {
                         </div>
                         
                         <div className='flex-1 px-6'>
-                          <h2 className='text-2xl md:text-3xl font-bold my-2'>{ tool.title }</h2>
+                          <h2 className='text-xl md:text-2xl lg:text-3xl text-gray-700 font-bold my-2'>{ tool.title }</h2>
                           <p className='md:text-lg'>{ tool.desc }</p>
                           <button className='text-sm md:text-md px-2 py-1 mt-4 text-gray-800 bg-gradient-to-r
                           border border-blue-900 rounded hover:border-white hover:from-blue-900 hover:to-blue-500 hover:text-white'>
