@@ -21,7 +21,7 @@ const Home = () => {
             </div>
 
             <SmarterTools/>
-            <LookInside/>
+            {/* <LookInside/> */}
             <Testimonials/>
             <FAQs/>
             <CTA/>
