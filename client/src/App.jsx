@@ -50,7 +50,7 @@ const App = () => {
         <Route path='/user/update-job/:jobId' element={ <ProtectedRoute> <UpdateJob/> </ProtectedRoute> } />
 
         {/* AI routes */}
-        <Route path='/ai-tools/summarize-job-description' element={ <SummerizeJobDesc/> } />
+        {/* <Route path='/ai-tools/summarize-job-description' element={ <SummerizeJobDesc/> } /> */}
       
       </Routes>
 
